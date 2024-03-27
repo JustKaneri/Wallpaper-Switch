@@ -15,9 +15,13 @@ namespace Wallpaper_Switch
         private Point mouseOffset;
         private bool isMouseDown = false;
 
+        private const int MaxCountSource = 4;
+
         public MainForm()
         {
             InitializeComponent();
+
+            DgvSource.CellBorderStyle = DataGridViewCellBorderStyle.None;
         }
 
         #region Control Panel
@@ -78,5 +82,29 @@ namespace Wallpaper_Switch
         }
         #endregion
 
+        #region Source
+        private void BtnSource_Click(object sender, EventArgs e)
+        {
+            //Включение и выключение видимсти панели
+            PnlSource.Visible = !PnlSource.Visible;
+        }
+
+        private void BtnAddSource_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add source");
+        }
+
+        private void BtnEditSource_Click(object sender, EventArgs e)
+        {
+            if (DgvSource.SelectedRows.Count > 0)
+                MessageBox.Show("Edit source" + DgvSource.CurrentRow.Cells[0].Value);
+        }
+
+        private void BtnDelSource_Click(object sender, EventArgs e)
+        {
+            if (DgvSource.SelectedRows.Count > 0)
+                MessageBox.Show("Delete source "+ DgvSource.CurrentRow.Cells[0].Value);
+        }
+        #endregion
     }
 }
