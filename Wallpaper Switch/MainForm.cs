@@ -15,13 +15,20 @@ namespace Wallpaper_Switch
         private Point mouseOffset;
         private bool isMouseDown = false;
 
-        private const int MaxCountSource = 4;
+        private const int _maxCountSource = 4;
+
+        private PictureBox[] _oldPictireBoxs = new PictureBox[4];
 
         public MainForm()
         {
             InitializeComponent();
 
             DgvSource.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            
+            _oldPictireBoxs[0] = PbxOld1;
+            _oldPictireBoxs[1] = PbxOld2;
+            _oldPictireBoxs[2] = PbxOld3;
+            _oldPictireBoxs[3] = PbxOld4;
         }
 
         #region Control Panel
