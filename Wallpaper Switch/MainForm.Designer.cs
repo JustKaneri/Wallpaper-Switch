@@ -28,14 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ControlPanel = new System.Windows.Forms.Panel();
-            this.BtnMinWindow = new System.Windows.Forms.Label();
-            this.BtnClose = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnSource = new System.Windows.Forms.Label();
             this.BtnPropeties = new System.Windows.Forms.Label();
             this.PnlSource = new System.Windows.Forms.Panel();
@@ -53,8 +48,7 @@
             this.PbxOld2 = new System.Windows.Forms.PictureBox();
             this.PbxOld3 = new System.Windows.Forms.PictureBox();
             this.PbxOld4 = new System.Windows.Forms.PictureBox();
-            this.ControlPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.mainContolPanel1 = new Wallpaper_Switch.Custom_components.MainContolPanel();
             this.PnlSource.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
@@ -66,71 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ControlPanel
-            // 
-            this.ControlPanel.Controls.Add(this.BtnMinWindow);
-            this.ControlPanel.Controls.Add(this.BtnClose);
-            this.ControlPanel.Controls.Add(this.label1);
-            this.ControlPanel.Controls.Add(this.pictureBox1);
-            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Size = new System.Drawing.Size(1201, 55);
-            this.ControlPanel.TabIndex = 0;
-            this.ControlPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ControlPanel_MouseDown);
-            this.ControlPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ControlPanel_MouseMove);
-            this.ControlPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ControlPanel_MouseUp);
-            // 
-            // BtnMinWindow
-            // 
-            this.BtnMinWindow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnMinWindow.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnMinWindow.ForeColor = System.Drawing.Color.White;
-            this.BtnMinWindow.Location = new System.Drawing.Point(1076, 0);
-            this.BtnMinWindow.Name = "BtnMinWindow";
-            this.BtnMinWindow.Size = new System.Drawing.Size(58, 55);
-            this.BtnMinWindow.TabIndex = 4;
-            this.BtnMinWindow.Text = "_";
-            this.BtnMinWindow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.BtnMinWindow.Click += new System.EventHandler(this.BtnMinWindow_Click);
-            this.BtnMinWindow.MouseEnter += new System.EventHandler(this.BtnControl_MouseEnter);
-            this.BtnMinWindow.MouseLeave += new System.EventHandler(this.BtnControl_MouseLeave);
-            // 
-            // BtnClose
-            // 
-            this.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnClose.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnClose.ForeColor = System.Drawing.Color.White;
-            this.BtnClose.Location = new System.Drawing.Point(1140, 0);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(58, 55);
-            this.BtnClose.TabIndex = 3;
-            this.BtnClose.Text = "X";
-            this.BtnClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            this.BtnClose.MouseEnter += new System.EventHandler(this.BtnControl_MouseEnter);
-            this.BtnClose.MouseLeave += new System.EventHandler(this.BtnControl_MouseLeave);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(72, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 55);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Wallpaper Switch";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(20, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // BtnSource
             // 
@@ -159,6 +88,7 @@
             this.BtnPropeties.TabIndex = 2;
             this.BtnPropeties.Text = "Настройки";
             this.BtnPropeties.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BtnPropeties.Click += new System.EventHandler(this.BtnPropeties_Click);
             // 
             // PnlSource
             // 
@@ -202,13 +132,13 @@
             // 
             // ClmName
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.ClmName.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.ClmName.DefaultCellStyle = dataGridViewCellStyle1;
             this.ClmName.HeaderText = "Column1";
             this.ClmName.MinimumWidth = 6;
             this.ClmName.Name = "ClmName";
@@ -218,14 +148,14 @@
             // ClmActive
             // 
             this.ClmActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Constantia", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.NullValue = false;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.ClmActive.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Constantia", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.ClmActive.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClmActive.HeaderText = "Column1";
             this.ClmActive.MinimumWidth = 6;
             this.ClmActive.Name = "ClmActive";
@@ -353,12 +283,21 @@
             this.PbxOld4.TabIndex = 11;
             this.PbxOld4.TabStop = false;
             // 
+            // mainContolPanel1
+            // 
+            this.mainContolPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.mainContolPanel1.Location = new System.Drawing.Point(0, 0);
+            this.mainContolPanel1.Name = "mainContolPanel1";
+            this.mainContolPanel1.Size = new System.Drawing.Size(1200, 55);
+            this.mainContolPanel1.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             this.ClientSize = new System.Drawing.Size(1200, 615);
+            this.Controls.Add(this.mainContolPanel1);
             this.Controls.Add(this.PbxOld1);
             this.Controls.Add(this.PbxOld2);
             this.Controls.Add(this.PbxOld3);
@@ -370,15 +309,12 @@
             this.Controls.Add(this.PnlSource);
             this.Controls.Add(this.BtnPropeties);
             this.Controls.Add(this.BtnSource);
-            this.Controls.Add(this.ControlPanel);
             this.Font = new System.Drawing.Font("Constantia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wallpaper Switch";
-            this.ControlPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PnlSource.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).EndInit();
@@ -395,12 +331,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel ControlPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label BtnClose;
-        private System.Windows.Forms.Label BtnMinWindow;
         private System.Windows.Forms.Label BtnSource;
         private System.Windows.Forms.Label BtnPropeties;
         private System.Windows.Forms.Panel PnlSource;
@@ -418,6 +348,7 @@
         private System.Windows.Forms.PictureBox PbxOld2;
         private System.Windows.Forms.PictureBox PbxOld3;
         private System.Windows.Forms.PictureBox PbxOld4;
+        private Custom_components.MainContolPanel mainContolPanel1;
     }
 }
 

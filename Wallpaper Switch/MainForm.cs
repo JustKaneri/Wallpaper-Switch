@@ -12,9 +12,6 @@ namespace Wallpaper_Switch
 {
     public partial class MainForm : Form
     {
-        private Point mouseOffset;
-        private bool isMouseDown = false;
-
         private const int _maxCountSource = 4;
 
         private PictureBox[] _oldPictireBoxs = new PictureBox[4];
@@ -30,64 +27,6 @@ namespace Wallpaper_Switch
             _oldPictireBoxs[2] = PbxOld3;
             _oldPictireBoxs[3] = PbxOld4;
         }
-
-        #region Control Panel
-        private void BtnControl_MouseEnter(object sender, EventArgs e)
-        {
-            var btn = ((Label)sender);
-
-            btn.Font = new Font(btn.Font.FontFamily,btn.Font.Size+2,btn.Font.Style);
-        }
-
-        private void BtnControl_MouseLeave(object sender, EventArgs e)
-        {
-            var btn = ((Label)sender);
-
-            btn.Font = new Font(btn.Font.FontFamily, btn.Font.Size - 2, btn.Font.Style);
-        }
-
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void BtnMinWindow_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void ControlPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            int xOffset;
-            int yOffset;
-
-            if (e.Button == MouseButtons.Left)
-            {
-                xOffset = -e.X - SystemInformation.FrameBorderSize.Width;
-                yOffset = -e.Y - SystemInformation.CaptionHeight - SystemInformation.FrameBorderSize.Height;
-                mouseOffset = new Point(xOffset, yOffset);
-                isMouseDown = true;
-            }
-        }
-
-        private void ControlPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isMouseDown)
-            {
-                Point mousePos = Control.MousePosition;
-                mousePos.Offset(mouseOffset.X, mouseOffset.Y+ControlPanel.Height/2);
-                Location = mousePos;
-            }
-        }
-
-        private void ControlPanel_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = false;
-            }
-        }
-        #endregion
 
         #region Source
         private void BtnSource_Click(object sender, EventArgs e)
@@ -113,5 +52,11 @@ namespace Wallpaper_Switch
                 MessageBox.Show("Delete source "+ DgvSource.CurrentRow.Cells[0].Value);
         }
         #endregion
+
+        private void BtnPropeties_Click(object sender, EventArgs e)
+        {
+            PropertiesForm propertiesForm = new PropertiesForm();
+            propertiesForm.ShowDialog();
+        }
     }
 }
