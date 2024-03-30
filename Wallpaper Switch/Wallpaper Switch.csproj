@@ -80,6 +80,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Wallpaper Switch.Core\Wallpaper Switch.Core.csproj">
+      <Project>{64fdf3cd-5139-4439-86c0-8f51539a554d}</Project>
+      <Name>Wallpaper Switch.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
