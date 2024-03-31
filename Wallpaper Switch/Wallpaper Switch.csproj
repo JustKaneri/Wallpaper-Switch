@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom_components\CustomCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom_components\CustomTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Custom_components\MainContolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -103,6 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Group-2.ico" />
+    <None Include="Resources\statusOFF.png" />
+    <None Include="Resources\statusMiddle.png" />
+    <None Include="Resources\statusOn.png" />
     <None Include="Resources\MainIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
