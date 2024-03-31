@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.customCheckBox1 = new Wallpaper_Switch.Custom_components.CustomCheckBox();
+            this.TbxTimeChange = new Wallpaper_Switch.Custom_components.CustomTextBox();
+            this.CbxAutoChange = new Wallpaper_Switch.Custom_components.CustomCheckBox();
             this.CbxAutoLoad = new Wallpaper_Switch.Custom_components.CustomCheckBox();
             this.mainContolPanel1 = new Wallpaper_Switch.Custom_components.MainContolPanel();
-            this.customTextBox1 = new Wallpaper_Switch.Custom_components.CustomTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -71,12 +71,27 @@
             this.label3.Text = "Cradle of Desires 2024";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // customCheckBox1
+            // TbxTimeChange
             // 
-            this.customCheckBox1.Location = new System.Drawing.Point(303, 337);
-            this.customCheckBox1.Name = "customCheckBox1";
-            this.customCheckBox1.Size = new System.Drawing.Size(107, 49);
-            this.customCheckBox1.TabIndex = 7;
+            this.TbxTimeChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.TbxTimeChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TbxTimeChange.Font = new System.Drawing.Font("Constantia", 15F);
+            this.TbxTimeChange.ForeColor = System.Drawing.Color.White;
+            this.TbxTimeChange.IsOnlyNumbers = true;
+            this.TbxTimeChange.Location = new System.Drawing.Point(127, 360);
+            this.TbxTimeChange.MaxLength = 2;
+            this.TbxTimeChange.Name = "TbxTimeChange";
+            this.TbxTimeChange.Size = new System.Drawing.Size(100, 31);
+            this.TbxTimeChange.TabIndex = 8;
+            this.TbxTimeChange.Text = "5";
+            this.TbxTimeChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CbxAutoChange
+            // 
+            this.CbxAutoChange.Location = new System.Drawing.Point(303, 337);
+            this.CbxAutoChange.Name = "CbxAutoChange";
+            this.CbxAutoChange.Size = new System.Drawing.Size(107, 49);
+            this.CbxAutoChange.TabIndex = 7;
             // 
             // CbxAutoLoad
             // 
@@ -93,22 +108,14 @@
             this.mainContolPanel1.Size = new System.Drawing.Size(536, 62);
             this.mainContolPanel1.TabIndex = 2;
             // 
-            // customTextBox1
-            // 
-            this.customTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.customTextBox1.Location = new System.Drawing.Point(127, 360);
-            this.customTextBox1.Name = "customTextBox1";
-            this.customTextBox1.Size = new System.Drawing.Size(100, 26);
-            this.customTextBox1.TabIndex = 8;
-            // 
             // PropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             this.ClientSize = new System.Drawing.Size(536, 539);
-            this.Controls.Add(this.customTextBox1);
-            this.Controls.Add(this.customCheckBox1);
+            this.Controls.Add(this.TbxTimeChange);
+            this.Controls.Add(this.CbxAutoChange);
             this.Controls.Add(this.CbxAutoLoad);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -134,7 +141,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Custom_components.CustomCheckBox CbxAutoLoad;
-        private Custom_components.CustomCheckBox customCheckBox1;
-        private Custom_components.CustomTextBox customTextBox1;
+        private Custom_components.CustomCheckBox CbxAutoChange;
+        private Custom_components.CustomTextBox TbxTimeChange;
     }
 }

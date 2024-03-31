@@ -21,11 +21,13 @@ namespace Wallpaper_Switch
         {
             Pen pen = new Pen(Color.White, 0.1f);
            
-            e.Graphics.DrawLine(pen,0,0,0,this.Height);
-
             e.Graphics.DrawLine(pen,0,this.Height-1,this.Width,this.Height-1);
 
-            e.Graphics.DrawLine(pen, this.Width-1, 0, this.Width-1, this.Height);
+
+            e.Graphics.DrawLine(pen, TbxTimeChange.Left,
+                                     TbxTimeChange.Top + TbxTimeChange.Height + 5,
+                                     TbxTimeChange.Left + TbxTimeChange.Width,
+                                     TbxTimeChange.Top + TbxTimeChange.Height + 5);
         }
     }
 }

@@ -10,6 +10,8 @@ namespace Wallpaper_Switch.Custom_components
 {
     public class CustomTextBox : TextBox
     {
+        public bool IsOnlyNumbers { get; set; } = false;
+
         public CustomTextBox()
         {
             this.BackColor = Color.FromArgb(20,19,22);
@@ -18,23 +20,21 @@ namespace Wallpaper_Switch.Custom_components
             this.ForeColor = Color.White;
             this.TextAlign = HorizontalAlignment.Center;
 
-            HandleCreated += CustomTextBox_HandleCreated;
+
+            this.KeyPress += Tbx_KeyPress;
             
         }
 
-        private void CustomTextBox_HandleCreated(object sender, EventArgs e)
+        private void Tbx_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Created)
-            {
-                MessageBox.Show("Created");
+            if (!IsOnlyNumbers)
+                return;
 
-                Pen pen = new Pen(Color.Wheat, 2);
+            if (!Char.IsDigit(e.KeyChar))
+                e.Handled = true;
 
-                Graphics g = this.Parent.CreateGraphics();
-
-                g.DrawLine(pen, this.Left, this.Top - this.Height - 5, this.Left + this.Width, this.Top - this.Height - 5);
-            }
-            
+            if ((Keys)e.KeyChar == Keys.Back)
+                e.Handled = false;
         }
     }
 }
