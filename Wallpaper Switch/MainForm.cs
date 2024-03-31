@@ -37,7 +37,8 @@ namespace Wallpaper_Switch
 
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add source");
+            SourceForm sourceForm = new SourceForm();
+            sourceForm.ShowDialog();
         }
 
         private void BtnEditSource_Click(object sender, EventArgs e)

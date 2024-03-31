@@ -58,6 +58,12 @@
     <Compile Include="Custom_components\MainContolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceForm.Designer.cs">
+      <DependentUpon>SourceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="SourceForm.resx">
+      <DependentUpon>SourceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
