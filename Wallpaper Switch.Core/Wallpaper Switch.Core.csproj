@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\File\XmlFileLoader.cs" />
+    <Compile Include="Controllers\File\XmlFileSaver.cs" />
+    <Compile Include="Controllers\Logger\Logger.cs" />
+    <Compile Include="Interface\IFileLoader.cs" />
+    <Compile Include="Interface\IFileSaver.cs" />
+    <Compile Include="Model\ApplicationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
