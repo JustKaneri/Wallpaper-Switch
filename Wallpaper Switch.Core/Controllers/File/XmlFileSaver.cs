@@ -39,6 +39,8 @@ namespace Wallpaper_Switch.Core.Controllers.File
                 {
                     xmlSerializer.Serialize(fs, value);
                 }
+
+                Logger.Logger.AppednLog(LogLevel.Info, $"The object {value.GetType()} file has been saved") ;
             }
             catch (Exception ex)
             {

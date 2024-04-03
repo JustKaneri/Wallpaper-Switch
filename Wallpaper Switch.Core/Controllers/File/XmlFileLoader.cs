@@ -32,7 +32,7 @@ namespace Wallpaper_Switch.Core.Controllers.File
                     throw new ArgumentNullException("FileNAme");
 
                 if(!System.IO.File.Exists($"{path}{FileName}.xml"))
-                    throw new FileNotFoundException(path);
+                    throw new FileNotFoundException("File not found " + $"{path}{FileName}.xml");
 
 
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
@@ -41,6 +41,8 @@ namespace Wallpaper_Switch.Core.Controllers.File
                 {
                     loadObject = (T)xmlSerializer.Deserialize(fs);
                 }
+
+                Logger.Logger.AppednLog(LogLevel.Info, $"The object {loadObject.GetType()} file has been loaded");
             }
             catch (Exception ex)
             {

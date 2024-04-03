@@ -44,6 +44,10 @@
     <Compile Include="Controllers\File\XmlFileLoader.cs" />
     <Compile Include="Controllers\File\XmlFileSaver.cs" />
     <Compile Include="Controllers\Logger\Logger.cs" />
+    <Compile Include="Controllers\Setting\AutoChangeController.cs" />
+    <Compile Include="Controllers\Setting\AutoStartController.cs" />
+    <Compile Include="Controllers\Setting\SettingsController.cs" />
+    <Compile Include="Controllers\Setting\SettingsFileController.cs" />
     <Compile Include="Interface\IFileLoader.cs" />
     <Compile Include="Interface\IFileSaver.cs" />
     <Compile Include="Model\ApplicationSettings.cs" />
