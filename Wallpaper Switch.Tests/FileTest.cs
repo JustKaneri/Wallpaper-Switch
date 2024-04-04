@@ -34,7 +34,7 @@ namespace Wallpaper_Switch.Tests
 
             xmlFileSaver.Save(data, "C:\\TestResults\\");
 
-            var result = File.Exists("C:\\TestResults\\testCreateFile.xml");
+            var result = File.Exists("C:\\TestResults\\testCreateFile1.xml");
 
             Assert.IsTrue(result, "Файл не создался");
         }

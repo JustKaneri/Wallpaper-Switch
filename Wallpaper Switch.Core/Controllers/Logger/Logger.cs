@@ -33,11 +33,28 @@ namespace Wallpaper_Switch.Core.Controllers.Logger
 
             using (StreamWriter writer = new StreamWriter(_path + _fileName, true))
             {
-                writer.WriteLine($"{Enum.GetName(typeof(LogLevel),level)} - " +
-                                 $"{DateTime.Now.ToString("dd_MM_yyyy HH:mm:ss")} - " +
-                                 (type != null ? type.FullName+" - " : "")+ 
+                writer.WriteLine($"{DateTime.Now.ToString("dd_MM_yyyy HH:mm:ss")}  |  " + 
+                                 $"{FormateTypeLog(level)}  |  " +
+                                 (type != null ? type.FullName+ "  |  " : "")+ 
                                  $"{message}");
             }
+        }
+
+        private static string FormateTypeLog(LogLevel level)
+        {
+            string name = Enum.GetName(typeof(LogLevel), level);
+
+            if(name.Length < 7)
+            {
+                int need = 7 - name.Length;
+
+                for (int i = 0; i < need; i++)
+                {
+                    name += " ";
+                }
+            }
+
+            return name;
         }
     }
 }

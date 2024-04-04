@@ -38,7 +38,7 @@ namespace Wallpaper_Switch.Tests
 
             SettingsController settingsController = new SettingsController("C:\\TestResults\\");
 
-            settingsController.StartAutoChange(5);
+            settingsController.EnableAutoChange(5);
 
             var result = settingsController.AutoChangeStatus();
 
@@ -53,14 +53,44 @@ namespace Wallpaper_Switch.Tests
 
             SettingsController settingsController = new SettingsController("C:\\TestResults\\");
 
-            settingsController.StartAutoChange(5);
+            settingsController.EnableAutoChange(5);
 
-            settingsController.StopAutoChange();
+            settingsController.DisableAutoChange();
 
             var result = settingsController.AutoChangeStatus();
 
             Assert.AreEqual(5, result.time, "Время не совпадает");
             Assert.AreEqual(false, result.isChange, "Таймер запущен");
+        }
+
+        [TestMethod]
+        public void TestAutoStart4()
+        {
+            Logger.AppednLog(LogLevel.Warning, "          TestAutoStart4           ");
+
+            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+
+            settingsController.EnableAutoStart();
+
+            var result = settingsController.AutoStartStatus();
+
+            Assert.IsTrue(result, "Приложение не добавилось в автозагрузку");
+        }
+
+        [TestMethod]
+        public void TestAutoStart5()
+        {
+            Logger.AppednLog(LogLevel.Warning, "          TestAutoStart5           ");
+
+            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+
+            settingsController.EnableAutoStart();
+
+            settingsController.DisableAutoStart();
+
+            var result = settingsController.AutoStartStatus();
+
+            Assert.IsFalse(result, "Приложение не удалилось из автозагрузки");
         }
     }
 }

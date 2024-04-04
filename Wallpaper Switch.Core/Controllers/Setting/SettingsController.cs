@@ -39,7 +39,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         /// Запустить автоматическую смену обоев каждые TIME минут
         /// </summary>
         /// <param name="time"></param>
-        public void StartAutoChange(int time)
+        public void EnableAutoChange(int time)
         {
             Logger.Logger.AppednLog(LogLevel.Info, $"Enabling automatic wallpaper change every {time} minutes");
 
@@ -50,7 +50,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         /// <summary>
         /// Остановить автоматическую смену обоев
         /// </summary>
-        public void StopAutoChange()
+        public void DisableAutoChange()
         {
             Logger.Logger.AppednLog(LogLevel.Info, $"Disabling automatic wallpaper change every {_settings.PeriodСhange} minutes");
 
@@ -62,5 +62,35 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         {
             return (_settings.PeriodСhange, _settings.IsChange);
         }
+
+        /// <summary>
+        /// Добавить в автозагрузку
+        /// </summary>
+        /// <returns></returns>
+        public bool EnableAutoStart()
+        {
+            var res = _autoStartController.Enable(_path);
+            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+
+            return res;
+        }
+
+        /// <summary>
+        /// Удалить из автозагрузки
+        /// </summary>
+        /// <returns></returns>
+        public bool DisableAutoStart()
+        {
+            var res = _autoStartController.Disable();
+            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+
+            return res; 
+        }
+
+        public bool AutoStartStatus()
+        {
+            return _autoStartController.Status();
+        }
+
     }
 }

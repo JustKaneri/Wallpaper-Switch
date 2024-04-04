@@ -22,6 +22,14 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
 
         public bool Disable()
         {
+            if (!Status())
+            {
+                _settings.IsAutoLoader = false;
+
+                Logger.Logger.AppednLog(LogLevel.Info, "The application is not in the startup registry");
+                return true;
+            }
+
             try
             {
                 using (var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
@@ -45,13 +53,21 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
 
         public bool Enable(string path)
         {
-            string Exect = $"\"{path}\" background";
+            string Exect = $"\"{path}Wallpaper Switch.exe\" background";
+
+            if (Status())
+            {
+                _settings.IsAutoLoader = true;
+
+                Logger.Logger.AppednLog(LogLevel.Info, "The application is already in the startup registry");
+                return true;
+            }
 
             try
             {
                 using (var reg = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run\\"))
                 {
-                    reg.SetValue(path, Exect);
+                    reg.SetValue(_applicationName, Exect);
 
                     _settings.IsAutoLoader = true;
 
