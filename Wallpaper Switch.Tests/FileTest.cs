@@ -21,7 +21,7 @@ namespace Wallpaper_Switch.Tests
 
         public FileTest()
         {
-            Logger logger = new Logger("C:\\TestResults\\");
+            Logger logger = new Logger(ConstTestData.path);
         }
 
         [TestMethod]
@@ -32,9 +32,9 @@ namespace Wallpaper_Switch.Tests
             data.Name = "test1";
             data.DateTime = DateTime.Now.ToShortDateString();
 
-            xmlFileSaver.Save(data, "C:\\TestResults\\");
+            xmlFileSaver.Save(data, ConstTestData.path);
 
-            var result = File.Exists("C:\\TestResults\\testCreateFile1.xml");
+            var result = File.Exists(ConstTestData.path+"testCreateFile1.xml");
 
             Assert.IsTrue(result, "Файл не создался");
         }
@@ -50,9 +50,9 @@ namespace Wallpaper_Switch.Tests
             data.Name = "test1";
             data.DateTime = DateTime.Now.ToShortDateString();
 
-            xmlFileSaver.Save(data, "C:\\TestResults\\");
+            xmlFileSaver.Save(data, ConstTestData.path);
 
-            var result = File.Exists("C:\\TestResults\\testCreateFile2.xml");
+            var result = File.Exists(ConstTestData.path+"testCreateFile2.xml");
 
             Assert.IsFalse(result, "Файл создался");
         }
@@ -84,17 +84,17 @@ namespace Wallpaper_Switch.Tests
             data.Name = "testLoad1";
             data.DateTime = DateTime.Now.ToShortDateString();
 
-            xmlFileSaver.Save(data, "C:\\TestResults\\");
+            xmlFileSaver.Save(data, ConstTestData.path);
 
 
             XmlFileLoader<TestData> xmlFileLoader = new XmlFileLoader<TestData>("testLoadFile1");
 
-            var result = File.Exists("C:\\TestResults\\testLoadFile1.xml");
+            var result = File.Exists(ConstTestData.path+"testLoadFile1.xml");
 
             Assert.IsTrue(result, "Файл создался");
 
 
-            TestData dataResult = xmlFileLoader.Load("C:\\TestResults\\");
+            TestData dataResult = xmlFileLoader.Load(ConstTestData.path);
 
             Assert.AreEqual(data.Name, dataResult.Name, "Содержимое файла не сопало");
         }

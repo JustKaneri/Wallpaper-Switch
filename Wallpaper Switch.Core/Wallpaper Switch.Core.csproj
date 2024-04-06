@@ -48,9 +48,14 @@
     <Compile Include="Controllers\Setting\AutoStartController.cs" />
     <Compile Include="Controllers\Setting\SettingsController.cs" />
     <Compile Include="Controllers\Setting\SettingsFileController.cs" />
+    <Compile Include="Controllers\Source\SourceController.cs" />
+    <Compile Include="Controllers\Source\SourceFileController.cs" />
     <Compile Include="Interface\IFileLoader.cs" />
     <Compile Include="Interface\IFileSaver.cs" />
     <Compile Include="Model\ApplicationSettings.cs" />
+    <Compile Include="Model\ImageArray.cs" />
+    <Compile Include="Model\ImageInfo.cs" />
+    <Compile Include="Model\Source.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

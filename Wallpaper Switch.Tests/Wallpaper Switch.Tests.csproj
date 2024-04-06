@@ -49,10 +49,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstTestData.cs" />
     <Compile Include="FileTest.cs" />
     <Compile Include="LogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingTest.cs" />
+    <Compile Include="SourceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

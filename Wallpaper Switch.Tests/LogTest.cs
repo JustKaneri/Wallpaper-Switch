@@ -18,7 +18,7 @@ namespace Wallpaper_Switch.Tests
         {
             Logger.AppednLog(LogLevel.Info, "test message");
 
-            var result = File.Exists("C:\\TestResults\\log.txt");
+            var result = File.Exists(ConstTestData.path+"log.txt");
 
             Assert.IsFalse(result,"Файл с логами создался");
         }
@@ -26,11 +26,11 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestWithPath()
         {
-            Logger log = new Logger("C:\\TestResults\\");
+            Logger log = new Logger(ConstTestData.path);
 
             Logger.AppednLog(LogLevel.Info, "test message");
 
-            var result = File.Exists("C:\\TestResults\\log.txt");
+            var result = File.Exists(ConstTestData.path+"log.txt");
 
             Assert.IsTrue(result, "Файл с логами не создался");
         }
@@ -38,11 +38,11 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestWithType()
         {
-            Logger log = new Logger("C:\\TestResults\\");
+            Logger log = new Logger(ConstTestData.path);
 
             Logger.AppednLog(LogLevel.Info, "test message", this.GetType());
 
-            var result = File.Exists("C:\\TestResults\\log.txt");
+            var result = File.Exists(ConstTestData.path + "log.txt");
 
             Assert.IsTrue(result, "Файл с логами не создался");
         }

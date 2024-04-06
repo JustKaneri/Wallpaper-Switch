@@ -16,17 +16,15 @@ namespace Wallpaper_Switch.Tests
         
         public SettingTest()
         {
-            Logger log = new Logger("C:\\TestResults\\");
+            Logger log = new Logger(ConstTestData.path);
         }
 
         [TestMethod]
         public void Test1()
         {
-            Logger.AppednLog(LogLevel.Warning, "          Tesst1            ");
+            SettingsController settingsController = new SettingsController(ConstTestData.path);
 
-            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
-
-            var result =  File.Exists("C:\\TestResults\\settings.xml");
+            var result =  File.Exists(ConstTestData.path+"settings.xml");
 
             Assert.IsTrue(result,"Файл конфигурации не был создан");
         }
@@ -34,9 +32,7 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestStartTimer2()
         {
-            Logger.AppednLog(LogLevel.Warning, "          TestStartTimer2            ");
-
-            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+            SettingsController settingsController = new SettingsController(ConstTestData.path);
 
             settingsController.EnableAutoChange(5);
 
@@ -49,9 +45,7 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestStopTimer3()
         {
-            Logger.AppednLog(LogLevel.Warning, "          TestStopTimer3           ");
-
-            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+            SettingsController settingsController = new SettingsController(ConstTestData.path);
 
             settingsController.EnableAutoChange(5);
 
@@ -66,9 +60,7 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestAutoStart4()
         {
-            Logger.AppednLog(LogLevel.Warning, "          TestAutoStart4           ");
-
-            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+            SettingsController settingsController = new SettingsController(ConstTestData.path);
 
             settingsController.EnableAutoStart();
 
@@ -80,9 +72,7 @@ namespace Wallpaper_Switch.Tests
         [TestMethod]
         public void TestAutoStart5()
         {
-            Logger.AppednLog(LogLevel.Warning, "          TestAutoStart5           ");
-
-            SettingsController settingsController = new SettingsController("C:\\TestResults\\");
+            SettingsController settingsController = new SettingsController(ConstTestData.path);
 
             settingsController.EnableAutoStart();
 
