@@ -12,6 +12,6 @@ namespace Wallpaper_Switch.Core.Model
 
         public string Path { get; set; }
 
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
     }
 }

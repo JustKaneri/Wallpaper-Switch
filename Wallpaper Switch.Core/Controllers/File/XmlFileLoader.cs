@@ -35,7 +35,11 @@ namespace Wallpaper_Switch.Core.Controllers.File
                     throw new FileNotFoundException("File not found " + $"{path}{FileName}.xml");
 
 
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                XmlRootAttribute xRoot = new XmlRootAttribute();
+                xRoot.ElementName = "root";
+                xRoot.IsNullable = true;
+
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), xRoot);
 
                 using (FileStream fs = new FileStream($"{path}{FileName}.xml", FileMode.OpenOrCreate))
                 {

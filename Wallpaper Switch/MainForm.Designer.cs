@@ -37,6 +37,9 @@
             this.DgvSource = new System.Windows.Forms.DataGridView();
             this.ClmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BtnDelSource = new System.Windows.Forms.PictureBox();
+            this.BtnEditSource = new System.Windows.Forms.PictureBox();
+            this.BtnAddSource = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnSelect = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,19 +49,16 @@
             this.PbxOld3 = new System.Windows.Forms.PictureBox();
             this.PbxOld4 = new System.Windows.Forms.PictureBox();
             this.PbxCurrent = new System.Windows.Forms.PictureBox();
-            this.BtnDelSource = new System.Windows.Forms.PictureBox();
-            this.BtnEditSource = new System.Windows.Forms.PictureBox();
-            this.BtnAddSource = new System.Windows.Forms.PictureBox();
             this.PnlSource.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSource
@@ -129,6 +129,7 @@
             this.DgvSource.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvSource.Size = new System.Drawing.Size(210, 193);
             this.DgvSource.TabIndex = 4;
+            this.DgvSource.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSource_CellValueChanged);
             // 
             // ClmName
             // 
@@ -161,6 +162,42 @@
             this.ClmActive.Name = "ClmActive";
             this.ClmActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // BtnDelSource
+            // 
+            this.BtnDelSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDelSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnDelSource.Image")));
+            this.BtnDelSource.Location = new System.Drawing.Point(161, 210);
+            this.BtnDelSource.Name = "BtnDelSource";
+            this.BtnDelSource.Size = new System.Drawing.Size(25, 25);
+            this.BtnDelSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtnDelSource.TabIndex = 6;
+            this.BtnDelSource.TabStop = false;
+            this.BtnDelSource.Click += new System.EventHandler(this.BtnDelSource_Click);
+            // 
+            // BtnEditSource
+            // 
+            this.BtnEditSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEditSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnEditSource.Image")));
+            this.BtnEditSource.Location = new System.Drawing.Point(91, 210);
+            this.BtnEditSource.Name = "BtnEditSource";
+            this.BtnEditSource.Size = new System.Drawing.Size(25, 25);
+            this.BtnEditSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtnEditSource.TabIndex = 5;
+            this.BtnEditSource.TabStop = false;
+            this.BtnEditSource.Click += new System.EventHandler(this.BtnEditSource_Click);
+            // 
+            // BtnAddSource
+            // 
+            this.BtnAddSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAddSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddSource.Image")));
+            this.BtnAddSource.Location = new System.Drawing.Point(26, 210);
+            this.BtnAddSource.Name = "BtnAddSource";
+            this.BtnAddSource.Size = new System.Drawing.Size(25, 25);
+            this.BtnAddSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtnAddSource.TabIndex = 4;
+            this.BtnAddSource.TabStop = false;
+            this.BtnAddSource.Click += new System.EventHandler(this.BtnAddSource_Click);
             // 
             // label2
             // 
@@ -263,42 +300,6 @@
             this.PbxCurrent.TabIndex = 4;
             this.PbxCurrent.TabStop = false;
             // 
-            // BtnDelSource
-            // 
-            this.BtnDelSource.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnDelSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnDelSource.Image")));
-            this.BtnDelSource.Location = new System.Drawing.Point(161, 210);
-            this.BtnDelSource.Name = "BtnDelSource";
-            this.BtnDelSource.Size = new System.Drawing.Size(25, 25);
-            this.BtnDelSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BtnDelSource.TabIndex = 6;
-            this.BtnDelSource.TabStop = false;
-            this.BtnDelSource.Click += new System.EventHandler(this.BtnDelSource_Click);
-            // 
-            // BtnEditSource
-            // 
-            this.BtnEditSource.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnEditSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnEditSource.Image")));
-            this.BtnEditSource.Location = new System.Drawing.Point(91, 210);
-            this.BtnEditSource.Name = "BtnEditSource";
-            this.BtnEditSource.Size = new System.Drawing.Size(25, 25);
-            this.BtnEditSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BtnEditSource.TabIndex = 5;
-            this.BtnEditSource.TabStop = false;
-            this.BtnEditSource.Click += new System.EventHandler(this.BtnEditSource_Click);
-            // 
-            // BtnAddSource
-            // 
-            this.BtnAddSource.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnAddSource.Image = ((System.Drawing.Image)(resources.GetObject("BtnAddSource.Image")));
-            this.BtnAddSource.Location = new System.Drawing.Point(26, 210);
-            this.BtnAddSource.Name = "BtnAddSource";
-            this.BtnAddSource.Size = new System.Drawing.Size(25, 25);
-            this.BtnAddSource.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BtnAddSource.TabIndex = 4;
-            this.BtnAddSource.TabStop = false;
-            this.BtnAddSource.Click += new System.EventHandler(this.BtnAddSource_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -325,14 +326,14 @@
             this.Text = "Wallpaper Switch";
             this.PnlSource.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

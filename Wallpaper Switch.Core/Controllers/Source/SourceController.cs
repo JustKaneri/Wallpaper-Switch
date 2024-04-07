@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Wallpaper_Switch.Core.Controllers.File;
 using Wallpaper_Switch.Core.Model;
 
@@ -11,7 +10,9 @@ namespace Wallpaper_Switch.Core.Controllers.Source
 {
     public class SourceController
     {
+        [XmlArray]
         private List<Model.Source> _sources;
+
         private SourceFileController _fileController;
         private readonly string _path;
 
@@ -38,13 +39,14 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             return _sources;
         }
 
-        public List<Model.Source> AddSource(Model.Source source)
+        public List<Model.Source> AddSource(Model.Source source,ref string error)
         {
             var exist = _sources.Where(s => s.Name == source.Name || s.Path == source.Path).FirstOrDefault();
 
             if(exist != null)
             {
                 Logger.Logger.AppednLog(Logger.LogLevel.Warning, "Attempt to add an existing source");
+                error = "Источник с таким именем или дерикторией уже существует";
                 return null;
             }
 
@@ -55,6 +57,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             if(files.Count == 0)
             {
                 Logger.Logger.AppednLog(Logger.LogLevel.Warning, "The directory does not contain images");
+                error = "Источник не содержит изображений";
                 return null;
             }
 

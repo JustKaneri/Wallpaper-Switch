@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wallpaper_Switch.Core.Controllers.Logger;
+using Wallpaper_Switch.Core.Controllers.Source;
 
 namespace Wallpaper_Switch
 {
@@ -14,18 +16,34 @@ namespace Wallpaper_Switch
     {
         private const int _maxCountSource = 4;
 
-        private PictureBox[] _oldPictireBoxs = new PictureBox[4];
+        private readonly SourceController _sourceController;
 
         public MainForm()
         {
             InitializeComponent();
 
             DgvSource.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            
-            _oldPictireBoxs[0] = PbxOld1;
-            _oldPictireBoxs[1] = PbxOld2;
-            _oldPictireBoxs[2] = PbxOld3;
-            _oldPictireBoxs[3] = PbxOld4;
+
+            _sourceController = new SourceController(Application.StartupPath + "\\");
+            FillSource();
+        }
+
+        private void FillSource()
+        {
+            DgvSource.Rows.Clear();
+
+            var sources = _sourceController.GetSources();
+
+            if(sources.Count == 0)
+            {
+                Logger.AppednLog(LogLevel.Info, "No sources were found during the launch");
+                return;
+            }
+
+            foreach (var source in sources) 
+            {
+                DgvSource.Rows.Add(source.Name, source.IsActive);
+            }
         }
 
         #region Source
@@ -37,20 +55,45 @@ namespace Wallpaper_Switch
 
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
-            SourceForm sourceForm = new SourceForm();
+            SourceForm sourceForm = new SourceForm(_sourceController,SourceForm.FormMode.Create);
             sourceForm.ShowDialog();
+            FillSource();
         }
 
         private void BtnEditSource_Click(object sender, EventArgs e)
         {
             if (DgvSource.SelectedRows.Count > 0)
-                MessageBox.Show("Edit source" + DgvSource.CurrentRow.Cells[0].Value);
+            {
+                int rowIndex = DgvSource.CurrentCell.RowIndex;
+
+                var oldSource = _sourceController.GetSources()[rowIndex];
+
+                SourceForm sourceForm = new SourceForm(_sourceController, oldSource ,SourceForm.FormMode.Edit);
+                sourceForm.ShowDialog();
+
+                FillSource();
+
+                DgvSource.CurrentCell = DgvSource[0, rowIndex];
+                DgvSource.Rows[rowIndex].Selected = true;
+
+            }
         }
 
         private void BtnDelSource_Click(object sender, EventArgs e)
         {
             if (DgvSource.SelectedRows.Count > 0)
-                MessageBox.Show("Delete source "+ DgvSource.CurrentRow.Cells[0].Value);
+            {
+                var resulDialog = MessageBox.Show("Удалить источник ?","Удаление",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+
+                if (resulDialog == DialogResult.Cancel)
+                    return;
+
+                int index = DgvSource.CurrentCell.RowIndex;
+
+                _sourceController.DeleteSource(index);
+
+                FillSource();
+            }
         }
         #endregion
 
@@ -58,6 +101,27 @@ namespace Wallpaper_Switch
         {
             PropertiesForm propertiesForm = new PropertiesForm();
             propertiesForm.ShowDialog();
+        }
+
+        private void DgvSource_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex != -1)
+            {
+                bool value = (bool)DgvSource[e.ColumnIndex, e.RowIndex].Value;
+                bool result;
+
+                if (value)
+                {
+                   result = _sourceController.AcitvateSource(e.RowIndex);
+                }
+                else
+                {
+                   result = _sourceController.DiacitvateSource(e.RowIndex);
+                }
+
+                if (result == false)
+                    DgvSource[e.ColumnIndex, e.RowIndex].Value = !value;
+            }
         }
     }
 }

@@ -111,6 +111,7 @@
             this.BtnSave.TabIndex = 9;
             this.BtnSave.Text = "Сохранить";
             this.BtnSave.UseVisualStyleBackColor = false;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // TbxPath
             // 

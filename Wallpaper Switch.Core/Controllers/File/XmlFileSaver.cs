@@ -32,10 +32,13 @@ namespace Wallpaper_Switch.Core.Controllers.File
                 if (string.IsNullOrWhiteSpace(FileName))
                     throw new ArgumentNullException("FileNAme");
 
+                XmlRootAttribute xRoot = new XmlRootAttribute();
+                xRoot.ElementName = "root";
+                xRoot.IsNullable = true;
 
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T), xRoot);
 
-                using (FileStream fs = new FileStream($"{path}{FileName}.xml", FileMode.OpenOrCreate))
+                using (FileStream fs = new FileStream($"{path}{FileName}.xml", FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, value);
                 }

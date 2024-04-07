@@ -13,6 +13,8 @@ namespace Wallpaper_Switch.Tests
     [TestClass]
     public class SourceTest
     {
+        private static string error;
+
         public SourceTest()
         {
             Logger logger = new Logger("C:\\TestResults\\");
@@ -30,7 +32,7 @@ namespace Wallpaper_Switch.Tests
             source1.Name = "Test1";
             source1.Path = "D:\\Wallpaper";
 
-            controller.AddSource(source1);
+            controller.AddSource(source1,ref error);
 
             Assert.AreEqual(controller.GetSources().Count, 1, "Запись не добавилась");
         }
@@ -47,7 +49,7 @@ namespace Wallpaper_Switch.Tests
             source1.Name = "Test1";
             source1.Path = "D:\\Wallpaper";
 
-            controller.AddSource(source1);
+            controller.AddSource(source1,ref error);
 
             Assert.IsTrue(System.IO.File.Exists(ConstTestData.path + "source.xml"), "файл с источниками не создан");
         }
@@ -68,8 +70,8 @@ namespace Wallpaper_Switch.Tests
             source2.Name = "Test2";
             source2.Path = "C:\\TestResults\\images\\";
 
-            controller.AddSource(source1);
-            controller.AddSource(source2);
+            controller.AddSource(source1,ref error);
+            controller.AddSource(source2,ref error);
 
             Assert.AreEqual(controller.GetSources().Count, 2, "Запись не добавилась");
         }
@@ -91,8 +93,8 @@ namespace Wallpaper_Switch.Tests
             source2.Name = "Test2";
             source2.Path = "C:\\TestResults\\images\\";
 
-            controller.AddSource(source1);
-            controller.AddSource(source2);
+            controller.AddSource(source1, ref error);
+            controller.AddSource(source2, ref error);
 
             Assert.AreEqual(controller.GetSources().Count, 2, "Записи не добавились");
 
@@ -100,7 +102,7 @@ namespace Wallpaper_Switch.Tests
 
             Assert.AreEqual(controller.GetSources().Count, 1, "Запись не удалисась");
 
-            controller.AddSource(source2);
+            controller.AddSource(source2, ref error);
 
             Assert.AreEqual(controller.GetSources().Count, 2, "Запись не добавились");
 
@@ -118,7 +120,7 @@ namespace Wallpaper_Switch.Tests
             source1.Name = "Test1";
             source1.Path = "D:\\Wallpaper\\";
 
-            controller.AddSource(source1);
+            controller.AddSource(source1, ref error);
 
             Source source2 = new Source();
             source2.Name = "Test2";
@@ -144,7 +146,7 @@ namespace Wallpaper_Switch.Tests
             source1.Name = "Test1";
             source1.Path = "D:\\Wallpaper\\";
 
-            controller.AddSource(source1);
+            controller.AddSource(source1, ref error);
 
             Source source2 = new Source();
             source2.Name = "Test1";
@@ -178,8 +180,8 @@ namespace Wallpaper_Switch.Tests
             update.Name = "Test1";
             update.Path = "C:\\TestResults\\";
 
-            controller.AddSource(source1);
-            controller.AddSource(source2);
+            controller.AddSource(source1, ref error);
+            controller.AddSource(source2, ref error);
 
             controller.EditSource(update, source2);
 
@@ -205,8 +207,8 @@ namespace Wallpaper_Switch.Tests
             source2.Name = "Test2";
             source2.Path = "C:\\TestResults\\images\\";
 
-            controller.AddSource(source1);
-            controller.AddSource(source2);
+            controller.AddSource(source1, ref error);
+            controller.AddSource(source2, ref error);
 
             controller.DiacitvateSource(0);
 
@@ -231,8 +233,8 @@ namespace Wallpaper_Switch.Tests
             source2.Name = "Test2";
             source2.Path = "C:\\TestResults\\images\\";
 
-            controller.AddSource(source1);
-            controller.AddSource(source2);
+            controller.AddSource(source1, ref error);
+            controller.AddSource(source2, ref error );
 
             controller.DiacitvateSource(0);
 
