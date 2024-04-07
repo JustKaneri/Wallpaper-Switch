@@ -37,28 +37,28 @@
             this.DgvSource = new System.Windows.Forms.DataGridView();
             this.ClmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.BtnDelSource = new System.Windows.Forms.PictureBox();
-            this.BtnEditSource = new System.Windows.Forms.PictureBox();
-            this.BtnAddSource = new System.Windows.Forms.PictureBox();
-            this.PbxCurrent = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnSelect = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.mainContolPanel1 = new Wallpaper_Switch.Custom_components.MainContolPanel();
             this.PbxOld1 = new System.Windows.Forms.PictureBox();
             this.PbxOld2 = new System.Windows.Forms.PictureBox();
             this.PbxOld3 = new System.Windows.Forms.PictureBox();
             this.PbxOld4 = new System.Windows.Forms.PictureBox();
-            this.mainContolPanel1 = new Wallpaper_Switch.Custom_components.MainContolPanel();
+            this.PbxCurrent = new System.Windows.Forms.PictureBox();
+            this.BtnDelSource = new System.Windows.Forms.PictureBox();
+            this.BtnEditSource = new System.Windows.Forms.PictureBox();
+            this.BtnAddSource = new System.Windows.Forms.PictureBox();
             this.PnlSource.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSource
@@ -66,7 +66,7 @@
             this.BtnSource.AutoSize = true;
             this.BtnSource.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnSource.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnSource.ForeColor = System.Drawing.Color.White;
+            this.BtnSource.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.BtnSource.Location = new System.Drawing.Point(9, 66);
             this.BtnSource.Name = "BtnSource";
             this.BtnSource.Size = new System.Drawing.Size(122, 24);
@@ -81,7 +81,7 @@
             this.BtnPropeties.AutoSize = true;
             this.BtnPropeties.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnPropeties.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnPropeties.ForeColor = System.Drawing.Color.White;
+            this.BtnPropeties.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.BtnPropeties.Location = new System.Drawing.Point(137, 66);
             this.BtnPropeties.Name = "BtnPropeties";
             this.BtnPropeties.Size = new System.Drawing.Size(120, 24);
@@ -135,8 +135,8 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             this.ClmName.DefaultCellStyle = dataGridViewCellStyle1;
             this.ClmName.HeaderText = "Column1";
@@ -151,9 +151,9 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Constantia", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
             this.ClmActive.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClmActive.HeaderText = "Column1";
@@ -161,6 +161,107 @@
             this.ClmActive.Name = "ClmActive";
             this.ClmActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ClmActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // label2
+            // 
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label2.Location = new System.Drawing.Point(372, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(452, 34);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Текущие обои";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BtnSelect
+            // 
+            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.BtnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue;
+            this.BtnSelect.FlatAppearance.BorderSize = 2;
+            this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSelect.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnSelect.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.BtnSelect.Location = new System.Drawing.Point(400, 398);
+            this.BtnSelect.Name = "BtnSelect";
+            this.BtnSelect.Size = new System.Drawing.Size(406, 46);
+            this.BtnSelect.TabIndex = 6;
+            this.BtnSelect.Text = "Выбрать";
+            this.BtnSelect.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label3.Location = new System.Drawing.Point(70, 449);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 42);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "История:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // mainContolPanel1
+            // 
+            this.mainContolPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.mainContolPanel1.Location = new System.Drawing.Point(0, 0);
+            this.mainContolPanel1.Name = "mainContolPanel1";
+            this.mainContolPanel1.Size = new System.Drawing.Size(1200, 55);
+            this.mainContolPanel1.TabIndex = 2;
+            // 
+            // PbxOld1
+            // 
+            this.PbxOld1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbxOld1.BackgroundImage")));
+            this.PbxOld1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PbxOld1.Location = new System.Drawing.Point(141, 494);
+            this.PbxOld1.Name = "PbxOld1";
+            this.PbxOld1.Size = new System.Drawing.Size(192, 108);
+            this.PbxOld1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxOld1.TabIndex = 8;
+            this.PbxOld1.TabStop = false;
+            // 
+            // PbxOld2
+            // 
+            this.PbxOld2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbxOld2.BackgroundImage")));
+            this.PbxOld2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PbxOld2.Location = new System.Drawing.Point(383, 495);
+            this.PbxOld2.Name = "PbxOld2";
+            this.PbxOld2.Size = new System.Drawing.Size(192, 108);
+            this.PbxOld2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxOld2.TabIndex = 9;
+            this.PbxOld2.TabStop = false;
+            // 
+            // PbxOld3
+            // 
+            this.PbxOld3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbxOld3.BackgroundImage")));
+            this.PbxOld3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PbxOld3.Location = new System.Drawing.Point(625, 495);
+            this.PbxOld3.Name = "PbxOld3";
+            this.PbxOld3.Size = new System.Drawing.Size(192, 108);
+            this.PbxOld3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxOld3.TabIndex = 10;
+            this.PbxOld3.TabStop = false;
+            // 
+            // PbxOld4
+            // 
+            this.PbxOld4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PbxOld4.BackgroundImage")));
+            this.PbxOld4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PbxOld4.Location = new System.Drawing.Point(868, 495);
+            this.PbxOld4.Name = "PbxOld4";
+            this.PbxOld4.Size = new System.Drawing.Size(192, 108);
+            this.PbxOld4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxOld4.TabIndex = 11;
+            this.PbxOld4.TabStop = false;
+            // 
+            // PbxCurrent
+            // 
+            this.PbxCurrent.Location = new System.Drawing.Point(378, 136);
+            this.PbxCurrent.Name = "PbxCurrent";
+            this.PbxCurrent.Size = new System.Drawing.Size(448, 252);
+            this.PbxCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbxCurrent.TabIndex = 4;
+            this.PbxCurrent.TabStop = false;
             // 
             // BtnDelSource
             // 
@@ -198,99 +299,6 @@
             this.BtnAddSource.TabStop = false;
             this.BtnAddSource.Click += new System.EventHandler(this.BtnAddSource_Click);
             // 
-            // PbxCurrent
-            // 
-            this.PbxCurrent.Location = new System.Drawing.Point(378, 136);
-            this.PbxCurrent.Name = "PbxCurrent";
-            this.PbxCurrent.Size = new System.Drawing.Size(448, 252);
-            this.PbxCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxCurrent.TabIndex = 4;
-            this.PbxCurrent.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(372, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(452, 34);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Текущие обои";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BtnSelect
-            // 
-            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.BtnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnSelect.FlatAppearance.BorderSize = 2;
-            this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSelect.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnSelect.ForeColor = System.Drawing.Color.White;
-            this.BtnSelect.Location = new System.Drawing.Point(400, 398);
-            this.BtnSelect.Name = "BtnSelect";
-            this.BtnSelect.Size = new System.Drawing.Size(406, 46);
-            this.BtnSelect.TabIndex = 6;
-            this.BtnSelect.Text = "Выбрать";
-            this.BtnSelect.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(70, 449);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 42);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "История:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // PbxOld1
-            // 
-            this.PbxOld1.Location = new System.Drawing.Point(141, 494);
-            this.PbxOld1.Name = "PbxOld1";
-            this.PbxOld1.Size = new System.Drawing.Size(192, 108);
-            this.PbxOld1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxOld1.TabIndex = 8;
-            this.PbxOld1.TabStop = false;
-            // 
-            // PbxOld2
-            // 
-            this.PbxOld2.Location = new System.Drawing.Point(383, 495);
-            this.PbxOld2.Name = "PbxOld2";
-            this.PbxOld2.Size = new System.Drawing.Size(192, 108);
-            this.PbxOld2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxOld2.TabIndex = 9;
-            this.PbxOld2.TabStop = false;
-            // 
-            // PbxOld3
-            // 
-            this.PbxOld3.Location = new System.Drawing.Point(625, 495);
-            this.PbxOld3.Name = "PbxOld3";
-            this.PbxOld3.Size = new System.Drawing.Size(192, 108);
-            this.PbxOld3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxOld3.TabIndex = 10;
-            this.PbxOld3.TabStop = false;
-            // 
-            // PbxOld4
-            // 
-            this.PbxOld4.Location = new System.Drawing.Point(868, 495);
-            this.PbxOld4.Name = "PbxOld4";
-            this.PbxOld4.Size = new System.Drawing.Size(192, 108);
-            this.PbxOld4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PbxOld4.TabIndex = 11;
-            this.PbxOld4.TabStop = false;
-            // 
-            // mainContolPanel1
-            // 
-            this.mainContolPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mainContolPanel1.Location = new System.Drawing.Point(0, 0);
-            this.mainContolPanel1.Name = "mainContolPanel1";
-            this.mainContolPanel1.Size = new System.Drawing.Size(1200, 55);
-            this.mainContolPanel1.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -317,14 +325,14 @@
             this.Text = "Wallpaper Switch";
             this.PnlSource.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnEditSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnAddSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,8 +346,6 @@
         private System.Windows.Forms.PictureBox BtnDelSource;
         private System.Windows.Forms.PictureBox BtnEditSource;
         private System.Windows.Forms.DataGridView DgvSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ClmActive;
         private System.Windows.Forms.PictureBox PbxCurrent;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnSelect;
@@ -349,6 +355,8 @@
         private System.Windows.Forms.PictureBox PbxOld3;
         private System.Windows.Forms.PictureBox PbxOld4;
         private Custom_components.MainContolPanel mainContolPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ClmActive;
     }
 }
 

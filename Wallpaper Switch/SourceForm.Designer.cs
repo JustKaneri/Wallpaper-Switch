@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Constantia", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.label1.Location = new System.Drawing.Point(0, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(900, 40);
@@ -54,7 +54,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Constantia", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.label2.Location = new System.Drawing.Point(0, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(900, 40);
@@ -64,13 +64,13 @@
             // 
             // BtnSelect
             // 
-            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.BtnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue;
             this.BtnSelect.FlatAppearance.BorderSize = 2;
             this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSelect.Font = new System.Drawing.Font("Constantia", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnSelect.ForeColor = System.Drawing.Color.White;
+            this.BtnSelect.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.BtnSelect.Location = new System.Drawing.Point(330, 317);
             this.BtnSelect.Name = "BtnSelect";
             this.BtnSelect.Size = new System.Drawing.Size(245, 31);
@@ -81,13 +81,13 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.BtnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnCancel.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue;
             this.BtnCancel.FlatAppearance.BorderSize = 2;
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnCancel.ForeColor = System.Drawing.Color.White;
+            this.BtnCancel.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.BtnCancel.Location = new System.Drawing.Point(12, 403);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(258, 49);
@@ -98,13 +98,13 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.BtnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnSave.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue;
             this.BtnSave.FlatAppearance.BorderSize = 2;
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnSave.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BtnSave.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.BtnSave.Location = new System.Drawing.Point(630, 403);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(258, 49);
@@ -114,10 +114,10 @@
             // 
             // TbxPath
             // 
-            this.TbxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.TbxPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.TbxPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TbxPath.Font = new System.Drawing.Font("Constantia", 15F);
-            this.TbxPath.ForeColor = System.Drawing.Color.White;
+            this.TbxPath.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.TbxPath.IsOnlyNumbers = false;
             this.TbxPath.Location = new System.Drawing.Point(187, 263);
             this.TbxPath.Name = "TbxPath";
@@ -128,10 +128,10 @@
             // 
             // TbxName
             // 
-            this.TbxName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.TbxName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.TbxName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TbxName.Font = new System.Drawing.Font("Constantia", 15F);
-            this.TbxName.ForeColor = System.Drawing.Color.White;
+            this.TbxName.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.TbxName.IsOnlyNumbers = false;
             this.TbxName.Location = new System.Drawing.Point(187, 159);
             this.TbxName.Name = "TbxName";
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(900, 476);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.BtnCancel);

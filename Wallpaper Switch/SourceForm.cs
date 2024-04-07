@@ -20,7 +20,7 @@ namespace Wallpaper_Switch
 
         private void FormSource_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.White, 0.1f);
+            Pen pen = new Pen(Color.FromArgb(100, 149, 237), 0.1f);
 
             List<TextBox> textBoxes = new List<TextBox>();
             textBoxes.Add(TbxName);

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Group-2.ico</ApplicationIcon>
+    <ApplicationIcon>MainIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,10 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Group-2.ico" />
+    <Content Include="MainIcon.ico" />
+    <None Include="Resources\TmpImage.png" />
     <None Include="Resources\statusOFF.png" />
+    <None Include="Resources\MainIcon.png" />
     <None Include="Resources\statusMiddle.png" />
     <None Include="Resources\statusOn.png" />
-    <None Include="Resources\MainIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

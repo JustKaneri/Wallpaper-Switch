@@ -48,7 +48,7 @@ namespace Wallpaper_Switch.Custom_components
             this.BtnMinWindow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMinWindow.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnMinWindow.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnMinWindow.ForeColor = System.Drawing.Color.White;
+            this.BtnMinWindow.ForeColor = System.Drawing.Color.FromArgb(100, 149, 237);
             this.BtnMinWindow.Location = new System.Drawing.Point(1045, 0);
             this.BtnMinWindow.Name = "BtnMinWindow";
             this.BtnMinWindow.Size = new System.Drawing.Size(58, 55);
@@ -64,7 +64,7 @@ namespace Wallpaper_Switch.Custom_components
             this.BtnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnClose.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnClose.ForeColor = System.Drawing.Color.White;
+            this.BtnClose.ForeColor = System.Drawing.Color.FromArgb(100, 149, 237);
             this.BtnClose.Location = new System.Drawing.Point(1103, 0);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(58, 55);
@@ -78,7 +78,7 @@ namespace Wallpaper_Switch.Custom_components
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(100, 149, 237);
             this.label1.Location = new System.Drawing.Point(72, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 55);

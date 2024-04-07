@@ -19,7 +19,7 @@ namespace Wallpaper_Switch
 
         private void PropertiesForm_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.White, 0.1f);
+            Pen pen = new Pen(Color.FromArgb(100, 149, 237), 0.1f);
            
             e.Graphics.DrawLine(pen,0,this.Height-1,this.Width,this.Height-1);
 
