@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using Wallpaper_Switch.Core.Controllers.Extension;
 using Wallpaper_Switch.Core.Controllers.File;
 using Wallpaper_Switch.Core.Model;
 
@@ -16,8 +17,6 @@ namespace Wallpaper_Switch.Core.Controllers.Source
         private SourceFileController _fileController;
         private readonly string _path;
 
-
-        private readonly List<string> extension = new List<string>() { ".png", ".jpg", ".jpeg"};
 
         public SourceController(string Path) 
         {
@@ -50,9 +49,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
                 return null;
             }
 
-            var files = Directory.GetFiles(source.Path)
-                                 .Where(f => extension.Contains(System.IO.Path.GetExtension(f)))
-                                 .ToList();
+            var files = Directory.GetFiles(source.Path).GetImagesPath();
 
             if(files.Count == 0)
             {

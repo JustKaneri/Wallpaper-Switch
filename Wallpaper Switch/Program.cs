@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Logger;
+using Wallpaper_Switch.Core.Controllers.Wallpaper;
 
 namespace Wallpaper_Switch
 {
@@ -16,6 +17,7 @@ namespace Wallpaper_Switch
         static void Main()
         {
             Logger log = new Logger(Application.StartupPath + "\\");
+            WallpaperCollector wallpaperCollector = new WallpaperCollector(Application.StartupPath + "\\");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

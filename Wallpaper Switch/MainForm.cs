@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Source;
+using Wallpaper_Switch.Core.Controllers.Wallpaper;
+using Wallpaper_Switch.Core.Model;
 
 namespace Wallpaper_Switch
 {
@@ -17,6 +19,7 @@ namespace Wallpaper_Switch
         private const int _maxCountSource = 4;
 
         private readonly SourceController _sourceController;
+        private readonly WallpaperController _wallpaperController;
 
         public MainForm()
         {
@@ -26,6 +29,18 @@ namespace Wallpaper_Switch
 
             _sourceController = new SourceController(Application.StartupPath + "\\");
             FillSource();
+
+            _wallpaperController = new WallpaperController(_sourceController.GetSources());
+            _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
+
+            PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
+        }
+
+        private void _wallpaperController_OnFindBrokenImage(object sender, EventArgs e)
+        {
+            var brokenWallpaper = (sender as Wallpaper);
+
+            MessageBox.Show($"Сломанный файл: {brokenWallpaper.FileName}");
         }
 
         private void FillSource()
@@ -56,8 +71,13 @@ namespace Wallpaper_Switch
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
             SourceForm sourceForm = new SourceForm(_sourceController,SourceForm.FormMode.Create);
-            sourceForm.ShowDialog();
-            FillSource();
+            var result = sourceForm.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                FillSource();
+                _wallpaperController.UpdateSource(_sourceController.GetSources());
+            }
         }
 
         private void BtnEditSource_Click(object sender, EventArgs e)
@@ -69,13 +89,17 @@ namespace Wallpaper_Switch
                 var oldSource = _sourceController.GetSources()[rowIndex];
 
                 SourceForm sourceForm = new SourceForm(_sourceController, oldSource ,SourceForm.FormMode.Edit);
-                sourceForm.ShowDialog();
+                var result = sourceForm.ShowDialog();
 
-                FillSource();
+                if(result == DialogResult.OK)
+                {
+                    FillSource();
 
-                DgvSource.CurrentCell = DgvSource[0, rowIndex];
-                DgvSource.Rows[rowIndex].Selected = true;
+                    DgvSource.CurrentCell = DgvSource[0, rowIndex];
+                    DgvSource.Rows[rowIndex].Selected = true;
 
+                    _wallpaperController.UpdateSource(_sourceController.GetSources());
+                }
             }
         }
 
@@ -93,6 +117,8 @@ namespace Wallpaper_Switch
                 _sourceController.DeleteSource(index);
 
                 FillSource();
+
+                _wallpaperController.UpdateSource(_sourceController.GetSources());
             }
         }
         #endregion
@@ -121,7 +147,26 @@ namespace Wallpaper_Switch
 
                 if (result == false)
                     DgvSource[e.ColumnIndex, e.RowIndex].Value = !value;
+
+                _wallpaperController.UpdateSource(_sourceController.GetSources());
             }
+        }
+
+        private void BtnSelect_Click(object sender, EventArgs e)
+        {
+            BtnSelect.Enabled = false;
+
+            var newImage = _wallpaperController.GetRandomWallpaper();
+
+            if(newImage == null && _sourceController.GetSources().Count > 0)
+            {
+               MessageBox.Show("Источники не активны","Внимание",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+               return;
+            }
+
+            PbxCurrent.Image = newImage;
+
+            BtnSelect.Enabled = true;
         }
     }
 }
