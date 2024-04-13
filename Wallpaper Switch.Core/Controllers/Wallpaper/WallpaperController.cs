@@ -88,32 +88,39 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
             return _currentWallpaper.GetImage();
         }
 
+        /// <summary>
+        /// Получить новые случайные обои
+        /// </summary>
+        /// <returns></returns>
         public Image GetRandomWallpaper()
         {
             Random rnd = new Random();
             Model.Wallpaper result = null;
 
-            if(_wallpapers.Count == 0)
-            {
-                return null;
-            }
-
             do
             {
+                if (_wallpapers.Count == 0)
+                {
+                    Logger.Logger.AppednLog(LogLevel.Warning, $"Not images for wallaper");
+                    return null;
+                }
+
+                result = _wallpapers[rnd.Next(_wallpapers.Count)];
+
+                if(!System.IO.File.Exists(result.Path))
+                {
+                    Logger.Logger.AppednLog(LogLevel.Warning, $"Wallpaper not exist {result.Path}");
+                    _wallpapers.Remove(result);
+                    continue;
+                }
+
                 try
                 {
-                    result = _wallpapers[rnd.Next(_wallpapers.Count)];
-
                     result.Init();
                 }
                 catch
                 {
-                    var IsAdd = WallpaperCollector.AddToIgnore(result.Path);
-
-                    if (IsAdd)
-                        OnFindBrokenImage?.Invoke(result,EventArgs.Empty);
-
-                    Logger.Logger.AppednLog(LogLevel.Error, $"A broken file path {result.Path}");
+                    CathBrokenFile(result);
                     continue;
                 }
 
@@ -121,8 +128,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
 
             } while (true);
 
-            WallpaperSeter.SetImageOnWallpaper(result.Path);
-            Logger.Logger.AppednLog(LogLevel.Info, $"Set wallpaper {result.Path}");
+            SetWallpaper(result);
 
             _oldWallpaper = _currentWallpaper;
             _currentWallpaper = result;
@@ -130,9 +136,59 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
             return result.GetImage();
         }
 
+        /// <summary>
+        /// Получить предыдущие обои
+        /// </summary>
+        /// <returns></returns>
         public Model.Wallpaper GetOldWallpaper()
         {
             return _oldWallpaper;
+        }
+
+        /// <summary>
+        /// Сменить текущие обои на выбранные
+        /// </summary>
+        /// <returns></returns>
+        public Image SwitchOldWallpaper(Model.Wallpaper wallpaper)
+        {
+            if(_currentWallpaper.CompareTo(wallpaper) == 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                _oldWallpaper = _currentWallpaper;
+                _currentWallpaper = wallpaper;
+
+                _currentWallpaper.Init();
+            }
+            catch 
+            {
+                CathBrokenFile(_currentWallpaper);
+
+                _currentWallpaper = _oldWallpaper;
+            }
+
+            SetWallpaper(_currentWallpaper);
+
+            return _currentWallpaper.GetImage();
+        }
+
+        private void SetWallpaper(Model.Wallpaper wallpaper)
+        {
+            WallpaperSeter.SetImageOnWallpaper(wallpaper.Path);
+            Logger.Logger.AppednLog(LogLevel.Info, $"Set wallpaper {wallpaper.Path}");
+        }
+
+        private void CathBrokenFile(Model.Wallpaper wallpaper)
+        {
+            var IsAdd = WallpaperCollector.AddToIgnore(wallpaper.Path);
+
+            if (IsAdd)
+                OnFindBrokenImage?.Invoke(wallpaper, EventArgs.Empty);
+
+            Logger.Logger.AppednLog(LogLevel.Error, $"A broken file path {wallpaper.Path}");
         }
     }
 }

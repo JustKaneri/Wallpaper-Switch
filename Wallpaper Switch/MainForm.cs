@@ -29,6 +29,11 @@ namespace Wallpaper_Switch
         {
             InitializeComponent();
 
+            this.historyElements.Add(PbxOld1);
+            this.historyElements.Add(PbxOld2);
+            this.historyElements.Add(PbxOld3);
+            this.historyElements.Add(PbxOld4);
+
             _sourceController = new SourceController(Application.StartupPath + "\\");
             FillSource();
 
@@ -86,6 +91,11 @@ namespace Wallpaper_Switch
 
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
+            if(DgvSource.RowCount == _maxCountSource)
+            {
+                return;
+            }
+
             SourceForm sourceForm = new SourceForm(_sourceController,SourceForm.FormMode.Create);
             var result = sourceForm.ShowDialog();
 
@@ -182,11 +192,57 @@ namespace Wallpaper_Switch
 
             PbxCurrent.Image = newImage;
 
-            _historyController.Push(_wallpaperController.GetOldWallpaper());
-
-            FillHistory();
+            AddToHistory();
 
             BtnSelect.Enabled = true;
+        }
+
+        private void HistoryElement_Click(object sender, EventArgs e)
+        {
+            int historyIndex = int.Parse((sender as PictureBox).Tag.ToString());
+
+            if (historyIndex > _historyController.GetHistory().Count)
+                return;
+
+            var result = _wallpaperController.SwitchOldWallpaper(_historyController.GetHistory()[historyIndex]);
+
+            if (result == null)
+                return;
+
+            PbxCurrent.Image = result;
+
+            AddToHistory();
+         
+        }
+
+        private void AddToHistory()
+        {
+            _historyController.Push(_wallpaperController.GetOldWallpaper());
+            FillHistory();
+        }
+
+        private void TsmDelete_Click(object sender, EventArgs e)
+        {
+            var resulDialog = MessageBox.Show("Удалить файл ?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resulDialog == DialogResult.Cancel)
+                return;
+
+            int historyIndex = int.Parse((((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as PictureBox).Tag.ToString());
+
+            if (historyIndex > _historyController.GetHistory().Count)
+                return;
+
+            string path = _historyController.GetHistory()[historyIndex].Path;
+
+            try
+            {
+                System.IO.File.Delete(path);
+            }
+            catch
+            {
+                Logger.AppednLog(LogLevel.Error, $"Failed delete file {path}");
+            }
         }
     }
 }

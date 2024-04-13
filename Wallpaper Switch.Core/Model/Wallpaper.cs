@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Wallpaper_Switch.Core.Model
 {
-    public class Wallpaper : WallpaperBase
+    public class Wallpaper : WallpaperBase, IComparable<Wallpaper>
     {
         public string SourcName { get; set; }
         public string Path { get; set; }
@@ -32,11 +32,21 @@ namespace Wallpaper_Switch.Core.Model
             FileName = System.IO.Path.GetFileName(path);
         }
 
+        /// <summary>
+        /// Получить изображение из файла 
+        /// и уменьшить разрешение
+        /// </summary>
+        /// <returns></returns>
         public Image Init()
         {
             SetImage(Image.FromFile(Path));
 
             return GetImage();
+        }
+
+        public int CompareTo(Wallpaper other)
+        {
+            return Path.CompareTo(other.Path);
         }
     }
 }
