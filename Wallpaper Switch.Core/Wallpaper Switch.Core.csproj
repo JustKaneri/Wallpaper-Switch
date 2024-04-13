@@ -45,6 +45,8 @@
     <Compile Include="Controllers\Extension\WallpaperExtension.cs" />
     <Compile Include="Controllers\File\XmlFileLoader.cs" />
     <Compile Include="Controllers\File\XmlFileSaver.cs" />
+    <Compile Include="Controllers\History\HistoryController.cs" />
+    <Compile Include="Controllers\History\HistoryFileController.cs" />
     <Compile Include="Controllers\Logger\Logger.cs" />
     <Compile Include="Controllers\Setting\AutoChangeController.cs" />
     <Compile Include="Controllers\Setting\AutoStartController.cs" />

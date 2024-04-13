@@ -1,4 +1,6 @@
-﻿namespace Wallpaper_Switch
+﻿using System.Windows.Forms;
+
+namespace Wallpaper_Switch
 {
     partial class MainForm
     {
@@ -129,6 +131,7 @@
             this.DgvSource.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvSource.Size = new System.Drawing.Size(210, 193);
             this.DgvSource.TabIndex = 4;
+            this.DgvSource.CellBorderStyle = DataGridViewCellBorderStyle.None;
             this.DgvSource.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSource_CellValueChanged);
             // 
             // ClmName
@@ -339,6 +342,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+            this.historyElements.Add(PbxOld1);
+            this.historyElements.Add(PbxOld2);
+            this.historyElements.Add(PbxOld3);
+            this.historyElements.Add(PbxOld4);
 
         }
 

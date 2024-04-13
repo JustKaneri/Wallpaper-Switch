@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wallpaper_Switch.Core.Controllers.History;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Source;
 using Wallpaper_Switch.Core.Controllers.Wallpaper;
@@ -20,20 +21,35 @@ namespace Wallpaper_Switch
 
         private readonly SourceController _sourceController;
         private readonly WallpaperController _wallpaperController;
+        private readonly HistoryController _historyController;
+
+        private List<PictureBox> historyElements = new List<PictureBox>();
 
         public MainForm()
         {
             InitializeComponent();
-
-            DgvSource.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
             _sourceController = new SourceController(Application.StartupPath + "\\");
             FillSource();
 
             _wallpaperController = new WallpaperController(_sourceController.GetSources());
             _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
-
             PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
+
+            _historyController = new HistoryController(Application.StartupPath + "\\");
+            FillHistory();
+        }
+
+        private void FillHistory()
+        {
+            var history = _historyController.GetHistory();
+
+            history.Reverse();
+
+            for (int i = 0; i < history.Count; i++)
+            {
+                historyElements[i].Image = history[i].GetImage();
+            }
         }
 
         private void _wallpaperController_OnFindBrokenImage(object sender, EventArgs e)
@@ -43,25 +59,25 @@ namespace Wallpaper_Switch
             MessageBox.Show($"Сломанный файл: {brokenWallpaper.FileName}");
         }
 
+        #region Source
         private void FillSource()
         {
             DgvSource.Rows.Clear();
 
             var sources = _sourceController.GetSources();
 
-            if(sources.Count == 0)
+            if (sources.Count == 0)
             {
                 Logger.AppednLog(LogLevel.Info, "No sources were found during the launch");
                 return;
             }
 
-            foreach (var source in sources) 
+            foreach (var source in sources)
             {
                 DgvSource.Rows.Add(source.Name, source.IsActive);
             }
         }
 
-        #region Source
         private void BtnSource_Click(object sender, EventArgs e)
         {
             //Включение и выключение видимсти панели
@@ -121,13 +137,6 @@ namespace Wallpaper_Switch
                 _wallpaperController.UpdateSource(_sourceController.GetSources());
             }
         }
-        #endregion
-
-        private void BtnPropeties_Click(object sender, EventArgs e)
-        {
-            PropertiesForm propertiesForm = new PropertiesForm();
-            propertiesForm.ShowDialog();
-        }
 
         private void DgvSource_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -138,11 +147,11 @@ namespace Wallpaper_Switch
 
                 if (value)
                 {
-                   result = _sourceController.AcitvateSource(e.RowIndex);
+                    result = _sourceController.AcitvateSource(e.RowIndex);
                 }
                 else
                 {
-                   result = _sourceController.DiacitvateSource(e.RowIndex);
+                    result = _sourceController.DiacitvateSource(e.RowIndex);
                 }
 
                 if (result == false)
@@ -150,6 +159,13 @@ namespace Wallpaper_Switch
 
                 _wallpaperController.UpdateSource(_sourceController.GetSources());
             }
+        }
+        #endregion
+
+        private void BtnPropeties_Click(object sender, EventArgs e)
+        {
+            PropertiesForm propertiesForm = new PropertiesForm();
+            propertiesForm.ShowDialog();
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
@@ -165,6 +181,10 @@ namespace Wallpaper_Switch
             }
 
             PbxCurrent.Image = newImage;
+
+            _historyController.Push(_wallpaperController.GetOldWallpaper());
+
+            FillHistory();
 
             BtnSelect.Enabled = true;
         }

@@ -113,7 +113,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
                     if (IsAdd)
                         OnFindBrokenImage?.Invoke(result,EventArgs.Empty);
 
-                    Logger.Logger.AppednLog(LogLevel.Error, $"A broken file {result.FileName} path {result.Path}");
+                    Logger.Logger.AppednLog(LogLevel.Error, $"A broken file path {result.Path}");
                     continue;
                 }
 
@@ -122,12 +122,17 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
             } while (true);
 
             WallpaperSeter.SetImageOnWallpaper(result.Path);
-            Logger.Logger.AppednLog(LogLevel.Info, $"Set wallpaper {result.FileName} path {result.Path}");
+            Logger.Logger.AppednLog(LogLevel.Info, $"Set wallpaper {result.Path}");
 
             _oldWallpaper = _currentWallpaper;
             _currentWallpaper = result;
 
             return result.GetImage();
+        }
+
+        public Model.Wallpaper GetOldWallpaper()
+        {
+            return _oldWallpaper;
         }
     }
 }

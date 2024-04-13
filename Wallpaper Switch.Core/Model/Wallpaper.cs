@@ -9,9 +9,14 @@ namespace Wallpaper_Switch.Core.Model
 {
     public class Wallpaper : WallpaperBase
     {
-        public string SourcName { get; }
-        public string Path { get; }
-        public string FileName { get;}
+        public string SourcName { get; set; }
+        public string Path { get; set; }
+        public string FileName { get; set; }
+
+        public Wallpaper()
+        {
+                
+        }
 
         public Wallpaper(Source source, string path)
         {
