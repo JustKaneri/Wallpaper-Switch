@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.History;
 using Wallpaper_Switch.Core.Controllers.Logger;
+using Wallpaper_Switch.Core.Controllers.Setting;
 using Wallpaper_Switch.Core.Controllers.Source;
 using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
@@ -22,6 +23,7 @@ namespace Wallpaper_Switch
         private readonly SourceController _sourceController;
         private readonly WallpaperController _wallpaperController;
         private readonly HistoryController _historyController;
+        private readonly SettingsController _settingsController;
 
         private List<PictureBox> historyElements = new List<PictureBox>();
 
@@ -43,6 +45,11 @@ namespace Wallpaper_Switch
 
             _historyController = new HistoryController(Application.StartupPath + "\\");
             FillHistory();
+
+            _settingsController = new SettingsController(Application.StartupPath + "\\");
+
+
+            TimerManager();
         }
 
         private void FillHistory()
@@ -62,6 +69,15 @@ namespace Wallpaper_Switch
             var brokenWallpaper = (sender as Wallpaper);
 
             MessageBox.Show($"Сломанный файл: {brokenWallpaper.FileName}");
+        }
+
+        private void TimerManager()
+        {
+            int time = _settingsController.AutoChangeStatus().time;
+            bool isActive = _settingsController.AutoChangeStatus().isChange;
+
+            timer1.Interval = int.Parse(time.ToString()) * 60000;
+            timer1.Enabled = isActive;
         }
 
         #region Source
@@ -243,6 +259,31 @@ namespace Wallpaper_Switch
             {
                 Logger.AppednLog(LogLevel.Error, $"Failed delete file {path}");
             }
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.ShowInTaskbar = false;
+                Logger.AppednLog(LogLevel.Info, "The application is minimized to the system tray");
+            }
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                return;
+
+            this.Show();
+            this.ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
 }
