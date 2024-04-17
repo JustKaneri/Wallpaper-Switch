@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MainIcon.ico</ApplicationIcon>
+    <ApplicationIcon>MainIco.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,10 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Group-2.ico" />
+    <Content Include="MainIco.ico" />
     <Content Include="MainIcon.ico" />
+    <None Include="Resources\MainIco.ico" />
+    <None Include="Resources\MainIcon.png" />
     <None Include="Resources\TmpImage.png" />
     <None Include="Resources\statusOFF.png" />
-    <None Include="Resources\MainIcon.png" />
     <None Include="Resources\statusMiddle.png" />
     <None Include="Resources\statusOn.png" />
   </ItemGroup>

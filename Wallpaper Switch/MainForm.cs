@@ -190,27 +190,36 @@ namespace Wallpaper_Switch
 
         private void BtnPropeties_Click(object sender, EventArgs e)
         {
-            PropertiesForm propertiesForm = new PropertiesForm();
+            PropertiesForm propertiesForm = new PropertiesForm(_settingsController);
             propertiesForm.ShowDialog();
+            TimerManager();
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
         {
             BtnSelect.Enabled = false;
 
+            GetNewWallpaper();
+
+            BtnSelect.Enabled = true;
+        }
+
+        private void GetNewWallpaper()
+        {
             var newImage = _wallpaperController.GetRandomWallpaper();
 
-            if(newImage == null && _sourceController.GetSources().Count > 0)
+            if (newImage == null && _sourceController.GetSources().Count > 0)
             {
-               MessageBox.Show("Источники не активны","Внимание",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-               return;
+                MessageBox.Show("Источники не активны", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            if (newImage == null)
+                return;
 
             PbxCurrent.Image = newImage;
 
             AddToHistory();
-
-            BtnSelect.Enabled = true;
         }
 
         private void HistoryElement_Click(object sender, EventArgs e)
@@ -283,7 +292,16 @@ namespace Wallpaper_Switch
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            var sources = _sourceController.GetSources();
             
+            if(sources.Count == 0)
+            {
+                _settingsController.DisableAutoChange();
+                TimerManager();
+                return;
+            }
+
+            GetNewWallpaper();
         }
     }
 }

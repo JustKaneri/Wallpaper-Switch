@@ -7,10 +7,12 @@ namespace Wallpaper_Switch.Custom_components
 {
     public class CustomCheckBox : Panel
     {
-        public bool Checked = false;
-
+        public bool Checked { get; private set; }
+       
         private PictureBox imageBox;
         private int timePause = 50;
+
+        public event EventHandler CheckedChanged;
 
         public CustomCheckBox()
         {
@@ -25,6 +27,16 @@ namespace Wallpaper_Switch.Custom_components
             imageBox.Cursor = Cursors.Hand;
             imageBox.Click += ImageBox_Click;
             
+        }
+
+        public void CheckChanged(bool value)
+        {
+            Checked = value;
+
+            if (Checked)
+                imageBox.Image = Resources.statusOn;
+            else
+                imageBox.Image = Resources.statusOFF;
         }
 
         private async void ImageBox_Click(object sender, EventArgs e)
@@ -45,6 +57,7 @@ namespace Wallpaper_Switch.Custom_components
             imageBox.Image = Resources.statusMiddle;
             await Task.Delay(timePause);
             imageBox.Image = Resources.statusOn;
+            CheckedChanged?.Invoke(this, EventArgs.Empty);
             
         }
 
@@ -54,6 +67,7 @@ namespace Wallpaper_Switch.Custom_components
             imageBox.Image = Resources.statusMiddle;
             await Task.Delay(timePause);
             imageBox.Image = Resources.statusOFF;
+            CheckedChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

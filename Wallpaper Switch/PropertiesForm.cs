@@ -7,14 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wallpaper_Switch.Core.Controllers.Setting;
 
 namespace Wallpaper_Switch
 {
     public partial class PropertiesForm : Form
     {
-        public PropertiesForm()
+        private readonly SettingsController _settingsController;
+
+        public PropertiesForm(SettingsController settingsController)
         {
             InitializeComponent();
+            _settingsController = settingsController;
+
+            
+        }
+
+        private void PropertiesForm_Load(object sender, EventArgs e)
+        {
+            CbxAutoLoad.CheckChanged(_settingsController.AutoStartStatus());
+            CbxAutoChange.CheckChanged(_settingsController.AutoChangeStatus().isChange);
+            TbxTimeChange.Text = _settingsController.AutoChangeStatus().time.ToString();
+
+            CbxAutoLoad.CheckedChanged += CbxAutoLoad_CheckedChanged;
+        }
+
+        private void CbxAutoLoad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!CbxAutoLoad.Checked)
+                _settingsController.DisableAutoStart();
+            else
+                _settingsController.EnableAutoStart();
         }
 
         private void PropertiesForm_Paint(object sender, PaintEventArgs e)

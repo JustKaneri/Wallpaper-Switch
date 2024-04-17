@@ -128,6 +128,7 @@
             this.Name = "PropertiesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wallpaper Switch";
+            this.Load += new System.EventHandler(this.PropertiesForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.PropertiesForm_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
