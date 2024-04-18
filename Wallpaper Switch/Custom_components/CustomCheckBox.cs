@@ -29,7 +29,7 @@ namespace Wallpaper_Switch.Custom_components
             
         }
 
-        public void CheckChanged(bool value)
+        public void Changed(bool value)
         {
             Checked = value;
 

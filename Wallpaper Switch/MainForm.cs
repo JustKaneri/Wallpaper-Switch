@@ -71,15 +71,6 @@ namespace Wallpaper_Switch
             MessageBox.Show($"Сломанный файл: {brokenWallpaper.FileName}");
         }
 
-        private void TimerManager()
-        {
-            int time = _settingsController.AutoChangeStatus().time;
-            bool isActive = _settingsController.AutoChangeStatus().isChange;
-
-            timer1.Interval = int.Parse(time.ToString()) * 60000;
-            timer1.Enabled = isActive;
-        }
-
         #region Source
         private void FillSource()
         {
@@ -186,6 +177,14 @@ namespace Wallpaper_Switch
                 _wallpaperController.UpdateSource(_sourceController.GetSources());
             }
         }
+
+        private void DgvSource_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (DgvSource.IsCurrentCellDirty)
+            {
+                DgvSource.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
         #endregion
 
         private void BtnPropeties_Click(object sender, EventArgs e)
@@ -211,6 +210,7 @@ namespace Wallpaper_Switch
             if (newImage == null && _sourceController.GetSources().Count > 0)
             {
                 MessageBox.Show("Источники не активны", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _settingsController.DisableAutoChange();
                 return;
             }
 
@@ -290,6 +290,16 @@ namespace Wallpaper_Switch
             WindowState = FormWindowState.Normal;
         }
 
+        #region Таймер
+        private void TimerManager()
+        {
+            int time = _settingsController.AutoChangeStatus().time;
+            bool isActive = _settingsController.AutoChangeStatus().isChange;
+
+            timer1.Interval = int.Parse(time.ToString()) * 60000;
+            timer1.Enabled = isActive;
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             var sources = _sourceController.GetSources();
@@ -303,5 +313,8 @@ namespace Wallpaper_Switch
 
             GetNewWallpaper();
         }
+        #endregion
+
+
     }
 }

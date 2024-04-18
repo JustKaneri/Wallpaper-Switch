@@ -85,6 +85,7 @@
             this.TbxTimeChange.TabIndex = 8;
             this.TbxTimeChange.Text = "5";
             this.TbxTimeChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TbxTimeChange.TextChanged += new System.EventHandler(this.TbxTimeChange_TextChanged);
             // 
             // CbxAutoChange
             // 

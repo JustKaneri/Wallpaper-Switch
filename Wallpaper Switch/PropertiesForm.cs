@@ -19,17 +19,24 @@ namespace Wallpaper_Switch
         {
             InitializeComponent();
             _settingsController = settingsController;
-
-            
         }
 
         private void PropertiesForm_Load(object sender, EventArgs e)
         {
-            CbxAutoLoad.CheckChanged(_settingsController.AutoStartStatus());
-            CbxAutoChange.CheckChanged(_settingsController.AutoChangeStatus().isChange);
+            CbxAutoLoad.Changed(_settingsController.AutoStartStatus());
+            CbxAutoChange.Changed(_settingsController.AutoChangeStatus().isChange);
             TbxTimeChange.Text = _settingsController.AutoChangeStatus().time.ToString();
 
             CbxAutoLoad.CheckedChanged += CbxAutoLoad_CheckedChanged;
+            CbxAutoChange.CheckedChanged += CbxAutoChange_CheckedChanged;
+        }
+
+        private void CbxAutoChange_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!CbxAutoChange.Checked)
+                _settingsController.DisableAutoChange();
+            else
+                _settingsController.EnableAutoChange(int.Parse(TbxTimeChange.Text));
         }
 
         private void CbxAutoLoad_CheckedChanged(object sender, EventArgs e)
@@ -51,6 +58,20 @@ namespace Wallpaper_Switch
                                      TbxTimeChange.Top + TbxTimeChange.Height + 5,
                                      TbxTimeChange.Left + TbxTimeChange.Width,
                                      TbxTimeChange.Top + TbxTimeChange.Height + 5);
+        }
+
+        private void TbxTimeChange_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TbxTimeChange.Text))
+                return;
+
+            int value = int.Parse(TbxTimeChange.Text);
+
+            if (value == 0)
+                TbxTimeChange.Text = "5";
+
+            if (CbxAutoChange.Checked)
+                _settingsController.EnableAutoChange(value);
         }
     }
 }
