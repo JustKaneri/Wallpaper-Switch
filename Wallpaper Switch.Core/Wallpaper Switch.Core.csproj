@@ -43,15 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Extension\WallpaperExtension.cs" />
+    <Compile Include="Controllers\File\FileController.cs" />
+    <Compile Include="Controllers\File\FileXMLControllerExpansion.cs" />
     <Compile Include="Controllers\File\XmlFileLoader.cs" />
     <Compile Include="Controllers\File\XmlFileSaver.cs" />
     <Compile Include="Controllers\History\HistoryController.cs" />
-    <Compile Include="Controllers\History\HistoryFileController.cs" />
     <Compile Include="Controllers\Logger\Logger.cs" />
     <Compile Include="Controllers\Setting\AutoChangeController.cs" />
     <Compile Include="Controllers\Setting\AutoStartController.cs" />
     <Compile Include="Controllers\Setting\SettingsController.cs" />
-    <Compile Include="Controllers\Setting\SettingsFileController.cs" />
     <Compile Include="Controllers\Source\SourceController.cs" />
     <Compile Include="Controllers\Source\SourceFileController.cs" />
     <Compile Include="Controllers\Wallpaper\WallpaperCollector.cs" />

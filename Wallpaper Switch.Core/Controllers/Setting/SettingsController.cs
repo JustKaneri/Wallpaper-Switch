@@ -7,7 +7,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
     public class SettingsController
     {
         private AutoStartController _autoStartController;
-        private SettingsFileController _settingsFileController;
+        private readonly FileXMLControllerExpansion<ApplicationSettings> _fileController;
         private AutoChangeController _changeController;
 
         private ApplicationSettings _settings;
@@ -18,16 +18,16 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         public SettingsController(string Path)
         {
             _path = Path;
-            _settingsFileController = new SettingsFileController(_settings);
+            _fileController = new FileXMLControllerExpansion<ApplicationSettings>(_settings, _fileName);
 
-            _settings = _settingsFileController.LoadSetting(_path, new XmlFileLoader<ApplicationSettings>(_fileName));
+            _settings = _fileController.LoadOne(_path);
 
 
             if (_settings == null)
             {
                 _settings = new ApplicationSettings();
-                _settingsFileController = new SettingsFileController(_settings);
-                _settingsFileController.SaveSettings(Path, new XmlFileSaver<ApplicationSettings>(_fileName));
+                _fileController = new FileXMLControllerExpansion<ApplicationSettings>(_settings, _fileName);
+                Save();
             }
 
 
@@ -44,7 +44,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
             Logger.Logger.AppednLog(LogLevel.Info, $"Enabling automatic wallpaper change every {time} minutes");
 
             _changeController.StartChange(time);
-            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+            Save();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
             Logger.Logger.AppednLog(LogLevel.Info, $"Disabling automatic wallpaper change every {_settings.PeriodСhange} minutes");
 
             _changeController.StopChange();
-            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+            Save();
         }
 
         public (int time,bool isChange) AutoChangeStatus()
@@ -70,7 +70,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         public bool EnableAutoStart()
         {
             var res = _autoStartController.Enable(_path);
-            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+            Save();
 
             return res;
         }
@@ -82,7 +82,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         public bool DisableAutoStart()
         {
             var res = _autoStartController.Disable();
-            _settingsFileController.SaveSettings(_path, new XmlFileSaver<ApplicationSettings>(_fileName));
+            Save();
 
             return res; 
         }
@@ -92,5 +92,9 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
             return _autoStartController.Status();
         }
 
+        private void Save()
+        {
+            _fileController.SaveOne(_path);
+        }
     }
 }

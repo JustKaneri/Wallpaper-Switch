@@ -12,7 +12,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
         private const string _fileName = "history";
 
         private readonly string _path;
-        private readonly HistoryFileController _fileController;
+        private readonly FileXMLControllerExpansion<Model.Wallpaper> _fileController;
 
         private List<Model.Wallpaper> _wallpapersHistory = new List<Model.Wallpaper>();
 
@@ -20,20 +20,12 @@ namespace Wallpaper_Switch.Core.Controllers.History
         {
             _path = Path;
 
-            _fileController = new HistoryFileController(_wallpapersHistory);
+            _fileController = new FileXMLControllerExpansion<Model.Wallpaper>(_wallpapersHistory, _fileName);
 
-            _wallpapersHistory = _fileController.Load(_path, new XmlFileLoader<List<Model.Wallpaper>>(_fileName));
+            _wallpapersHistory = _fileController.LoadMany(_path);
 
-            if (_wallpapersHistory == null)
-            {
-                _wallpapersHistory = new List<Model.Wallpaper>();
-                _fileController = new HistoryFileController(_wallpapersHistory);
-            }
-            else
-            {
+            if (_wallpapersHistory.Count > 0)
                 Init();
-            }
-
         }
 
         private void Init()
@@ -53,7 +45,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
                 }
             }
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Wallpaper>>(_fileName));
+            Save();
         }
 
         public List<Model.Wallpaper> GetHistory()
@@ -68,9 +60,14 @@ namespace Wallpaper_Switch.Core.Controllers.History
             if (_wallpapersHistory.Count > 4)
                 _wallpapersHistory.RemoveAt(0);
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Wallpaper>>(_fileName));
+            Save();
 
             Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Add file {wallpaper.Path} into history");
+        }
+
+        private void Save()
+        {
+            _fileController.SaveMany(_path);
         }
     }
 }

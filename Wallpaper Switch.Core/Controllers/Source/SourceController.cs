@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using Wallpaper_Switch.Core.Controllers.Extension;
 using Wallpaper_Switch.Core.Controllers.File;
-using Wallpaper_Switch.Core.Model;
 
 namespace Wallpaper_Switch.Core.Controllers.Source
 {

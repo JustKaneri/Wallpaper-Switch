@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wallpaper_Switch.Core.Model;
+﻿using Wallpaper_Switch.Core.Model;
 
 namespace Wallpaper_Switch.Core.Controllers.Setting
 {
