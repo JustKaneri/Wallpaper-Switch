@@ -53,7 +53,6 @@
     <Compile Include="Controllers\Setting\AutoStartController.cs" />
     <Compile Include="Controllers\Setting\SettingsController.cs" />
     <Compile Include="Controllers\Source\SourceController.cs" />
-    <Compile Include="Controllers\Source\SourceFileController.cs" />
     <Compile Include="Controllers\Wallpaper\WallpaperCollector.cs" />
     <Compile Include="Controllers\Wallpaper\WallpaperController.cs" />
     <Compile Include="Controllers\Wallpaper\WallpaperSeter.cs" />

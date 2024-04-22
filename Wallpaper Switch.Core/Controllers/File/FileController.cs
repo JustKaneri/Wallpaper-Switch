@@ -11,30 +11,14 @@ namespace Wallpaper_Switch.Core.Controllers.File
     {
         public void Save<T>(T value,string path, IFileSaver<T> fileSaved) where T:class
         {
-            try
-            {
-                fileSaved.Save(value, path);
-            }
-            catch (Exception ex)
-            {
-                Logger.Logger.AppednLog(Logger.LogLevel.Error, ex.Message);
-            }
+            fileSaved.Save(value, path);
         }
 
         public T Load<T>(string path, IFileLoader<T> fileLoader) where T : class
         {
             T value;
 
-            try
-            {
-                value = fileLoader.Load(path);
-            }
-            catch (Exception ex)
-            {
-                value = null;
-                Logger.Logger.AppednLog(Logger.LogLevel.Error, ex.Message);
-            }
-
+            value = fileLoader.Load(path);
 
             return value;
         }

@@ -12,23 +12,18 @@ namespace Wallpaper_Switch.Core.Controllers.Source
         [XmlArray]
         private List<Model.Source> _sources;
 
-        private SourceFileController _fileController;
+        private FileXMLControllerExpansion<Model.Source> _fileController;
         private readonly string _path;
 
+        private const string _fileName = "source";
 
         public SourceController(string Path) 
         {
             _path = Path;
 
-            _fileController = new SourceFileController(_sources);
+            _fileController = new FileXMLControllerExpansion<Model.Source>(_sources, _fileName);
 
-            _sources = _fileController.Load(_path, new XmlFileLoader<List<Model.Source>>("source"));
-
-            if(_sources == null)
-            {
-                _sources = new List<Model.Source>();
-                _fileController = new SourceFileController(_sources);
-            }
+            _sources = _fileController.LoadMany(_path);
         }
 
         public List<Model.Source> GetSources()
@@ -44,7 +39,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             {
                 Logger.Logger.AppednLog(Logger.LogLevel.Warning, "Attempt to add an existing source");
                 error = "Источник с таким именем или дерикторией уже существует";
-                return null;
+                return _sources;
             }
 
             var files = Directory.GetFiles(source.Path).GetImagesPath();
@@ -53,12 +48,12 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             {
                 Logger.Logger.AppednLog(Logger.LogLevel.Warning, "The directory does not contain images");
                 error = "Источник не содержит изображений";
-                return null;
+                return _sources;
             }
 
             _sources.Add(source);
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Source>>("source"));
+            Save();
             Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Add new source {source.Name} Paht: {source.Path}");
 
             return _sources;
@@ -70,13 +65,13 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             if(_sources.Count < index)
             {
                 Logger.Logger.AppednLog(Logger.LogLevel.Warning, $"Failed try delete source by {index} index");
-                return null;
+                return _sources;
             }
 
             var source = _sources[index];
             _sources.RemoveAt(index);
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Source>>("source"));
+            Save();
             Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Deleted source {source.Name} Paht: {source.Path}");
 
             return _sources;
@@ -101,7 +96,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             _sources[index].Path = newSource.Path;
             _sources[index].IsActive = newSource.IsActive;
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Source>>("source"));
+            Save();
             
 
             return _sources;
@@ -117,7 +112,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
 
             _sources[index].IsActive = true;
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Source>>("source"));
+            Save();
             Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Source activated {_sources[index].Name}");
 
             return true;
@@ -133,10 +128,15 @@ namespace Wallpaper_Switch.Core.Controllers.Source
 
             _sources[index].IsActive = false;
 
-            _fileController.Save(_path, new XmlFileSaver<List<Model.Source>>("source"));
+            Save();
             Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Source diactivated {_sources[index].Name}");
 
             return true;
+        }
+
+        private void Save()
+        {
+            _fileController.SaveMany(_path);
         }
     }
 }
