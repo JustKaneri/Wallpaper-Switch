@@ -92,7 +92,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
         /// Получить новые случайные обои
         /// </summary>
         /// <returns></returns>
-        public Image GetRandomWallpaper()
+        public Image SwitchOnRandomWallpaper()
         {
             Random rnd = new Random();
             Model.Wallpaper result = null;
@@ -117,14 +117,14 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
                 try
                 {
                     result.Init();
+
+                    break;
                 }
                 catch
                 {
                     CathBrokenFile(result);
                     continue;
                 }
-
-                break;
 
             } while (true);
 
@@ -183,7 +183,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
 
         private void CathBrokenFile(Model.Wallpaper wallpaper)
         {
-            var IsAdd = WallpaperCollector.AddToIgnore(wallpaper.Path);
+            var IsAdd = WallpaperCollector.IsolationOfBrokenFile(wallpaper.Path);
 
             if (IsAdd)
                 OnFindBrokenImage?.Invoke(wallpaper, EventArgs.Empty);

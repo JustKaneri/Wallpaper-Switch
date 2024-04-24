@@ -17,7 +17,7 @@ namespace Wallpaper_Switch.Tests
         public void TestCollertor() 
         {
             WallpaperCollector collector = new WallpaperCollector(ConstTestData.path);
-            WallpaperCollector.AddToIgnore(ConstTestData.path + "images\\testImage.jpg");
+            WallpaperCollector.IsolationOfBrokenFile(ConstTestData.path + "images\\testImage.jpg");
 
             var sourcDirectory = System.IO.File.Exists(ConstTestData.path + "images\\testImage.jpg");
             var ignoreDirecotry = System.IO.File.Exists(ConstTestData.path + "BrokenWallpaper\\testImage.jpg");
@@ -30,7 +30,7 @@ namespace Wallpaper_Switch.Tests
         public void TestCollertor2()
         {
             WallpaperCollector collector = new WallpaperCollector(ConstTestData.path);
-            var result = WallpaperCollector.AddToIgnore(ConstTestData.path + "images\\testImage2.jpg");
+            var result = WallpaperCollector.IsolationOfBrokenFile(ConstTestData.path + "images\\testImage2.jpg");
 
             Assert.AreEqual(result, false, "Файл был добавлен в исключения");
         }
@@ -63,7 +63,7 @@ namespace Wallpaper_Switch.Tests
         {
             WallpaperController controller = new WallpaperController(SourceInit());
 
-            var result = controller.GetRandomWallpaper();
+            var result = controller.SwitchOnRandomWallpaper();
 
             Assert.IsNotNull(result, "Не удалось получить cлучайные обои");
         }
@@ -73,7 +73,7 @@ namespace Wallpaper_Switch.Tests
         {
             WallpaperController controller = new WallpaperController(new List<Source>());
 
-            var result = controller.GetRandomWallpaper();
+            var result = controller.SwitchOnRandomWallpaper();
 
             Assert.IsNull(result);
         }
@@ -86,7 +86,7 @@ namespace Wallpaper_Switch.Tests
 
             WallpaperController controller = new WallpaperController(source);
 
-            var result = controller.GetRandomWallpaper();
+            var result = controller.SwitchOnRandomWallpaper();
 
             Assert.IsNull(result);
         }
@@ -96,7 +96,7 @@ namespace Wallpaper_Switch.Tests
         {
             WallpaperController controller = new WallpaperController(new List<Source>());
 
-            controller.GetRandomWallpaper();
+            controller.SwitchOnRandomWallpaper();
 
             var result = controller.GetOldWallpaper();
 
@@ -108,8 +108,8 @@ namespace Wallpaper_Switch.Tests
         {
             WallpaperController controller = new WallpaperController(SourceInit());
 
-            controller.GetRandomWallpaper();
-            controller.GetRandomWallpaper();
+            controller.SwitchOnRandomWallpaper();
+            controller.SwitchOnRandomWallpaper();
 
             var result = controller.GetOldWallpaper();
 

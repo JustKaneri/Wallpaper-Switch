@@ -26,6 +26,8 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
             if (_wallpapersHistory.Count > 0)
                 Init();
+
+            Logger.Logger.AppednLog(Logger.LogLevel.Info, "History Controller Init");
         }
 
         private void Init()

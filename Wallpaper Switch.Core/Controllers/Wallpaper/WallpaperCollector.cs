@@ -26,7 +26,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
         /// Удалить сломанный файл и переместить его во временную дирикторию 
         /// </summary>
         /// <param name="path"></param>
-        public static bool AddToIgnore(string path)
+        public static bool IsolationOfBrokenFile(string path)
         {
             if (!System.IO.Directory.Exists(_path))
             {
@@ -64,10 +64,10 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
             }
             catch 
             {
-                Logger.Logger.AppednLog(LogLevel.Error, $"Failed rollback add ignore for file {fileName}");
+                Logger.Logger.AppednLog(LogLevel.Error, $"Failed rollback adding file in directory for broken files {fileName}");
             }
 
-            Logger.Logger.AppednLog(LogLevel.Info, $"Rollback add ignore for file {fileName}");
+            Logger.Logger.AppednLog(LogLevel.Info, $"Rollback adding file in directory for broken files{fileName}");
         }
 
         private static bool Delete(string path)

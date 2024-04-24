@@ -33,6 +33,8 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
 
             _autoStartController = new AutoStartController(_settings);
             _changeController = new AutoChangeController(_settings);
+
+            Logger.Logger.AppednLog(Logger.LogLevel.Info, "Settings Controller Init");
         }
 
         /// <summary>

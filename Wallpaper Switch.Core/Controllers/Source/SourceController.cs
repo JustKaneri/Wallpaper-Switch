@@ -24,6 +24,8 @@ namespace Wallpaper_Switch.Core.Controllers.Source
             _fileController = new FileXMLControllerExpansion<Model.Source>(_sources, _fileName);
 
             _sources = _fileController.LoadMany(_path);
+
+            Logger.Logger.AppednLog(Logger.LogLevel.Info, "Source Controller Init");
         }
 
         public List<Model.Source> GetSources()

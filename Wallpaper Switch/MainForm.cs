@@ -205,7 +205,7 @@ namespace Wallpaper_Switch
 
         private void GetNewWallpaper()
         {
-            var newImage = _wallpaperController.GetRandomWallpaper();
+            var newImage = _wallpaperController.SwitchOnRandomWallpaper();
 
             if (newImage == null && _sourceController.GetSources().Count > 0)
             {
