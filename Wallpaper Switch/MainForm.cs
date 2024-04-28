@@ -68,7 +68,9 @@ namespace Wallpaper_Switch
         {
             var brokenWallpaper = (sender as Wallpaper);
 
-            MessageBox.Show($"Сломанный файл: {brokenWallpaper.FileName}");
+            ShowAlert(NotificationForm.NotificationStatus.Error, 
+                     $"Сломанный файл: {brokenWallpaper.FileName} " +
+                     $"был перемещен в {WallpaperCollector.GetFullPath()}");
         }
 
         #region Source
@@ -209,7 +211,7 @@ namespace Wallpaper_Switch
 
             if (newImage == null && _sourceController.GetSources().Count > 0)
             {
-                MessageBox.Show("Источники не активны", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowAlert(NotificationForm.NotificationStatus.Warning, "Источники не активны");
                 _settingsController.DisableAutoChange();
                 return;
             }
@@ -266,6 +268,7 @@ namespace Wallpaper_Switch
             }
             catch
             {
+                ShowAlert(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
                 Logger.AppednLog(LogLevel.Error, $"Failed delete file {path}");
             }
         }
@@ -276,8 +279,14 @@ namespace Wallpaper_Switch
             {
                 this.Hide();
                 this.ShowInTaskbar = false;
+                ShowAlert(NotificationForm.NotificationStatus.Info, "Приложение свернуто в системный трей");
                 Logger.AppednLog(LogLevel.Info, "The application is minimized to the system tray");
             }
+        }
+
+        private void ShowAlert(NotificationForm.NotificationStatus status, string message)
+        {
+            (new NotificationForm(status, message)).Show();
         }
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)

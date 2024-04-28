@@ -54,6 +54,11 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
             return result;
         }
 
+        public static string GetFullPath()
+        {
+            return _path + _directory;
+        }
+
         private static void Rollback(string path)
         {
             string fileName = "";

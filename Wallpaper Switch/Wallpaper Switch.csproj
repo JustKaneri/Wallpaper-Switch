@@ -58,6 +58,12 @@
     <Compile Include="Custom_components\MainContolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NotificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificationForm.Designer.cs">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NotificationForm.resx">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SourceForm.resx">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +129,9 @@
     <Content Include="Group-2.ico" />
     <Content Include="MainIco.ico" />
     <Content Include="MainIcon.ico" />
+    <None Include="Resources\Error.png" />
+    <None Include="Resources\Warning.png" />
+    <None Include="Resources\Info.png" />
     <None Include="Resources\MainIco.ico" />
     <None Include="Resources\MainIcon.png" />
     <None Include="Resources\TmpImage.png" />
