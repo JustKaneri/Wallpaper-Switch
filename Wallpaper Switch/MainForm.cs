@@ -13,6 +13,7 @@ using Wallpaper_Switch.Core.Controllers.Setting;
 using Wallpaper_Switch.Core.Controllers.Source;
 using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
+using Wallpaper_Switch.Tools;
 
 namespace Wallpaper_Switch
 {
@@ -68,7 +69,7 @@ namespace Wallpaper_Switch
         {
             var brokenWallpaper = (sender as Wallpaper);
 
-            ShowAlert(NotificationForm.NotificationStatus.Error, 
+            Notification.Show(NotificationForm.NotificationStatus.Error, 
                      $"Сломанный файл: {brokenWallpaper.FileName} " +
                      $"был перемещен в {WallpaperCollector.GetFullPath()}");
         }
@@ -112,6 +113,7 @@ namespace Wallpaper_Switch
             {
                 FillSource();
                 _wallpaperController.UpdateSource(_sourceController.GetSources());
+                Notification.Show(NotificationForm.NotificationStatus.Info, $"Добавлен новый источнк");
             }
         }
 
@@ -211,7 +213,7 @@ namespace Wallpaper_Switch
 
             if (newImage == null && _sourceController.GetSources().Count > 0)
             {
-                ShowAlert(NotificationForm.NotificationStatus.Warning, "Источники не активны");
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Не удалось найти изображения");
                 _settingsController.DisableAutoChange();
                 return;
             }
@@ -268,7 +270,7 @@ namespace Wallpaper_Switch
             }
             catch
             {
-                ShowAlert(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
+                Notification.Show(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
                 Logger.AppednLog(LogLevel.Error, $"Failed delete file {path}");
             }
         }
@@ -279,14 +281,9 @@ namespace Wallpaper_Switch
             {
                 this.Hide();
                 this.ShowInTaskbar = false;
-                ShowAlert(NotificationForm.NotificationStatus.Info, "Приложение свернуто в системный трей");
+                Notification.Show(NotificationForm.NotificationStatus.Info, "Приложение свернуто в системный трей");
                 Logger.AppednLog(LogLevel.Info, "The application is minimized to the system tray");
             }
-        }
-
-        private void ShowAlert(NotificationForm.NotificationStatus status, string message)
-        {
-            (new NotificationForm(status, message)).Show();
         }
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)

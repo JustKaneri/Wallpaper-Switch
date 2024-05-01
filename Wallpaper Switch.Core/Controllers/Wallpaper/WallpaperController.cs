@@ -123,6 +123,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
                 catch
                 {
                     CathBrokenFile(result);
+                    _wallpapers.Remove(result);
                     continue;
                 }
 

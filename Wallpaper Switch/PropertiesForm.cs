@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Setting;
+using Wallpaper_Switch.Tools;
 
 namespace Wallpaper_Switch
 {
@@ -34,17 +35,29 @@ namespace Wallpaper_Switch
         private void CbxAutoChange_CheckedChanged(object sender, EventArgs e)
         {
             if (!CbxAutoChange.Checked)
+            {
                 _settingsController.DisableAutoChange();
+            }
             else
+            {
+                Notification.Show(NotificationForm.NotificationStatus.Info, "Авто смена обоев активирована");
                 _settingsController.EnableAutoChange(int.Parse(TbxTimeChange.Text));
+            }
+                
         }
 
         private void CbxAutoLoad_CheckedChanged(object sender, EventArgs e)
         {
             if (!CbxAutoLoad.Checked)
+            {
                 _settingsController.DisableAutoStart();
+            }
             else
+            {
+                Notification.Show(NotificationForm.NotificationStatus.Info, "Приложение будет запущено при старте системы");
                 _settingsController.EnableAutoStart();
+            }
+                
         }
 
         private void PropertiesForm_Paint(object sender, PaintEventArgs e)
