@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wallpaper_Switch.Core.Controllers.File;
+using Wallpaper_Switch.Core.Model;
 
 namespace Wallpaper_Switch.Core.Controllers.History
 {
@@ -70,6 +71,32 @@ namespace Wallpaper_Switch.Core.Controllers.History
         private void Save()
         {
             _fileController.SaveMany(_path);
+        }
+
+        public void Remove(int historyIndex)
+        {
+            _wallpapersHistory.RemoveAt(historyIndex);
+            Save();
+        }
+
+        public List<int> Remove(Model.Wallpaper wallpaper)
+        {
+            List<int> indexes = _wallpapersHistory.
+                               Select((p, i) => new { Index = i, Element = p }).
+                               Where(wp => wp.Element.Path == wallpaper.Path).
+                               Select(wp => wp.Index).ToList();
+
+
+            indexes.Reverse();
+
+            foreach (var item in indexes)
+            {
+                _wallpapersHistory.RemoveAt(item);
+            }
+
+            Save();
+
+            return indexes;
         }
     }
 }

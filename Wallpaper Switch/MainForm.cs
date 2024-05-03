@@ -13,6 +13,7 @@ using Wallpaper_Switch.Core.Controllers.Setting;
 using Wallpaper_Switch.Core.Controllers.Source;
 using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
+using Wallpaper_Switch.Manager;
 using Wallpaper_Switch.Tools;
 
 namespace Wallpaper_Switch
@@ -23,19 +24,15 @@ namespace Wallpaper_Switch
 
         private readonly SourceController _sourceController;
         private readonly WallpaperController _wallpaperController;
-        private readonly HistoryController _historyController;
         private readonly SettingsController _settingsController;
 
-        private List<PictureBox> historyElements = new List<PictureBox>();
+        private readonly HistoryManager _historyManager;
 
         public MainForm()
         {
             InitializeComponent();
 
-            this.historyElements.Add(PbxOld1);
-            this.historyElements.Add(PbxOld2);
-            this.historyElements.Add(PbxOld3);
-            this.historyElements.Add(PbxOld4);
+            _historyManager = new HistoryManager(new List<PictureBox>() { PbxOld1, PbxOld2, PbxOld3, PbxOld4 });
 
             _sourceController = new SourceController(Application.StartupPath + "\\");
             FillSource();
@@ -44,25 +41,9 @@ namespace Wallpaper_Switch
             _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
             PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
 
-            _historyController = new HistoryController(Application.StartupPath + "\\");
-            FillHistory();
-
             _settingsController = new SettingsController(Application.StartupPath + "\\");
 
-
             TimerManager();
-        }
-
-        private void FillHistory()
-        {
-            var history = _historyController.GetHistory();
-
-            history.Reverse();
-
-            for (int i = 0; i < history.Count; i++)
-            {
-                historyElements[i].Image = history[i].GetImage();
-            }
         }
 
         private void _wallpaperController_OnFindBrokenImage(object sender, EventArgs e)
@@ -223,31 +204,21 @@ namespace Wallpaper_Switch
 
             PbxCurrent.Image = newImage;
 
-            AddToHistory();
+            _historyManager.AddToHistory(_wallpaperController.GetOldWallpaper());
         }
 
         private void HistoryElement_Click(object sender, EventArgs e)
         {
-            int historyIndex = int.Parse((sender as PictureBox).Tag.ToString());
+            var oldWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
 
-            if (historyIndex > _historyController.GetHistory().Count)
-                return;
-
-            var result = _wallpaperController.SwitchOldWallpaper(_historyController.GetHistory()[historyIndex]);
+            var result = _wallpaperController.SwitchOldWallpaper(oldWallpaper);
 
             if (result == null)
                 return;
 
             PbxCurrent.Image = result;
 
-            AddToHistory();
-         
-        }
-
-        private void AddToHistory()
-        {
-            _historyController.Push(_wallpaperController.GetOldWallpaper());
-            FillHistory();
+            _historyManager.AddToHistory(_wallpaperController.GetOldWallpaper());
         }
 
         private void TsmDelete_Click(object sender, EventArgs e)
@@ -257,22 +228,12 @@ namespace Wallpaper_Switch
             if (resulDialog == DialogResult.Cancel)
                 return;
 
-            int historyIndex = int.Parse((((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as PictureBox).Tag.ToString());
+            var historyElement = (((sender as ToolStripMenuItem).Owner as ContextMenuStrip).SourceControl as PictureBox);
 
-            if (historyIndex > _historyController.GetHistory().Count)
-                return;
+            var result = _historyManager.HistoryElemenDelete(historyElement);
 
-            string path = _historyController.GetHistory()[historyIndex].Path;
-
-            try
-            {
-                System.IO.File.Delete(path);
-            }
-            catch
-            {
+            if(result == false)
                 Notification.Show(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
-                Logger.AppednLog(LogLevel.Error, $"Failed delete file {path}");
-            }
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -320,7 +281,6 @@ namespace Wallpaper_Switch
             GetNewWallpaper();
         }
         #endregion
-
 
     }
 }

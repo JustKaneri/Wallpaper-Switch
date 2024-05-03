@@ -58,6 +58,7 @@
     <Compile Include="Custom_components\MainContolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Manager\HistoryManager.cs" />
     <Compile Include="NotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
