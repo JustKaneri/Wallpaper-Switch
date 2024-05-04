@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Wallpaper_Switch.Core.Controllers.History;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Setting;
 using Wallpaper_Switch.Core.Controllers.Source;
@@ -24,15 +17,17 @@ namespace Wallpaper_Switch
 
         private readonly SourceController _sourceController;
         private readonly WallpaperController _wallpaperController;
-        private readonly SettingsController _settingsController;
+
 
         private readonly HistoryManager _historyManager;
+        private readonly SettingManager _settingManager;
 
         public MainForm()
         {
             InitializeComponent();
 
             _historyManager = new HistoryManager(new List<PictureBox>() { PbxOld1, PbxOld2, PbxOld3, PbxOld4 });
+            _settingManager = new SettingManager(timer1);
 
             _sourceController = new SourceController(Application.StartupPath + "\\");
             FillSource();
@@ -40,10 +35,6 @@ namespace Wallpaper_Switch
             _wallpaperController = new WallpaperController(_sourceController.GetSources());
             _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
             PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
-
-            _settingsController = new SettingsController(Application.StartupPath + "\\");
-
-            TimerManager();
         }
 
         private void _wallpaperController_OnFindBrokenImage(object sender, EventArgs e)
@@ -174,9 +165,9 @@ namespace Wallpaper_Switch
 
         private void BtnPropeties_Click(object sender, EventArgs e)
         {
-            PropertiesForm propertiesForm = new PropertiesForm(_settingsController);
+            PropertiesForm propertiesForm = new PropertiesForm(_settingManager.GetSettings());
             propertiesForm.ShowDialog();
-            TimerManager();
+            _settingManager.ConfiguringTimer();
         }
 
         private void BtnSelect_Click(object sender, EventArgs e)
@@ -195,7 +186,7 @@ namespace Wallpaper_Switch
             if (newImage == null && _sourceController.GetSources().Count > 0)
             {
                 Notification.Show(NotificationForm.NotificationStatus.Warning, "Не удалось найти изображения");
-                _settingsController.DisableAutoChange();
+                _settingManager.DisableTimer();
                 return;
             }
 
@@ -258,23 +249,13 @@ namespace Wallpaper_Switch
         }
 
         #region Таймер
-        private void TimerManager()
-        {
-            int time = _settingsController.AutoChangeStatus().time;
-            bool isActive = _settingsController.AutoChangeStatus().isChange;
-
-            timer1.Interval = int.Parse(time.ToString()) * 60000;
-            timer1.Enabled = isActive;
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             var sources = _sourceController.GetSources();
             
             if(sources.Count == 0)
             {
-                _settingsController.DisableAutoChange();
-                TimerManager();
+                _settingManager.DisableTimer();
                 return;
             }
 
