@@ -13,12 +13,10 @@ namespace Wallpaper_Switch
 {
     public partial class MainForm : Form
     {
-        private const int _maxCountSource = 4;
 
-        private readonly SourceController _sourceController;
         private readonly WallpaperController _wallpaperController;
 
-
+        private readonly SourceMananger _sourceMananger;
         private readonly HistoryManager _historyManager;
         private readonly SettingManager _settingManager;
 
@@ -28,11 +26,9 @@ namespace Wallpaper_Switch
 
             _historyManager = new HistoryManager(new List<PictureBox>() { PbxOld1, PbxOld2, PbxOld3, PbxOld4 });
             _settingManager = new SettingManager(timer1);
+            _sourceMananger = new SourceMananger(DgvSource);
 
-            _sourceController = new SourceController(Application.StartupPath + "\\");
-            FillSource();
-
-            _wallpaperController = new WallpaperController(_sourceController.GetSources());
+            _wallpaperController = new WallpaperController(_sourceMananger.GetSources());
             _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
             PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
         }
@@ -47,24 +43,6 @@ namespace Wallpaper_Switch
         }
 
         #region Source
-        private void FillSource()
-        {
-            DgvSource.Rows.Clear();
-
-            var sources = _sourceController.GetSources();
-
-            if (sources.Count == 0)
-            {
-                Logger.AppednLog(LogLevel.Info, "No sources were found during the launch");
-                return;
-            }
-
-            foreach (var source in sources)
-            {
-                DgvSource.Rows.Add(source.Name, source.IsActive);
-            }
-        }
-
         private void BtnSource_Click(object sender, EventArgs e)
         {
             //Включение и выключение видимсти панели
@@ -73,85 +51,22 @@ namespace Wallpaper_Switch
 
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
-            if(DgvSource.RowCount == _maxCountSource)
-            {
-                return;
-            }
-
-            SourceForm sourceForm = new SourceForm(_sourceController,SourceForm.FormMode.Create);
-            var result = sourceForm.ShowDialog();
-
-            if(result == DialogResult.OK)
-            {
-                FillSource();
-                _wallpaperController.UpdateSource(_sourceController.GetSources());
-                Notification.Show(NotificationForm.NotificationStatus.Info, $"Добавлен новый источнк");
-            }
+            _sourceMananger.AddNewSource();
         }
 
         private void BtnEditSource_Click(object sender, EventArgs e)
         {
-            if (DgvSource.SelectedRows.Count > 0)
-            {
-                int rowIndex = DgvSource.CurrentCell.RowIndex;
-
-                var oldSource = _sourceController.GetSources()[rowIndex];
-
-                SourceForm sourceForm = new SourceForm(_sourceController, oldSource ,SourceForm.FormMode.Edit);
-                var result = sourceForm.ShowDialog();
-
-                if(result == DialogResult.OK)
-                {
-                    FillSource();
-
-                    DgvSource.CurrentCell = DgvSource[0, rowIndex];
-                    DgvSource.Rows[rowIndex].Selected = true;
-
-                    _wallpaperController.UpdateSource(_sourceController.GetSources());
-                }
-            }
+            _sourceMananger.EditSource();
         }
 
         private void BtnDelSource_Click(object sender, EventArgs e)
         {
-            if (DgvSource.SelectedRows.Count > 0)
-            {
-                var resulDialog = MessageBox.Show("Удалить источник ?","Удаление",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-
-                if (resulDialog == DialogResult.Cancel)
-                    return;
-
-                int index = DgvSource.CurrentCell.RowIndex;
-
-                _sourceController.DeleteSource(index);
-
-                FillSource();
-
-                _wallpaperController.UpdateSource(_sourceController.GetSources());
-            }
+            _sourceMananger.DeleteSource();
         }
 
         private void DgvSource_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.RowIndex != -1)
-            {
-                bool value = (bool)DgvSource[e.ColumnIndex, e.RowIndex].Value;
-                bool result;
-
-                if (value)
-                {
-                    result = _sourceController.AcitvateSource(e.RowIndex);
-                }
-                else
-                {
-                    result = _sourceController.DiacitvateSource(e.RowIndex);
-                }
-
-                if (result == false)
-                    DgvSource[e.ColumnIndex, e.RowIndex].Value = !value;
-
-                _wallpaperController.UpdateSource(_sourceController.GetSources());
-            }
+            _sourceMananger?.ChangeSource(e);
         }
 
         private void DgvSource_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -183,7 +98,7 @@ namespace Wallpaper_Switch
         {
             var newImage = _wallpaperController.SwitchOnRandomWallpaper();
 
-            if (newImage == null && _sourceController.GetSources().Count > 0)
+            if (newImage == null)
             {
                 Notification.Show(NotificationForm.NotificationStatus.Warning, "Не удалось найти изображения");
                 _settingManager.DisableTimer();
@@ -251,7 +166,7 @@ namespace Wallpaper_Switch
         #region Таймер
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var sources = _sourceController.GetSources();
+            var sources = _sourceMananger.GetSources();
             
             if(sources.Count == 0)
             {

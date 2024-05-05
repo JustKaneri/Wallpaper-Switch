@@ -108,6 +108,7 @@ namespace Wallpaper_Switch
 
             source.Name = TbxName.Text.Trim();
             source.Path = TbxPath.Text.Trim();
+            source.IsActive = _oldSource.IsActive;
 
             var result = _sourceController.EditSource(source, _oldSource);
 

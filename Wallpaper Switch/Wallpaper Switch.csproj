@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Manager\HistoryManager.cs" />
     <Compile Include="Manager\SettingManager.cs" />
+    <Compile Include="Manager\SourceMananger.cs" />
     <Compile Include="NotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
