@@ -61,7 +61,6 @@ namespace Wallpaper_Switch.Manager
             if (result == DialogResult.OK)
             {
                 FillSource();
-                //_wallpaperController.UpdateSource(_sourceController.GetSources());
                 Notification.Show(NotificationForm.NotificationStatus.Info, $"Добавлен новый источнк");
                 return true;
             }
@@ -92,7 +91,6 @@ namespace Wallpaper_Switch.Manager
             _dataGrid.CurrentCell = _dataGrid[0, rowIndex];
             _dataGrid.Rows[rowIndex].Selected = true;
 
-            //_wallpaperController.UpdateSource(_sourceController.GetSources());
             return true;
         }
 
@@ -115,7 +113,6 @@ namespace Wallpaper_Switch.Manager
 
             FillSource();
 
-            //_wallpaperController.UpdateSource(_sourceController.GetSources());
 
             return true;
 
@@ -146,7 +143,6 @@ namespace Wallpaper_Switch.Manager
                     _dataGrid[e.ColumnIndex, e.RowIndex].Value = !value;
 
                 return true;
-                //_wallpaperController.UpdateSource(_sourceController.GetSources());
             }
 
             return false;

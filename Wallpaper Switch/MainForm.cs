@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Setting;
@@ -13,12 +14,10 @@ namespace Wallpaper_Switch
 {
     public partial class MainForm : Form
     {
-
-        private readonly WallpaperController _wallpaperController;
-
         private readonly SourceMananger _sourceMananger;
         private readonly HistoryManager _historyManager;
         private readonly SettingManager _settingManager;
+        private readonly WallpaperManager _wallpaperManager;
 
         public MainForm()
         {
@@ -27,19 +26,9 @@ namespace Wallpaper_Switch
             _historyManager = new HistoryManager(new List<PictureBox>() { PbxOld1, PbxOld2, PbxOld3, PbxOld4 });
             _settingManager = new SettingManager(timer1);
             _sourceMananger = new SourceMananger(DgvSource);
+            _wallpaperManager = new WallpaperManager(_sourceMananger);
 
-            _wallpaperController = new WallpaperController(_sourceMananger.GetSources());
-            _wallpaperController.OnFindBrokenImage += _wallpaperController_OnFindBrokenImage;
-            PbxCurrent.Image = _wallpaperController.GetCurrentWallpaper();
-        }
-
-        private void _wallpaperController_OnFindBrokenImage(object sender, EventArgs e)
-        {
-            var brokenWallpaper = (sender as Wallpaper);
-
-            Notification.Show(NotificationForm.NotificationStatus.Error, 
-                     $"Сломанный файл: {brokenWallpaper.FileName} " +
-                     $"был перемещен в {WallpaperCollector.GetFullPath()}");
+            PbxCurrent.Image = _wallpaperManager.GetCurrentWallpaper();
         }
 
         #region Source
@@ -51,22 +40,32 @@ namespace Wallpaper_Switch
 
         private void BtnAddSource_Click(object sender, EventArgs e)
         {
-            _sourceMananger.AddNewSource();
+            bool isAdd = _sourceMananger.AddNewSource();
+            if(isAdd)
+                _wallpaperManager.UpdateSource(_sourceMananger.GetSources());
         }
 
         private void BtnEditSource_Click(object sender, EventArgs e)
         {
-            _sourceMananger.EditSource();
+            bool isEdit = _sourceMananger.EditSource();
+            if(isEdit)
+                _wallpaperManager.UpdateSource(_sourceMananger.GetSources());
+
         }
 
         private void BtnDelSource_Click(object sender, EventArgs e)
         {
-            _sourceMananger.DeleteSource();
+           bool isDel = _sourceMananger.DeleteSource();
+           if(isDel)
+                _wallpaperManager.UpdateSource(_sourceMananger.GetSources());
         }
 
         private void DgvSource_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            _sourceMananger?.ChangeSource(e);
+           bool? isChange = _sourceMananger?.ChangeSource(e);
+
+           if(isChange??false)
+                _wallpaperManager.UpdateSource(_sourceMananger.GetSources());
         }
 
         private void DgvSource_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -96,35 +95,34 @@ namespace Wallpaper_Switch
 
         private void GetNewWallpaper()
         {
-            var newImage = _wallpaperController.SwitchOnRandomWallpaper();
+            Image newImage = _wallpaperManager.GetNewWallpaper();
 
-            if (newImage == null)
+            if(newImage == null)
             {
-                Notification.Show(NotificationForm.NotificationStatus.Warning, "Не удалось найти изображения");
                 _settingManager.DisableTimer();
                 return;
             }
-
-            if (newImage == null)
-                return;
-
-            PbxCurrent.Image = newImage;
-
-            _historyManager.AddToHistory(_wallpaperController.GetOldWallpaper());
+               
+            SetWallpapaer(newImage);
         }
 
         private void HistoryElement_Click(object sender, EventArgs e)
         {
-            var oldWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
+            var historyWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
 
-            var result = _wallpaperController.SwitchOldWallpaper(oldWallpaper);
+            var result = _wallpaperManager.SwitchWallpaper(historyWallpaper);
 
             if (result == null)
                 return;
 
-            PbxCurrent.Image = result;
+            SetWallpapaer(result);
+        }
 
-            _historyManager.AddToHistory(_wallpaperController.GetOldWallpaper());
+        private void SetWallpapaer(Image image)
+        {
+            PbxCurrent.Image = image;
+
+            _historyManager.AddToHistory(_wallpaperManager.GetOldWallpaper());
         }
 
         private void TsmDelete_Click(object sender, EventArgs e)
