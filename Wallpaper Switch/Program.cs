@@ -27,7 +27,7 @@ namespace Wallpaper_Switch
             }
             catch (Exception ex)
             {
-                Logger.AppednLog(LogLevel.Error, ex.Message);
+                Logger.AppednLog(LogLevel.Error, $"Application not started {ex}");
             }
             
         }
