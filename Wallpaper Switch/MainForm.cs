@@ -18,7 +18,8 @@ namespace Wallpaper_Switch
         public MainForm()
         {
             InitializeComponent();
-
+            AutoLoadManager.AutoLoad(this);
+            
             _historyManager = new HistoryManager(new List<PictureBox>() { PbxOld1, PbxOld2, PbxOld3, PbxOld4 });
             _settingManager = new SettingManager(timer1);
             _sourceMananger = new SourceMananger(DgvSource);

@@ -19,9 +19,17 @@ namespace Wallpaper_Switch
             Logger log = new Logger(Application.StartupPath + "\\");
             WallpaperCollector wallpaperCollector = new WallpaperCollector(Application.StartupPath + "\\");
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+            catch (Exception ex)
+            {
+                Logger.AppednLog(LogLevel.Error, ex.Message);
+            }
+            
         }
     }
 }

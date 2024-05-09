@@ -64,6 +64,7 @@
     <Compile Include="FormMessage.Designer.cs">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager\AutoLoadManager.cs" />
     <Compile Include="Manager\HistoryManager.cs" />
     <Compile Include="Manager\SettingManager.cs" />
     <Compile Include="Manager\SourceMananger.cs" />

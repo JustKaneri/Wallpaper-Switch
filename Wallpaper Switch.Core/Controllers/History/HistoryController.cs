@@ -33,8 +33,6 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
         private void Init()
         {
-            Logger.Logger.AppednLog(Logger.LogLevel.Info, $"HistoryController init");
-
             for (int i = _wallpapersHistory.Count-1; i >= 0; i--)
             {
                 try
