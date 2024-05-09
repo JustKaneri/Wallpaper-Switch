@@ -58,6 +58,12 @@
     <Compile Include="Custom_components\MainContolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessage.Designer.cs">
+      <DependentUpon>FormMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manager\HistoryManager.cs" />
     <Compile Include="Manager\SettingManager.cs" />
     <Compile Include="Manager\SourceMananger.cs" />
@@ -89,6 +95,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Notification.cs" />
+    <EmbeddedResource Include="FormMessage.resx">
+      <DependentUpon>FormMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NotificationForm.resx">
       <DependentUpon>NotificationForm.cs</DependentUpon>
     </EmbeddedResource>

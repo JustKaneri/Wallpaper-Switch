@@ -212,7 +212,7 @@ namespace Wallpaper_Switch
             // 
             // label2
             // 
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.label2.Location = new System.Drawing.Point(372, 87);

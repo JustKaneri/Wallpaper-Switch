@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Logger;
-using Wallpaper_Switch.Core.Controllers.Setting;
-using Wallpaper_Switch.Core.Controllers.Source;
-using Wallpaper_Switch.Core.Controllers.Wallpaper;
-using Wallpaper_Switch.Core.Model;
 using Wallpaper_Switch.Manager;
 using Wallpaper_Switch.Tools;
 
@@ -127,7 +123,8 @@ namespace Wallpaper_Switch
 
         private void TsmDelete_Click(object sender, EventArgs e)
         {
-            var resulDialog = MessageBox.Show("Удалить файл ?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            var resulDialog = (new FormMessage("Удалить выбарнное изображение с компьютера?")).ShowDialog();
 
             if (resulDialog == DialogResult.Cancel)
                 return;

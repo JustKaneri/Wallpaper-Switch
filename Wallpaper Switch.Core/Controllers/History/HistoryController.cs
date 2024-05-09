@@ -75,6 +75,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
         public void Remove(int historyIndex)
         {
+            Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Remove file {_wallpapersHistory[historyIndex].Path}");
             _wallpapersHistory.RemoveAt(historyIndex);
             Save();
         }
@@ -91,6 +92,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
             foreach (var item in indexes)
             {
+                Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Remove file {_wallpapersHistory[item].Path}");
                 _wallpapersHistory.RemoveAt(item);
             }
 
