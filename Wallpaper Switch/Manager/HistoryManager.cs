@@ -9,6 +9,7 @@ using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
 using Wallpaper_Switch.Tools;
+using Microsoft.VisualBasic;
 
 namespace Wallpaper_Switch.Manager
 {
@@ -82,6 +83,7 @@ namespace Wallpaper_Switch.Manager
                     _historyElements[item].Image = null;
                 }
 
+                //TODO файлы должны попадать в корзину
                 System.IO.File.Delete(path);
                 FillHistory();
             }

@@ -15,6 +15,8 @@ namespace Wallpaper_Switch
         private readonly SettingManager _settingManager;
         private readonly WallpaperManager _wallpaperManager;
 
+        private const int upScale = 5;
+
         public MainForm()
         {
             InitializeComponent();
@@ -76,6 +78,8 @@ namespace Wallpaper_Switch
 
         private void BtnPropeties_Click(object sender, EventArgs e)
         {
+            SourcePanaleHide(null, null);
+
             PropertiesForm propertiesForm = new PropertiesForm(_settingManager.GetSettings());
             propertiesForm.ShowDialog();
             _settingManager.ConfiguringTimer();
@@ -83,10 +87,14 @@ namespace Wallpaper_Switch
 
         private void BtnSelect_Click(object sender, EventArgs e)
         {
+            SourcePanaleHide(null, null); 
+
             BtnSelect.Enabled = false;
+            this.Cursor = Cursors.WaitCursor;
 
             GetNewWallpaper();
 
+            this.Cursor = Cursors.Default;
             BtnSelect.Enabled = true;
         }
 
@@ -105,6 +113,8 @@ namespace Wallpaper_Switch
 
         private void HistoryElement_Click(object sender, EventArgs e)
         {
+            SourcePanaleHide(null, null);
+
             var historyWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
 
             var result = _wallpaperManager.SwitchWallpaper(historyWallpaper);
@@ -174,5 +184,30 @@ namespace Wallpaper_Switch
         }
         #endregion
 
+        private void ElementHistory_MouseEnter(object sender, EventArgs e)
+        {
+            var pbx = sender as PictureBox;
+
+            pbx.Size = new Size(pbx.Width + upScale, pbx.Height + upScale);
+            pbx.Location = new Point(pbx.Left - upScale, pbx.Top);
+        }
+
+        private void ElementHistory_MouseLeave(object sender, EventArgs e)
+        {
+            var pbx = sender as PictureBox;
+
+            pbx.Location = new Point(pbx.Left + upScale, pbx.Top);
+            pbx.Size = new Size(pbx.Width - upScale, pbx.Height - upScale);
+        }
+
+        private void SourcePanaleHide(object sender, EventArgs e)
+        {
+            PnlSource.Visible = false;
+        }
+
+        private void CloseApp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

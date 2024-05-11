@@ -32,8 +32,8 @@ namespace Wallpaper_Switch
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BtnSource = new System.Windows.Forms.Label();
             this.BtnPropeties = new System.Windows.Forms.Label();
@@ -56,7 +56,10 @@ namespace Wallpaper_Switch
             this.PbxOld3 = new System.Windows.Forms.PictureBox();
             this.PbxOld4 = new System.Windows.Forms.PictureBox();
             this.PbxCurrent = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mainContolPanel1 = new Wallpaper_Switch.Custom_components.MainContolPanel();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlSource.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnDelSource)).BeginInit();
@@ -68,6 +71,7 @@ namespace Wallpaper_Switch
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnSource
@@ -144,13 +148,13 @@ namespace Wallpaper_Switch
             // 
             // ClmName
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.ClmName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.ClmName.DefaultCellStyle = dataGridViewCellStyle3;
             this.ClmName.HeaderText = "Column1";
             this.ClmName.MinimumWidth = 6;
             this.ClmName.Name = "ClmName";
@@ -160,14 +164,14 @@ namespace Wallpaper_Switch
             // ClmActive
             // 
             this.ClmActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Constantia", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle2.NullValue = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.ClmActive.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Constantia", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.NullValue = false;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.ClmActive.DefaultCellStyle = dataGridViewCellStyle4;
             this.ClmActive.HeaderText = "Column1";
             this.ClmActive.MinimumWidth = 6;
             this.ClmActive.Name = "ClmActive";
@@ -221,6 +225,7 @@ namespace Wallpaper_Switch
             this.label2.TabIndex = 5;
             this.label2.Text = "Текущие обои";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.SourcePanaleHide);
             // 
             // BtnSelect
             // 
@@ -236,6 +241,7 @@ namespace Wallpaper_Switch
             this.BtnSelect.Size = new System.Drawing.Size(406, 46);
             this.BtnSelect.TabIndex = 6;
             this.BtnSelect.Text = "Выбрать";
+            this.toolTip1.SetToolTip(this.BtnSelect, "Нажмите что бы сменить обои\r\n");
             this.BtnSelect.UseVisualStyleBackColor = false;
             this.BtnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
             // 
@@ -250,6 +256,7 @@ namespace Wallpaper_Switch
             this.label3.TabIndex = 7;
             this.label3.Text = "История:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Click += new System.EventHandler(this.SourcePanaleHide);
             // 
             // contextMenuStrip1
             // 
@@ -270,6 +277,7 @@ namespace Wallpaper_Switch
             // 
             // notifyIcon1
             // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip2;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Wallpaper Switch";
             this.notifyIcon1.Visible = true;
@@ -292,7 +300,10 @@ namespace Wallpaper_Switch
             this.PbxOld1.TabIndex = 8;
             this.PbxOld1.TabStop = false;
             this.PbxOld1.Tag = "3";
+            this.toolTip1.SetToolTip(this.PbxOld1, "Нажмите что установить на обои рабечего стола\r\n");
             this.PbxOld1.Click += new System.EventHandler(this.HistoryElement_Click);
+            this.PbxOld1.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
+            this.PbxOld1.MouseLeave += new System.EventHandler(this.ElementHistory_MouseLeave);
             // 
             // PbxOld2
             // 
@@ -307,7 +318,10 @@ namespace Wallpaper_Switch
             this.PbxOld2.TabIndex = 9;
             this.PbxOld2.TabStop = false;
             this.PbxOld2.Tag = "2";
+            this.toolTip1.SetToolTip(this.PbxOld2, "Нажмите что установить на обои рабечего стола");
             this.PbxOld2.Click += new System.EventHandler(this.HistoryElement_Click);
+            this.PbxOld2.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
+            this.PbxOld2.MouseLeave += new System.EventHandler(this.ElementHistory_MouseLeave);
             // 
             // PbxOld3
             // 
@@ -322,7 +336,10 @@ namespace Wallpaper_Switch
             this.PbxOld3.TabIndex = 10;
             this.PbxOld3.TabStop = false;
             this.PbxOld3.Tag = "1";
+            this.toolTip1.SetToolTip(this.PbxOld3, "Нажмите что установить на обои рабечего стола");
             this.PbxOld3.Click += new System.EventHandler(this.HistoryElement_Click);
+            this.PbxOld3.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
+            this.PbxOld3.MouseLeave += new System.EventHandler(this.ElementHistory_MouseLeave);
             // 
             // PbxOld4
             // 
@@ -337,7 +354,10 @@ namespace Wallpaper_Switch
             this.PbxOld4.TabIndex = 11;
             this.PbxOld4.TabStop = false;
             this.PbxOld4.Tag = "0";
+            this.toolTip1.SetToolTip(this.PbxOld4, "Нажмите что установить на обои рабечего стола");
             this.PbxOld4.Click += new System.EventHandler(this.HistoryElement_Click);
+            this.PbxOld4.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
+            this.PbxOld4.MouseLeave += new System.EventHandler(this.ElementHistory_MouseLeave);
             // 
             // PbxCurrent
             // 
@@ -349,6 +369,7 @@ namespace Wallpaper_Switch
             this.PbxCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbxCurrent.TabIndex = 4;
             this.PbxCurrent.TabStop = false;
+            this.PbxCurrent.Click += new System.EventHandler(this.SourcePanaleHide);
             // 
             // mainContolPanel1
             // 
@@ -357,6 +378,23 @@ namespace Wallpaper_Switch
             this.mainContolPanel1.Name = "mainContolPanel1";
             this.mainContolPanel1.Size = new System.Drawing.Size(1200, 55);
             this.mainContolPanel1.TabIndex = 2;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(235, 28);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(234, 24);
+            this.toolStripMenuItem1.Text = "Закрыть приложение";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.CloseApp_Click);
             // 
             // MainForm
             // 
@@ -382,6 +420,7 @@ namespace Wallpaper_Switch
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wallpaper Switch";
+            this.Click += new System.EventHandler(this.SourcePanaleHide);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.PnlSource.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvSource)).EndInit();
@@ -394,6 +433,7 @@ namespace Wallpaper_Switch
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxOld4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxCurrent)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,6 +462,9 @@ namespace Wallpaper_Switch
         private ToolStripMenuItem TsmDelete;
         private NotifyIcon notifyIcon1;
         private Timer timer1;
+        private ToolTip toolTip1;
+        private ContextMenuStrip contextMenuStrip2;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
