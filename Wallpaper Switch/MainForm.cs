@@ -17,6 +17,8 @@ namespace Wallpaper_Switch
 
         private const int upScale = 5;
 
+        private int WS_EX_TOOLWINDOW = 0x00000080;
+
         public MainForm()
         {
             InitializeComponent();
@@ -208,6 +210,20 @@ namespace Wallpaper_Switch
         private void CloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Убрать возможность переключение на приложение, с помощью alt+tab,
+        /// когда окно свернуто в системный трей
+        /// </summary>
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var Params = base.CreateParams;
+                Params.ExStyle |= WS_EX_TOOLWINDOW;
+                return Params;
+            }
         }
     }
 }
