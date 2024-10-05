@@ -148,6 +148,8 @@ namespace Wallpaper_Switch
 
             if(result == false)
                 Notification.Show(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
+            else
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Изображение перенесено в корзину");
         }
 
         private void MainForm_Resize(object sender, EventArgs e)

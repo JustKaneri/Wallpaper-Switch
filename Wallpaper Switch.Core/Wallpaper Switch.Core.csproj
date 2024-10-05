@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Extension\WallpaperExtension.cs" />
     <Compile Include="Controllers\File\FileController.cs" />
+    <Compile Include="Controllers\File\FileOperationAPIWrapper.cs" />
     <Compile Include="Controllers\File\FileXMLControllerExpansion.cs" />
     <Compile Include="Controllers\File\XmlFileLoader.cs" />
     <Compile Include="Controllers\File\XmlFileSaver.cs" />

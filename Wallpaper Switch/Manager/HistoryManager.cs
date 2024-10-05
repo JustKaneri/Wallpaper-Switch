@@ -10,6 +10,7 @@ using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
 using Wallpaper_Switch.Tools;
 using Microsoft.VisualBasic;
+using Wallpaper_Switch.Core.Controllers.File;
 
 namespace Wallpaper_Switch.Manager
 {
@@ -76,15 +77,19 @@ namespace Wallpaper_Switch.Manager
 
             try
             {
-                var indexes = _historyController.Remove(delWallpaper);
 
-                foreach (var item in indexes)
+                var resultDelete = FileOperationAPIWrapper.Send(path);
+
+                if (resultDelete == true)
                 {
-                    _historyElements[item].Image = null;
+                    var indexes = _historyController.Remove(delWallpaper);
+
+                    foreach (var item in indexes)
+                    {
+                        _historyElements[item].Image = null;
+                    }
                 }
 
-                //TODO файлы должны попадать в корзину
-                System.IO.File.Delete(path);
                 FillHistory();
             }
             catch
