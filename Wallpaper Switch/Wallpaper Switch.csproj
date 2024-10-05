@@ -144,8 +144,8 @@
     <Content Include="Group-2.ico" />
     <Content Include="MainIco.ico" />
     <Content Include="MainIcon.ico" />
-    <None Include="Resources\Error.png" />
     <None Include="Resources\Warning.png" />
+    <None Include="Resources\Error.png" />
     <None Include="Resources\Info.png" />
     <None Include="Resources\MainIco.ico" />
     <None Include="Resources\MainIcon.png" />
