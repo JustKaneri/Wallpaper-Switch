@@ -144,15 +144,16 @@
     <Content Include="Group-2.ico" />
     <Content Include="MainIco.ico" />
     <Content Include="MainIcon.ico" />
+    <None Include="Resources\statusOn.png" />
+    <None Include="Resources\statusOFF.png" />
+    <None Include="Resources\statusMidddle.png" />
     <None Include="Resources\Warning.png" />
     <None Include="Resources\Error.png" />
     <None Include="Resources\Info.png" />
     <None Include="Resources\MainIco.ico" />
     <None Include="Resources\MainIcon.png" />
     <None Include="Resources\TmpImage.png" />
-    <None Include="Resources\statusOFF.png" />
     <None Include="Resources\statusMiddle.png" />
-    <None Include="Resources\statusOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
