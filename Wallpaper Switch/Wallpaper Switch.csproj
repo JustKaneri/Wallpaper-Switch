@@ -144,6 +144,7 @@
     <Content Include="Group-2.ico" />
     <Content Include="MainIco.ico" />
     <Content Include="MainIcon.ico" />
+    <None Include="Resources\imageMessage.png" />
     <None Include="Resources\statusOn.png" />
     <None Include="Resources\statusOFF.png" />
     <None Include="Resources\statusMidddle.png" />

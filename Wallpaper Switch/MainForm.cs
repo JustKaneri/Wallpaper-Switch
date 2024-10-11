@@ -30,8 +30,6 @@ namespace Wallpaper_Switch
             _wallpaperManager = new WallpaperManager(_sourceMananger);
 
             PbxCurrent.Image = _wallpaperManager.GetCurrentWallpaper();
-
-            Notification.Show(NotificationForm.NotificationStatus.Warning, "Не удалось удалить изображение");
         }
 
         #region Source
@@ -139,7 +137,7 @@ namespace Wallpaper_Switch
         private void TsmDelete_Click(object sender, EventArgs e)
         {
 
-            var resulDialog = (new FormMessage("Удалить выбарнное изображение с компьютера?")).ShowDialog();
+            var resulDialog = (new FormMessage("Удалить выбарнное изображение с компьютера?","Удалить")).ShowDialog();
 
             if (resulDialog == DialogResult.Cancel)
                 return;

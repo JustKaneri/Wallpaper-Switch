@@ -12,10 +12,15 @@ namespace Wallpaper_Switch
 {
     public partial class FormMessage : Form
     {
-        public FormMessage(string message)
+        public FormMessage(string message):this(message,"Ok")
+        {
+        }
+
+        public FormMessage(string message,string buttonText)
         {
             InitializeComponent();
-            LbxMessage.Text = message;  
+            LbxMessage.Text = message;
+            BtnOk.Text = buttonText;
         }
 
         private void FormMessage_Paint(object sender, PaintEventArgs e)
@@ -29,6 +34,12 @@ namespace Wallpaper_Switch
             e.Graphics.DrawLine(pen, 0, 0, this.Width, 0);
 
             e.Graphics.DrawLine(pen, this.Width - 1, 0, this.Width - 1, this.Height);
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
