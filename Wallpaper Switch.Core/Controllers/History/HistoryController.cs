@@ -13,7 +13,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
         private const string _fileName = "history";
 
         private readonly string _path;
-        private readonly FileXMLControllerExpansion<Model.Wallpaper> _fileController;
+        private readonly FileController _fileController;
 
         private List<Model.Wallpaper> _wallpapersHistory = new List<Model.Wallpaper>();
 
@@ -21,14 +21,19 @@ namespace Wallpaper_Switch.Core.Controllers.History
         {
             _path = Path;
 
-            _fileController = new FileXMLControllerExpansion<Model.Wallpaper>(_wallpapersHistory, _fileName);
+            _fileController = new FileController();
 
-            _wallpapersHistory = _fileController.LoadMany(_path);
+            Load();
 
             if (_wallpapersHistory.Count > 0)
                 Init();
 
             Logger.Logger.AppednLog(Logger.LogLevel.Info, "History Controller Init");
+        }
+
+        private void Load()
+        {
+            _wallpapersHistory = _fileController.Load(_path, new XmlFileLoader<List<Model.Wallpaper>>(_fileName)) ?? new List<Model.Wallpaper>();
         }
 
         private void Init()
@@ -68,7 +73,7 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
         private void Save()
         {
-            _fileController.SaveMany(_path);
+            _fileController.Save(_wallpapersHistory,_path, new XmlFileSaver<List<Model.Wallpaper>>(_fileName));
         }
 
         public void Remove(int historyIndex)

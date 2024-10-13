@@ -7,7 +7,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
     public class SettingsController
     {
         private AutoStartController _autoStartController;
-        private readonly FileXMLControllerExpansion<ApplicationSettings> _fileController;
+        private readonly FileController _fileController;
         private AutoChangeController _changeController;
 
         private ApplicationSettings _settings;
@@ -18,15 +18,13 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
         public SettingsController(string Path)
         {
             _path = Path;
-            _fileController = new FileXMLControllerExpansion<ApplicationSettings>(_settings, _fileName);
+            _fileController = new FileController();
 
-            _settings = _fileController.LoadOne(_path);
-
+            _settings = _fileController.Load(_path, new XmlFileLoader<ApplicationSettings>(_fileName));
 
             if (_settings == null)
             {
                 _settings = new ApplicationSettings();
-                _fileController = new FileXMLControllerExpansion<ApplicationSettings>(_settings, _fileName);
                 Save();
             }
 
@@ -96,7 +94,7 @@ namespace Wallpaper_Switch.Core.Controllers.Setting
 
         private void Save()
         {
-            _fileController.SaveOne(_path);
+            _fileController.Save(_settings,_path, new XmlFileSaver<ApplicationSettings>(_fileName));
         }
     }
 }
