@@ -32,8 +32,6 @@ namespace Wallpaper_Switch.Manager
 
             var history = _historyController.GetHistory();
 
-            history.Reverse();
-
             for (int i = 0; i < history.Count; i++)
             {
                 _historyElements[i].Image = history[i].GetImage();
@@ -59,7 +57,7 @@ namespace Wallpaper_Switch.Manager
         {
             int historyIndex = int.Parse(pictureBox.Tag.ToString());
 
-            if (historyIndex > _historyController.GetHistory().Count)
+            if (historyIndex > _historyController.GetHistory().Count-1)
                 return null;
 
             return _historyController.GetHistory()[historyIndex];
@@ -69,7 +67,7 @@ namespace Wallpaper_Switch.Manager
         {
             int historyIndex = int.Parse(pictureBox.Tag.ToString());
 
-            if (historyIndex > _historyController.GetHistory().Count)
+            if (historyIndex > _historyController.GetHistory().Count-1)
                 return false;
 
             var delWallpaper = _historyController.GetHistory()[historyIndex];

@@ -264,7 +264,7 @@ namespace Wallpaper_Switch
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(238, 56);
             // 
             // TsmDelete
             // 
@@ -316,7 +316,7 @@ namespace Wallpaper_Switch
             this.PbxOld1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbxOld1.TabIndex = 8;
             this.PbxOld1.TabStop = false;
-            this.PbxOld1.Tag = "3";
+            this.PbxOld1.Tag = "0";
             this.toolTip1.SetToolTip(this.PbxOld1, "Нажмите что установить на обои рабечего стола\r\n");
             this.PbxOld1.Click += new System.EventHandler(this.HistoryElement_Click);
             this.PbxOld1.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
@@ -334,7 +334,7 @@ namespace Wallpaper_Switch
             this.PbxOld2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbxOld2.TabIndex = 9;
             this.PbxOld2.TabStop = false;
-            this.PbxOld2.Tag = "2";
+            this.PbxOld2.Tag = "1";
             this.toolTip1.SetToolTip(this.PbxOld2, "Нажмите что установить на обои рабечего стола");
             this.PbxOld2.Click += new System.EventHandler(this.HistoryElement_Click);
             this.PbxOld2.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
@@ -352,7 +352,7 @@ namespace Wallpaper_Switch
             this.PbxOld3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbxOld3.TabIndex = 10;
             this.PbxOld3.TabStop = false;
-            this.PbxOld3.Tag = "1";
+            this.PbxOld3.Tag = "2";
             this.toolTip1.SetToolTip(this.PbxOld3, "Нажмите что установить на обои рабечего стола");
             this.PbxOld3.Click += new System.EventHandler(this.HistoryElement_Click);
             this.PbxOld3.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);
@@ -370,7 +370,7 @@ namespace Wallpaper_Switch
             this.PbxOld4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbxOld4.TabIndex = 11;
             this.PbxOld4.TabStop = false;
-            this.PbxOld4.Tag = "0";
+            this.PbxOld4.Tag = "3";
             this.toolTip1.SetToolTip(this.PbxOld4, "Нажмите что установить на обои рабечего стола");
             this.PbxOld4.Click += new System.EventHandler(this.HistoryElement_Click);
             this.PbxOld4.MouseEnter += new System.EventHandler(this.ElementHistory_MouseEnter);

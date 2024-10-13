@@ -119,6 +119,9 @@ namespace Wallpaper_Switch
 
             var historyWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
 
+            if (historyWallpaper == null)
+                return;
+
             var result = _wallpaperManager.SwitchWallpaper(historyWallpaper);
 
             if (result == null)
@@ -192,16 +195,33 @@ namespace Wallpaper_Switch
         {
             var pbx = sender as PictureBox;
 
-            pbx.Size = new Size(pbx.Width + upScale, pbx.Height + upScale);
-            pbx.Location = new Point(pbx.Left - upScale, pbx.Top);
+            if(pbx.Image != null)
+            {
+                pbx.Cursor = Cursors.Hand;
+                pbx.Size = new Size(pbx.Width + upScale, pbx.Height + upScale);
+                pbx.Location = new Point(pbx.Left - upScale, pbx.Top);
+            }
+            else
+            {
+                pbx.Cursor = Cursors.Arrow;
+            }
+            
         }
 
         private void ElementHistory_MouseLeave(object sender, EventArgs e)
         {
             var pbx = sender as PictureBox;
 
-            pbx.Location = new Point(pbx.Left + upScale, pbx.Top);
-            pbx.Size = new Size(pbx.Width - upScale, pbx.Height - upScale);
+            if(pbx.Image != null)
+            {
+                pbx.Location = new Point(pbx.Left + upScale, pbx.Top);
+                pbx.Size = new Size(pbx.Width - upScale, pbx.Height - upScale);
+            }
+            else
+            {
+                pbx.Cursor = Cursors.Arrow;
+            }
+            
         }
 
         private void SourcePanaleHide(object sender, EventArgs e)

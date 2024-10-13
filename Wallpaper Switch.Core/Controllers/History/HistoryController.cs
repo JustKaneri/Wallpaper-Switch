@@ -56,10 +56,10 @@ namespace Wallpaper_Switch.Core.Controllers.History
 
         public void Push(Model.Wallpaper wallpaper)
         {
-            _wallpapersHistory.Add(wallpaper);
+            _wallpapersHistory.Insert(0, wallpaper);
 
             if (_wallpapersHistory.Count > 4)
-                _wallpapersHistory.RemoveAt(0);
+                _wallpapersHistory.RemoveAt(_wallpapersHistory.Count - 1);
 
             Save();
 
