@@ -36,18 +36,18 @@
             // 
             // LbxNotification
             // 
-            this.LbxNotification.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbxNotification.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.LbxNotification.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LbxNotification.ForeColor = System.Drawing.Color.White;
             this.LbxNotification.Location = new System.Drawing.Point(127, 9);
             this.LbxNotification.Name = "LbxNotification";
-            this.LbxNotification.Size = new System.Drawing.Size(275, 104);
+            this.LbxNotification.Size = new System.Drawing.Size(242, 86);
             this.LbxNotification.TabIndex = 0;
             this.LbxNotification.Text = "label1";
             this.LbxNotification.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PbxStatus
             // 
-            this.PbxStatus.Location = new System.Drawing.Point(22, 22);
+            this.PbxStatus.Location = new System.Drawing.Point(22, 12);
             this.PbxStatus.Name = "PbxStatus";
             this.PbxStatus.Size = new System.Drawing.Size(85, 75);
             this.PbxStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -59,7 +59,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(22)))));
-            this.ClientSize = new System.Drawing.Size(414, 122);
+            this.ClientSize = new System.Drawing.Size(381, 105);
             this.Controls.Add(this.PbxStatus);
             this.Controls.Add(this.LbxNotification);
             this.Font = new System.Drawing.Font("Constantia", 9F);

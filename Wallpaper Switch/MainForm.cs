@@ -17,6 +17,8 @@ namespace Wallpaper_Switch
 
         private const int upScale = 5;
 
+        private int WS_EX_TOOLWINDOW = 0x00000080;
+
         public MainForm()
         {
             InitializeComponent();
@@ -117,6 +119,9 @@ namespace Wallpaper_Switch
 
             var historyWallpaper = _historyManager.GetHistoryElementData((sender as PictureBox));
 
+            if (historyWallpaper == null)
+                return;
+
             var result = _wallpaperManager.SwitchWallpaper(historyWallpaper);
 
             if (result == null)
@@ -135,7 +140,7 @@ namespace Wallpaper_Switch
         private void TsmDelete_Click(object sender, EventArgs e)
         {
 
-            var resulDialog = (new FormMessage("Удалить выбарнное изображение с компьютера?")).ShowDialog();
+            var resulDialog = (new FormMessage("Удалить выбарнное изображение с компьютера?","Удалить")).ShowDialog();
 
             if (resulDialog == DialogResult.Cancel)
                 return;
@@ -146,6 +151,8 @@ namespace Wallpaper_Switch
 
             if(result == false)
                 Notification.Show(NotificationForm.NotificationStatus.Error, "Не удалось удалить изображение");
+            else
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Изображение перенесено в корзину");
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -188,16 +195,33 @@ namespace Wallpaper_Switch
         {
             var pbx = sender as PictureBox;
 
-            pbx.Size = new Size(pbx.Width + upScale, pbx.Height + upScale);
-            pbx.Location = new Point(pbx.Left - upScale, pbx.Top);
+            if(pbx.Image != null)
+            {
+                pbx.Cursor = Cursors.Hand;
+                pbx.Size = new Size(pbx.Width + upScale, pbx.Height + upScale);
+                pbx.Location = new Point(pbx.Left - upScale, pbx.Top);
+            }
+            else
+            {
+                pbx.Cursor = Cursors.Arrow;
+            }
+            
         }
 
         private void ElementHistory_MouseLeave(object sender, EventArgs e)
         {
             var pbx = sender as PictureBox;
 
-            pbx.Location = new Point(pbx.Left + upScale, pbx.Top);
-            pbx.Size = new Size(pbx.Width - upScale, pbx.Height - upScale);
+            if(pbx.Image != null)
+            {
+                pbx.Location = new Point(pbx.Left + upScale, pbx.Top);
+                pbx.Size = new Size(pbx.Width - upScale, pbx.Height - upScale);
+            }
+            else
+            {
+                pbx.Cursor = Cursors.Arrow;
+            }
+            
         }
 
         private void SourcePanaleHide(object sender, EventArgs e)
@@ -208,6 +232,20 @@ namespace Wallpaper_Switch
         private void CloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Убрать возможность переключение на приложение, с помощью alt+tab,
+        /// когда окно свернуто в системный трей
+        /// </summary>
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var Params = base.CreateParams;
+                Params.ExStyle |= WS_EX_TOOLWINDOW;
+                return Params;
+            }
         }
     }
 }

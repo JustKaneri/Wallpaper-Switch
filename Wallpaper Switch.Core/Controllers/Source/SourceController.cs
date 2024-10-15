@@ -12,7 +12,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
         [XmlArray]
         private List<Model.Source> _sources;
 
-        private FileXMLControllerExpansion<Model.Source> _fileController;
+        private FileController _fileController;
         private readonly string _path;
 
         private const string _fileName = "source";
@@ -21,13 +21,17 @@ namespace Wallpaper_Switch.Core.Controllers.Source
         {
             _path = Path;
 
-            _fileController = new FileXMLControllerExpansion<Model.Source>(_sources, _fileName);
+            _fileController = new FileController();
 
-            _sources = _fileController.LoadMany(_path);
+            Load();
 
             Logger.Logger.AppednLog(Logger.LogLevel.Info, "Source Controller Init");
         }
 
+        private void Load()
+        {
+            _sources = _fileController.Load(_path, new XmlFileLoader<List<Model.Source>>(_fileName)) ?? new List<Model.Source>();
+        }
         public List<Model.Source> GetSources()
         {
             return _sources;
@@ -138,7 +142,7 @@ namespace Wallpaper_Switch.Core.Controllers.Source
 
         private void Save()
         {
-            _fileController.SaveMany(_path);
+            _fileController.Save(_sources, _path, new XmlFileSaver<List<Model.Source>>(_fileName));
         }
     }
 }

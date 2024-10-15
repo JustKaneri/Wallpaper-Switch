@@ -40,36 +40,37 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label1.Location = new System.Drawing.Point(12, 94);
+            this.label1.Location = new System.Drawing.Point(21, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(512, 67);
+            this.label1.Size = new System.Drawing.Size(227, 67);
             this.label1.TabIndex = 3;
             this.label1.Text = "Автозагрузка";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Constantia", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(12, 267);
+            this.label2.Location = new System.Drawing.Point(21, 198);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(512, 67);
+            this.label2.Size = new System.Drawing.Size(227, 90);
             this.label2.TabIndex = 4;
             this.label2.Text = "Автоматическая смена обоев";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label3.Location = new System.Drawing.Point(12, 463);
+            this.label3.Location = new System.Drawing.Point(0, 333);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(512, 67);
+            this.label3.Size = new System.Drawing.Size(536, 31);
             this.label3.TabIndex = 5;
             this.label3.Text = "Cradle of Desires 2024";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TbxTimeChange
             // 
@@ -78,27 +79,28 @@
             this.TbxTimeChange.Font = new System.Drawing.Font("Constantia", 15F);
             this.TbxTimeChange.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.TbxTimeChange.IsOnlyNumbers = true;
-            this.TbxTimeChange.Location = new System.Drawing.Point(127, 360);
+            this.TbxTimeChange.Location = new System.Drawing.Point(252, 227);
             this.TbxTimeChange.MaxLength = 2;
             this.TbxTimeChange.Name = "TbxTimeChange";
-            this.TbxTimeChange.Size = new System.Drawing.Size(100, 31);
+            this.TbxTimeChange.Size = new System.Drawing.Size(87, 31);
             this.TbxTimeChange.TabIndex = 8;
+            this.TbxTimeChange.TabStop = false;
             this.TbxTimeChange.Text = "5";
             this.TbxTimeChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TbxTimeChange.TextChanged += new System.EventHandler(this.TbxTimeChange_TextChanged);
             // 
             // CbxAutoChange
             // 
-            this.CbxAutoChange.Location = new System.Drawing.Point(303, 337);
+            this.CbxAutoChange.Location = new System.Drawing.Point(376, 214);
             this.CbxAutoChange.Name = "CbxAutoChange";
-            this.CbxAutoChange.Size = new System.Drawing.Size(107, 49);
+            this.CbxAutoChange.Size = new System.Drawing.Size(102, 44);
             this.CbxAutoChange.TabIndex = 7;
             // 
             // CbxAutoLoad
             // 
-            this.CbxAutoLoad.Location = new System.Drawing.Point(207, 164);
+            this.CbxAutoLoad.Location = new System.Drawing.Point(376, 122);
             this.CbxAutoLoad.Name = "CbxAutoLoad";
-            this.CbxAutoLoad.Size = new System.Drawing.Size(107, 49);
+            this.CbxAutoLoad.Size = new System.Drawing.Size(102, 44);
             this.CbxAutoLoad.TabIndex = 6;
             // 
             // mainContolPanel1
@@ -114,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(536, 539);
+            this.ClientSize = new System.Drawing.Size(536, 364);
             this.Controls.Add(this.TbxTimeChange);
             this.Controls.Add(this.CbxAutoChange);
             this.Controls.Add(this.CbxAutoLoad);

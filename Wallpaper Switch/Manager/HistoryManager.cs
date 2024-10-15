@@ -10,6 +10,7 @@ using Wallpaper_Switch.Core.Controllers.Wallpaper;
 using Wallpaper_Switch.Core.Model;
 using Wallpaper_Switch.Tools;
 using Microsoft.VisualBasic;
+using Wallpaper_Switch.Core.Controllers.File;
 
 namespace Wallpaper_Switch.Manager
 {
@@ -30,8 +31,6 @@ namespace Wallpaper_Switch.Manager
             Drop();
 
             var history = _historyController.GetHistory();
-
-            history.Reverse();
 
             for (int i = 0; i < history.Count; i++)
             {
@@ -58,7 +57,7 @@ namespace Wallpaper_Switch.Manager
         {
             int historyIndex = int.Parse(pictureBox.Tag.ToString());
 
-            if (historyIndex > _historyController.GetHistory().Count)
+            if (historyIndex > _historyController.GetHistory().Count-1)
                 return null;
 
             return _historyController.GetHistory()[historyIndex];
@@ -68,7 +67,7 @@ namespace Wallpaper_Switch.Manager
         {
             int historyIndex = int.Parse(pictureBox.Tag.ToString());
 
-            if (historyIndex > _historyController.GetHistory().Count)
+            if (historyIndex > _historyController.GetHistory().Count-1)
                 return false;
 
             var delWallpaper = _historyController.GetHistory()[historyIndex];
@@ -76,15 +75,19 @@ namespace Wallpaper_Switch.Manager
 
             try
             {
-                var indexes = _historyController.Remove(delWallpaper);
 
-                foreach (var item in indexes)
+                var resultDelete = FileOperationAPIWrapper.Send(path);
+
+                if (resultDelete == true)
                 {
-                    _historyElements[item].Image = null;
+                    var indexes = _historyController.Remove(delWallpaper);
+
+                    foreach (var item in indexes)
+                    {
+                        _historyElements[item].Image = null;
+                    }
                 }
 
-                //TODO файлы должны попадать в корзину
-                System.IO.File.Delete(path);
                 FillHistory();
             }
             catch

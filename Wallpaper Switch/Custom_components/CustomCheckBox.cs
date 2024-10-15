@@ -10,7 +10,7 @@ namespace Wallpaper_Switch.Custom_components
         public bool Checked { get; private set; }
        
         private PictureBox imageBox;
-        private int timePause = 50;
+        private int timePause = 10;
 
         public event EventHandler CheckedChanged;
 

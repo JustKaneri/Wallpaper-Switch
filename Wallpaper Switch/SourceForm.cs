@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Controllers.Source;
 using Wallpaper_Switch.Core.Model;
+using Wallpaper_Switch.Tools;
 
 namespace Wallpaper_Switch
 {
@@ -96,13 +97,13 @@ namespace Wallpaper_Switch
 
             if (string.IsNullOrWhiteSpace(TbxName.Text))
             {
-                MessageBox.Show("Введите название", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Введите название");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(TbxPath.Text))
             {
-                MessageBox.Show("Выберете директорию с изображениями", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Выберете директорию с изображениями");
                 return;
             }
 
@@ -114,7 +115,7 @@ namespace Wallpaper_Switch
 
             if (result == null)
             {
-                MessageBox.Show("Не удалось обновить источник", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notification.Show(NotificationForm.NotificationStatus.Error, "Не удалось обновить источник");
                 return;
             }
 
@@ -127,13 +128,13 @@ namespace Wallpaper_Switch
 
             if (string.IsNullOrWhiteSpace(TbxName.Text))
             {
-                MessageBox.Show("Введите название", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Введите название");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(TbxPath.Text))
             {
-                MessageBox.Show("Выберете директорию с изображениями", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notification.Show(NotificationForm.NotificationStatus.Warning, "Выберете директорию с изображениями");
                 return;
             }
 
@@ -147,7 +148,7 @@ namespace Wallpaper_Switch
 
             if (error != "")
             {
-                MessageBox.Show(error, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Notification.Show(NotificationForm.NotificationStatus.Error, error);
                 return;
             }
 

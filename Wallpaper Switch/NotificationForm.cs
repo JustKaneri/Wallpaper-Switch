@@ -30,7 +30,6 @@ namespace Wallpaper_Switch
             SetStartPosition();
 
             LbxNotification.Text = message; 
-            LbxNotification.ForeColor = _borderColor;
 
             this.ShowInTaskbar = false;
         }
@@ -56,7 +55,7 @@ namespace Wallpaper_Switch
                     break;
                 case NotificationStatus.Warning:
                         PbxStatus.Image = Resources.Warning;
-                        _borderColor = Color.FromArgb(227, 227, 78);
+                        _borderColor = Color.FromArgb(242, 166, 0);
                     break;
                 case NotificationStatus.Error:
                         PbxStatus.Image = Resources.Error;

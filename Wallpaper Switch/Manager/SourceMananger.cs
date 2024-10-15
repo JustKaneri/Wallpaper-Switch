@@ -102,7 +102,7 @@ namespace Wallpaper_Switch.Manager
             if (_dataGrid.SelectedRows.Count <= 0)
                 return false;
 
-            var resulDialog = (new FormMessage("Удалить источник ?")).ShowDialog();
+            var resulDialog = (new FormMessage("Удалить источник ?","Удалить")).ShowDialog();
 
             if (resulDialog == DialogResult.Cancel)
                 return false;

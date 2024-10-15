@@ -30,6 +30,7 @@ namespace Wallpaper_Switch
 
             CbxAutoLoad.CheckedChanged += CbxAutoLoad_CheckedChanged;
             CbxAutoChange.CheckedChanged += CbxAutoChange_CheckedChanged;
+
         }
 
         private void CbxAutoChange_CheckedChanged(object sender, EventArgs e)
