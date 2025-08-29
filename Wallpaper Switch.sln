@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper Switch.Core", "Wa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper Switch.Tests", "Wallpaper Switch.Tests\Wallpaper Switch.Tests.csproj", "{A9F1E94C-0526-4CA2-8599-AECCEF15ED3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper Switch.UI", "Wallpaper Switch.UI\Wallpaper Switch.UI.csproj", "{65D81815-7E96-FC4B-60C9-46241171B0AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaper Switch.UI.Desktop", "Wallpaper Switch.UI.Desktop\Wallpaper Switch.UI.Desktop.csproj", "{FE6B2795-D691-2665-27E1-09E0B857BF5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A9F1E94C-0526-4CA2-8599-AECCEF15ED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9F1E94C-0526-4CA2-8599-AECCEF15ED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9F1E94C-0526-4CA2-8599-AECCEF15ED3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D81815-7E96-FC4B-60C9-46241171B0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D81815-7E96-FC4B-60C9-46241171B0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D81815-7E96-FC4B-60C9-46241171B0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D81815-7E96-FC4B-60C9-46241171B0AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6B2795-D691-2665-27E1-09E0B857BF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6B2795-D691-2665-27E1-09E0B857BF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6B2795-D691-2665-27E1-09E0B857BF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6B2795-D691-2665-27E1-09E0B857BF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
