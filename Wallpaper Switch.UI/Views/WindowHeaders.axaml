@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Wallpaper_Switch.UI.WindowHeaders">
+  <Border DockPanel.Dock="Top" Height="40" Background="#252836">
+    <Grid ColumnDefinitions="40,*,40,40">
+      <!-- Иконка -->
+      <Image Width="20" Height="20" Source="\Assets\MainIcon.png"
+             VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+      <!-- Заголовок -->
+      <TextBlock Grid.Column="1" Text="Wallpaper Switch"
+                 Foreground="White" FontSize="14" VerticalAlignment="Center"/>
+
+      <!-- Свернуть -->
+      <Button Grid.Column="2" Content="─"
+              Click="MinimizedWindow"
+              Background="Transparent" Foreground="White"
+              BorderThickness="0" FontSize="16"
+                />
+
+      <!-- Закрыть -->
+      <Button Grid.Column="3" Content="X"
+              Click="CloseWindow" 
+              Background="Transparent" Foreground="White"
+              BorderThickness="0" FontSize="16"
+               />
+    </Grid>
+  </Border>
+</UserControl>

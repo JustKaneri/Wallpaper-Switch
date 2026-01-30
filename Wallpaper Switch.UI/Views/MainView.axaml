@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Wallpaper_Switch.UI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:local="clr-namespace:Wallpaper_Switch.UI"
              x:Class="Wallpaper_Switch.UI.Views.MainView"
              x:DataType="vm:MainViewModel">
   <Design.DataContext>
@@ -11,6 +12,51 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
+  <DockPanel>
+    <local:WindowHeaders DockPanel.Dock="Top" />
+    <!-- Остальное содержимое -->
+    <DockPanel>
+      <!-- Левое меню -->
+      <StackPanel DockPanel.Dock="Left" Width="180" Background="#252836">
+        <TextBlock Text="Источники" Margin="0,20,0,10"
+                   Foreground="#AAA" FontSize="16"/>
+        <TextBlock Text="Настройки" Margin="0,10,0,0"
+                   Foreground="#AAA" FontSize="16"/>
+      </StackPanel>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <!-- Центр (как было раньше) -->
+      <ScrollViewer>
+        <StackPanel Margin="20">
+          <TextBlock Text="Текущие обои" FontSize="28"
+                     FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+
+          <Border CornerRadius="10" ClipToBounds="True">
+            <Image Stretch="UniformToFill" Height="250"/>
+          </Border>
+
+          <Button Content="Выбрать" Width="150" Height="40"
+                  Background="#3366FF" Foreground="White"
+                  FontSize="18" Margin="0,20,0,20"/>
+
+          <TextBlock Text="История:" FontSize="20"
+                     FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+
+          <StackPanel Orientation="Horizontal" Spacing="12">
+            <Border Width="150" Height="90" CornerRadius="8" ClipToBounds="True">
+              <Image  Stretch="UniformToFill"/>
+            </Border>
+            <Border Width="150" Height="90" CornerRadius="8" ClipToBounds="True">
+              <Image  Stretch="UniformToFill"/>
+            </Border>
+            <Border Width="150" Height="90" CornerRadius="8" ClipToBounds="True">
+              <Image  Stretch="UniformToFill"/>
+            </Border>
+            <Border Width="150" Height="90" CornerRadius="8" ClipToBounds="True">
+              <Image  Stretch="UniformToFill"/>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </ScrollViewer>
+    </DockPanel>
+  </DockPanel>
 </UserControl>

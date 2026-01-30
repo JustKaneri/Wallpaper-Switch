@@ -7,8 +7,9 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="Assets\MainIcon.png" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
