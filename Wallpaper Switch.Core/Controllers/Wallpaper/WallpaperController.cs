@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Wallpaper_Switch.Core.Controllers.Extension;
 using Wallpaper_Switch.Core.Controllers.Logger;
 using Wallpaper_Switch.Core.Model;
+using Wallpaper_Switch.Core.Service;
 
 namespace Wallpaper_Switch.Core.Controllers.Wallpaper
 {
@@ -18,6 +19,7 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
         private List<Model.Wallpaper> _wallpapers;
         private Model.Wallpaper _currentWallpaper;
         private Model.Wallpaper _oldWallpaper;
+        private WallpaperRandomService _randomService;
 
         public event EventHandler OnFindBrokenImage;
 
@@ -43,9 +45,11 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
 
                 Logger.Logger.AppednLog(Logger.LogLevel.Info, $"Source {item.Name} init with {files.Count} images");
 
+                float priority = 0.1f * files.Count;
+
                 foreach (var file in files) 
                 {
-                    Model.Wallpaper wallpaper = new Model.Wallpaper(item, file);
+                    Model.Wallpaper wallpaper = new Model.Wallpaper(item, file,priority);
 
                     _wallpapers.Add(wallpaper); 
                 }
@@ -73,9 +77,9 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
                 var source = _sources.Where(ph => fullPath.Contains(ph.Path)).FirstOrDefault();
 
                 if (source == null)
-                    _currentWallpaper = new Model.Wallpaper(fullPath);
+                    _currentWallpaper = new Model.Wallpaper(fullPath,0.1f);
                 else
-                    _currentWallpaper = new Model.Wallpaper(source, fullPath);
+                    _currentWallpaper = new Model.Wallpaper(source, fullPath,0.1f);
 
                 _currentWallpaper.Init();
             }
@@ -94,47 +98,33 @@ namespace Wallpaper_Switch.Core.Controllers.Wallpaper
         /// <returns></returns>
         public Image SwitchOnRandomWallpaper()
         {
-            Random rnd = new Random();
-            Model.Wallpaper result = null;
+            var randomWallpaper = _randomService.GetRandom(_wallpapers);
 
-            do
+            if (!System.IO.File.Exists(randomWallpaper.Path))
             {
-                if (_wallpapers.Count == 0)
-                {
-                    Logger.Logger.AppednLog(LogLevel.Warning, $"Not images for wallaper");
-                    return null;
-                }
+                Logger.Logger.AppednLog(LogLevel.Warning, $"Wallpaper not exist {randomWallpaper.Path}");
+                _wallpapers.Remove(randomWallpaper);
 
-                result = _wallpapers[rnd.Next(_wallpapers.Count)];
+                //TODO повтор выбора
+            }
 
-                if(!System.IO.File.Exists(result.Path))
-                {
-                    Logger.Logger.AppednLog(LogLevel.Warning, $"Wallpaper not exist {result.Path}");
-                    _wallpapers.Remove(result);
-                    continue;
-                }
+            try
+            {
+                randomWallpaper.Init();
+            }
+            catch
+            {
+                CathBrokenFile(randomWallpaper);
+                _wallpapers.Remove(randomWallpaper);
+                //TODO повтор выбора
+            }
 
-                try
-                {
-                    result.Init();
-
-                    break;
-                }
-                catch
-                {
-                    CathBrokenFile(result);
-                    _wallpapers.Remove(result);
-                    continue;
-                }
-
-            } while (true);
-
-            SetWallpaper(result);
+            SetWallpaper(randomWallpaper);
 
             _oldWallpaper = _currentWallpaper;
-            _currentWallpaper = result;
+            _currentWallpaper = randomWallpaper;
 
-            return result.GetImage();
+            return randomWallpaper.GetImage();
         }
 
         /// <summary>

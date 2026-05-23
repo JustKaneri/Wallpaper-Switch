@@ -13,23 +13,26 @@ namespace Wallpaper_Switch.Core.Model
         public string Path { get; set; }
         public string FileName { get; set; }
 
+        public MetaDataRandomness DataRandomness { get; set; }
+
         public Wallpaper()
         {
-                
+
         }
 
-        public Wallpaper(Source source, string path)
+        public Wallpaper(Source source, string path, float priority)
         {
             SourcName = source.Name;
             Path = path;
             FileName= System.IO.Path.GetFileName(path);
         }
 
-        public Wallpaper(string path)
+        public Wallpaper(string path, float priority)
         {
             SourcName = "";
             Path = path;
             FileName = System.IO.Path.GetFileName(path);
+            DataRandomness = new MetaDataRandomness(priority);
         }
 
         /// <summary>
