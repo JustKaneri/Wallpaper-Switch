@@ -7,8 +7,19 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Wallpaper_Switch.UI.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="PreferSystemChrome, NoChrome"
-        Title="Wallpaper Switch">
+        Title="Wallpaper Switch"
+        Background="#0F1115"
+        Width="1000"
+        Height="600"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
         <views:MainView />
+        <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Assets/AppResources.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 </Window>
