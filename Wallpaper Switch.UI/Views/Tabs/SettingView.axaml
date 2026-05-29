@@ -2,10 +2,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="585" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.SettingView">
-        <TextBlock Text="Настройки1"
-               FontSize="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <Grid Background="#10171e" ShowGridLines="False" ColumnDefinitions="150 150* 150" RowDefinitions="55 220 55 *">
+        <TextBlock Margin="30 0 0 0" FontSize="15" Foreground="White"  VerticalAlignment="Center" >Общее</TextBlock>
+        <Border Margin="30 0 30 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel  Background="#1d252d">
+                <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
+                    <PathIcon VerticalAlignment="Center" Data="{StaticResource desktop_regular}" Width="20" Height="20" />
+                    <StackPanel Margin="10 0 0 0 " VerticalAlignment="Center" Grid.Column="1">
+                        <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" >Запускать вместе с Windows</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Foreground="Gray" FontSize="10">Приложение будет запускать вместе с запуском компьютера</TextBlock>
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="3"></ToggleSwitch>
+                </Grid>
+                <Separator Background="#252d36"/>
+                <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
+                    <PathIcon VerticalAlignment="Center" Data="{StaticResource channel_notifications_regular}" Width="20" Height="20" />
+                    <StackPanel Margin="10 0 0 0 " VerticalAlignment="Center" Grid.Column="1">
+                        <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" >Показывать уведомления</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Foreground="Gray" FontSize="10">Уведомления о смене обоев и другие события</TextBlock>
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="3"></ToggleSwitch>
+                </Grid>
+                <Separator Background="#252d36"/>
+                <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
+                    <PathIcon VerticalAlignment="Center" Data="{StaticResource circle_regular}" Width="20" Height="20" />
+                    <StackPanel Margin="10 0 0 0 " VerticalAlignment="Center" Grid.Column="1">
+                        <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" >Избегать повторений</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Foreground="Gray" FontSize="10">Не показывать недавно используемые обои</TextBlock>
+                    </StackPanel>
+                    <ToggleSwitch Grid.Column="3"></ToggleSwitch>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="30 0 0 0" FontSize="15" Foreground="White"  VerticalAlignment="Center">Дополнительно</TextBlock>
+        <Border Grid.Row="4" VerticalAlignment="Top" Height="65" Margin="30 0 30 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True"  Grid.ColumnSpan="3">
+            <StackPanel Background="#1d252d">
+                <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
+                    <PathIcon VerticalAlignment="Center" Data="{StaticResource book_information_regular}" Width="20" Height="20" />
+                    <StackPanel Margin="10 0 0 0 " VerticalAlignment="Center" Grid.Column="1">
+                        <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" >Логи и диагностика</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Foreground="Gray" FontSize="10">открыть папку с логами и отладочной информацией</TextBlock>
+                    </StackPanel>
+                    <Border Width="200"  CornerRadius="15" ClipToBounds="True" Grid.Column="3">
+                        <Button BorderBrush="#2d353d" BorderThickness="1" Foreground="White" Background="#272e36" HorizontalAlignment="Left" Margin="5 0 0 0"> Открыть папку
+                        </Button>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

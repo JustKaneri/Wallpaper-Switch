@@ -12,33 +12,33 @@
         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid ColumnDefinitions="200,*" ShowGridLines="False" Background="#10171e">
+    <Grid ColumnDefinitions="215,*" ShowGridLines="False" Background="#10171e">
     <!--Control panel-->
         <Border BorderBrush="#252d36" BorderThickness="0 0 1 0">
             <DockPanel LastChildFill="False" Background="#0F1115" Grid.Column="0">
                 <StackPanel Margin="0 10 0 0" DockPanel.Dock="Top" Spacing="10">
-                    <Button Cursor="Hand" Name="BtnHome" Click="BtnHome_Click" CornerRadius="10" Margin="10 0 10 0" Height="65" Background="#283036" HorizontalAlignment="Stretch"  BorderBrush="#5B8CFF" BorderThickness="3 0 0 0">
+                    <Button Cursor="Hand" Name="BtnHome" Click="BtnHome_Click" CornerRadius="10" Margin="10 0 10 0" Height="55" Background="#283036" HorizontalAlignment="Stretch"  BorderBrush="#5B8CFF" BorderThickness="3 0 0 0">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon Margin="10 0 0 0" Data="{StaticResource home_regular}" Width="20" Height="20" />
                             <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Главная" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button Cursor="Hand" Name="BtnSource" Click="BtnSource_Click" CornerRadius="10" Margin="10 0 10 0" Height="65" Background="Transparent" HorizontalAlignment="Stretch" >
+                    <Button Cursor="Hand" Name="BtnSource" Click="BtnSource_Click" CornerRadius="10" Margin="10 0 10 0" Height="55" Background="Transparent" HorizontalAlignment="Stretch" >
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon Margin="10 0 0 0" Data="{StaticResource wallpaper_regular}" Width="20" Height="20" />
                             <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Источники" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button Cursor="Hand" Name="BtnAuto" Click="BtnAuto_Click" CornerRadius="10" Margin="10 0 10 0" Height="65" Background="Transparent" HorizontalAlignment="Stretch" >
+                    <Button Cursor="Hand" Name="BtnAuto" Click="BtnAuto_Click" CornerRadius="10" Margin="10 0 10 0" Height="55" Background="Transparent" HorizontalAlignment="Stretch" >
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon Margin="10 0 0 0" Data="{StaticResource autocorrect_regular}" Width="20" Height="20" />
                             <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Автоматизация" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
-                    <Button Cursor="Hand" Name="BtnSettings" Click="BtnSettings_Click" CornerRadius="10" Margin="10 0 10 0" Height="65" Background="Transparent" HorizontalAlignment="Stretch" >
+                    <Button Cursor="Hand" Name="BtnSettings" Click="BtnSettings_Click" CornerRadius="10" Margin="10 0 10 0" Height="55" Background="Transparent" HorizontalAlignment="Stretch" >
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <PathIcon Margin="10 0 0 0" Data="{StaticResource settings_regular}" Width="20" Height="20" />
-                            <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Автоматизация" VerticalAlignment="Center" />
+                            <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Настройки" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
