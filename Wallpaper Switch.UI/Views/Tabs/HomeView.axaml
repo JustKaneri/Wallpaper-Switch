@@ -1,13 +1,14 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:Wallpaper_Switch.UI"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="585" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.HomeView">
     <Grid Background="#10171e" ShowGridLines="False" ColumnDefinitions="350 1* 1*" RowDefinitions="55 370 30 *">
-        <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0" FontSize="20">Текущие обои</TextBlock>
-        <Button Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">Таймер</Button>
+        <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0" FontSize="15">Текущие обои</TextBlock>
         <Button Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">Запуск</Button>
+        <local:TimerButton Grid.Column="1" Grid.Row="0"/>
         <StackPanel Margin="30 0 30 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" >
              <Border BorderBrush="#252d36" Padding="1" ClipToBounds="True" CornerRadius="20" Background="#252d36">
                  <Image Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
@@ -19,7 +20,7 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-         <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="2" Grid.Column="0" FontSize="20">История</TextBlock>
+         <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="2" Grid.Column="0" FontSize="15">История</TextBlock>
          <StackPanel  Width="525" Spacing="8" Margin="30 0 30 10" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
              <Border Width="125" Height="75" ClipToBounds="True" CornerRadius="15">
                  <Image   Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
