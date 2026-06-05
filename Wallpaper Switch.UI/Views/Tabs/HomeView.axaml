@@ -3,37 +3,59 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="using:Wallpaper_Switch.UI"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="585" d:DesignHeight="550"
+             mc:Ignorable="d" d:DesignWidth="785" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.HomeView">
-    <Grid Background="#10171e" ShowGridLines="False" ColumnDefinitions="350 1* 1*" RowDefinitions="55 370 30 *">
-        <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0" FontSize="15">Текущие обои</TextBlock>
+    <Grid Background="#10171e" ShowGridLines="False" ColumnDefinitions="530 1* 1*" RowDefinitions="55 370 30 *">
+        <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" FontSize="18">Текущие обои</TextBlock>
         <Button Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">Запуск</Button>
         <local:TimerButton Grid.Column="1" Grid.Row="0"/>
-        <StackPanel Margin="30 0 30 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" >
-             <Border BorderBrush="#252d36" Padding="1" ClipToBounds="True" CornerRadius="20" Background="#252d36">
-                 <Image Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
-             </Border>    
-            <Button  Width="300" Cursor="Hand" Name="BtnSettings" CornerRadius="10" Margin="10 10 10 0" Height="50" Background="#5B8CFF" HorizontalAlignment="Stretch" >
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
-                    <PathIcon Margin="10 0 0 0" Data="{StaticResource arrow_swap_regular}" Width="20" Height="20" />
-                    <TextBlock FontSize="15" Padding="5 0 0 0" Foreground="#F5F7FA" Text="Смена обоев" VerticalAlignment="Center" />
-                </StackPanel>
-            </Button>
-        </StackPanel>
-         <TextBlock Margin="30 0 0 0 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="2" Grid.Column="0" FontSize="15">История</TextBlock>
-         <StackPanel  Width="525" Spacing="8" Margin="30 0 30 10" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
-             <Border Width="125" Height="75" ClipToBounds="True" CornerRadius="15">
-                 <Image   Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
-             </Border> 
-             <Border Width="125" Height="75"  ClipToBounds="True" CornerRadius="15">
-                 <Image Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
-             </Border> 
-             <Border Width="125" Height="75"  ClipToBounds="True" CornerRadius="15">
-                 <Image  Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
-             </Border> 
-             <Border Width="125" Height="75"  ClipToBounds="True" CornerRadius="15">
-                 <Image  Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
-             </Border> 
-         </StackPanel>
+        <Border Margin="30 0 30 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" CornerRadius="24"
+                ClipToBounds="True">
+            <Grid>
+                <Image  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"
+                        Stretch="UniformToFill"/>
+                <!-- OVERLAY -->
+                <Border Background="#66000000"/>
+                <!-- CONTENT -->
+                <Grid Margin="32"
+                      RowDefinitions="*,Auto">
+                    <!-- BUTTON -->
+                    <StackPanel Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                Spacing="20">
+
+                        <Button Width="280"
+                                Height="62"
+                                Background="#5B8CFF"
+                                Foreground="White"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                CornerRadius="16"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Content="⟳  Сменить обои"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+        <TextBlock Margin="30 10 0 10 " Foreground="#F5F7FA" VerticalAlignment="Center"  Grid.Row="2" Grid.Column="0" FontWeight="SemiBold" FontSize="18">История обоев</TextBlock>
+        <Grid Width="725" Height="100" Grid.Row="3" Grid.ColumnSpan="3" Margin="30 0 30 10" ColumnDefinitions="170* 170* 170* 170*">
+            <Border Grid.Column="0" Margin="0 0 15 0"  ClipToBounds="True" CornerRadius="15">
+                <Image Cursor="Hand" Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
+            </Border>
+            <Border Grid.Column="1" Margin="0 0 15 0"  ClipToBounds="True" CornerRadius="15">
+                <Image Cursor="Hand"  Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
+            </Border>
+            <Border Grid.Column="2" Margin="0 0 15 0" ClipToBounds="True" CornerRadius="15">
+                <Image Cursor="Hand" Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
+            </Border>
+            <Border Grid.Column="3"  ClipToBounds="True" CornerRadius="15">
+                <Image Cursor="Hand" Stretch="Fill"  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"/>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>
