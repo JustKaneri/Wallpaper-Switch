@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="585" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.SettingView">
-    <Grid Background="#10171e" ShowGridLines="False" ColumnDefinitions="150 150* 150" RowDefinitions="55 220 55 *">
-        <TextBlock Margin="30 0 0 0" FontSize="15" Foreground="White"  VerticalAlignment="Center" >Общее</TextBlock>
-        <Border Margin="30 0 30 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
+    <Grid Margin="30 15 30 0" Background="#10171e" ShowGridLines="False" ColumnDefinitions="150 150* 150" RowDefinitions="25 220 25 *">
+        <TextBlock Margin="0 0 0 15" FontSize="18" Foreground="White"  VerticalAlignment="Center">Общее</TextBlock>
+        <Border Margin="0 0 0 15" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
             <StackPanel  Background="#1d252d">
                 <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
                     <PathIcon VerticalAlignment="Center" Data="{StaticResource desktop_regular}" Width="20" Height="20" />
@@ -37,8 +37,8 @@
             </StackPanel>
         </Border>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Margin="30 0 0 0" FontSize="15" Foreground="White"  VerticalAlignment="Center">Дополнительно</TextBlock>
-        <Border Grid.Row="4" VerticalAlignment="Top" Height="65" Margin="30 0 30 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True"  Grid.ColumnSpan="3">
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="0 0 0 15" FontSize="18" Foreground="White"  VerticalAlignment="Center">Дополнительно</TextBlock>
+        <Border Grid.Row="4" VerticalAlignment="Top" Height="65" Margin="0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True"  Grid.ColumnSpan="3">
             <StackPanel Background="#1d252d">
                 <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
                     <PathIcon VerticalAlignment="Center" Data="{StaticResource book_information_regular}" Width="20" Height="20" />

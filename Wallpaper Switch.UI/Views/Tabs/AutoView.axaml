@@ -2,10 +2,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="785" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.AutoView">
-        <TextBlock Text="Автоматизация1"
-               FontSize="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <StackPanel Margin="30 15 30 0" Background="#10171e" >
+        <TextBlock Margin="0 0 0 0" FontSize="18" Foreground="White"  VerticalAlignment="Center" >Автоматизация</TextBlock>
+        <TextBlock Margin="0 5 0 0" FontSize="13" Foreground="Gray"  VerticalAlignment="Center" >Настройте автоматическую смену обоев</TextBlock>
+        <Border Margin="0 20 0 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel  Background="#171f27">
+                <Grid ColumnDefinitions="600 *" RowDefinitions="40 50 20 100" ShowGridLines="True">
+                    <TextBlock Grid.Column="0" Grid.Row="0" Margin="15 15 0 0" Foreground="White" FontSize="15">Автоматическая смена обоев</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="15 0 0 0" FontSize="13" Foreground="Gray">Приложение будет автоматически устанавливать новые обои<LineBreak />
+                        чреез заданный промежуток времени
+                    </TextBlock>
+                    <ToggleSwitch Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" Margin="15 10 0 10" Foreground="White">Интервал смены</TextBlock>
+                    <StackPanel Margin="15 0 15 0" Spacing="17" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" >
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="1 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#2a4d94">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="5 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="15 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="30 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="60 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="2 часа" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="3 часа" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
+                            <StackPanel Orientation="Vertical">
+                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="6 часов" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </UserControl>
