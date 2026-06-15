@@ -1,0 +1,43 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Button.nav-item">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style Selector="Button.nav-item:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1F252B"/>
+        <Setter Property="BorderBrush" Value="#3A4550"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <!-- Активный пункт -->
+    <Style Selector="Button.nav-item.active">
+        <Setter Property="Background" Value="#283036"/>
+        <Setter Property="BorderBrush" Value="#5B8CFF"/>
+        <Setter Property="BorderThickness" Value="0 0 0 0"/>
+    </Style>
+
+
+    <Style Selector="Button.nav-item.active:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#323B43"/>
+        <Setter Property="BorderBrush" Value="#7AA3FF"/>
+        <Setter Property="BorderThickness" Value="0 0 0 0"/>
+    </Style>
+
+    <Style Selector="Button.nav-item:pointerover TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style Selector="Button.nav-item:pointerover PathIcon">
+        <Setter Property="Foreground" Value="#7AA3FF"/>
+    </Style>
+
+    <Style Selector="Button.nav-item.active TextBlock">
+        <Setter Property="Foreground" Value="#F5F7FA"/>
+    </Style>
+
+    <Style Selector="Button.nav-item.active PathIcon">
+        <Setter Property="Foreground" Value="#5B8CFF"/>
+    </Style>
+</Styles>
