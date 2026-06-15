@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
-    <AvaloniaXaml Remove="Assets\Styles.axaml" />
+    <AvaloniaXaml Remove="Assets\StylesNavBtn.axaml" />
     <AvaloniaXaml Include="Assets\AppResources.axaml" />
     <AvaloniaResource Include="Assets\MainIcon.png" />
   </ItemGroup>
@@ -27,7 +27,7 @@
     <AvaloniaResource Update="Assets\AppResources.axaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
-    <AvaloniaResource Update="Assets\Styles.axaml">
+    <AvaloniaResource Update="Assets\StylesNavBtn.axaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
   </ItemGroup>

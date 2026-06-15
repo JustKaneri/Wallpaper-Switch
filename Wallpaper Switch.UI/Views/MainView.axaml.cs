@@ -37,20 +37,6 @@ public partial class MainView : UserControl
         _activeButton.Classes.Set("active", true);
     }
 
-    private void DisableButton(Button button)
-    {
-        //button.Background = null;
-        //button.BorderBrush = null;
-        //button.BorderThickness = new Avalonia.Thickness(0, 0, 0, 0);
-    }
-
-    private void EnableButton(Button button)
-    {
-        //button.BorderBrush = Brush.Parse("#5B8CFF");
-        //button.BorderThickness = new Avalonia.Thickness(3, 0, 0, 0);
-        //button.Background = Brush.Parse("#283036");
-    }
-
     private void BtnHome_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         MainContent.Content = _homeView;

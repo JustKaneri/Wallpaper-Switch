@@ -14,15 +14,19 @@
             <Grid>
                 <Image  Source="avares://Wallpaper Switch.UI/Assets/TmpImage.jpg"
                         Stretch="UniformToFill"/>
-                <!-- OVERLAY -->
                 <Border Background="#66000000"/>
-                <!-- CONTENT -->
                 <Grid Margin="32"
                       RowDefinitions="*,Auto">
-                    <!-- BUTTON -->
                     <StackPanel Grid.Row="1"
                                 HorizontalAlignment="Center"
                                 Spacing="20">
+
+                        <StackPanel.Styles>
+                            <Style Selector="Button:pointerover /template/ ContentPresenter">
+                                <Setter Property="Background" Value="#10171e"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </StackPanel.Styles>
 
                         <Button Width="280"
                                 Height="62"
@@ -31,9 +35,11 @@
                                 FontSize="18"
                                 FontWeight="SemiBold"
                                 CornerRadius="16"
+                                Cursor="Hand"
                                 HorizontalContentAlignment="Center"
                                 VerticalContentAlignment="Center"
-                                Content="⟳  Сменить обои"/>
+                                Content="⟳  Сменить обои">
+                        </Button>
 
                     </StackPanel>
 
