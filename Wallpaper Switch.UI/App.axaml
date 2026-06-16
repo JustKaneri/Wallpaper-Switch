@@ -6,6 +6,7 @@
 
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://Wallpaper Switch.UI/Assets/StylesNavBtn.axaml"/>
+        <StyleInclude Source="avares://Wallpaper Switch.UI/Assets/Styles/StylesNavBtn.axaml"/>
+        <StyleInclude Source="avares://Wallpaper Switch.UI/Assets/Styles/StylesTimers.axaml"/>
     </Application.Styles>
 </Application>

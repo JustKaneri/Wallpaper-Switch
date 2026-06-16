@@ -1,0 +1,26 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Button.timer-item">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="#1d252d"/>
+        <Setter Property="BorderBrush" Value="#262f37"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.timer-item:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1F252B"/>
+        <Setter Property="BorderBrush" Value="#3A4550"/>
+        <Setter Property="Opacity" Value=".9"/>
+    </Style>
+
+    <!-- Активный пункт -->
+    <Style Selector="Button.timer-item.active">
+        <Setter Property="Background" Value="#5B8CFF"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style Selector="Button.timer-item.active:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#7AA3FF"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+</Styles>

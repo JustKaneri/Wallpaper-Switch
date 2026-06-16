@@ -17,54 +17,54 @@
                     <ToggleSwitch Grid.Column="1" Grid.Row="0"/>
                     <TextBlock Grid.Column="0" Grid.Row="2" Margin="15 10 0 10" Foreground="White">Интервал смены</TextBlock>
                     <StackPanel Margin="15 0 15 0" Spacing="17" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" >
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="1 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn1m" Tag="60" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="1 мин" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#2a4d94">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="5 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn5m" Tag="300" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="5 мин" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="15 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn15m" Tag="900" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="15 мин" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="30 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn30m" Tag="1800" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="30 мин" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="60 мин" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn60m" Tag="3600" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="60 мин" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="2 часа" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn2h" Tag="7200" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="2 часа" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="3 часа" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn3h" Tag="10800" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="3 часа" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
-                        <Border Width="70" Height="70" CornerRadius="18" BorderBrush="#262f37"  BorderThickness="1" Background="#1d252d">
-                            <StackPanel Orientation="Vertical">
-                                <PathIcon Margin="10 10 10 5" Data="{StaticResource timer_regular}" Width="25" Height="25" />
-                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="6 часов" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Button>
+                        <Button Classes="timer-item" Cursor="Hand" Name="Btn6h" Tag="21600" Click="TimerSelector_Click" CornerRadius="10" Width="70" Height="70"  HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                                <PathIcon  Data="{StaticResource timer_regular}" Width="25" Height="25" />
+                                <TextBlock FontSize="15" Foreground="#F5F7FA" Text="6 часа" VerticalAlignment="Center" />
                             </StackPanel>
-                        </Border>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>
