@@ -9,7 +9,7 @@
         <TextBlock Margin="0 5 0 0" FontSize="13" Foreground="Gray"  VerticalAlignment="Center" >Настройте автоматическую смену обоев</TextBlock>
         <Border Margin="0 20 0 0" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
             <StackPanel  Background="#171f27">
-                <Grid ColumnDefinitions="600 *" RowDefinitions="40 50 20 100" ShowGridLines="True">
+                <Grid ColumnDefinitions="600 *" RowDefinitions="40 50 20 100" ShowGridLines="False">
                     <TextBlock Grid.Column="0" Grid.Row="0" Margin="15 15 0 0" Foreground="White" FontSize="15">Автоматическая смена обоев</TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="0" Margin="15 0 0 0" FontSize="13" Foreground="Gray">Приложение будет автоматически устанавливать новые обои<LineBreak />
                         чреез заданный промежуток времени

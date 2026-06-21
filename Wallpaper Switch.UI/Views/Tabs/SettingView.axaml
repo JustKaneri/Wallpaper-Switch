@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="585" d:DesignHeight="550"
              x:Class="Wallpaper_Switch.UI.SettingView">
-    <Grid Margin="30 15 30 0" Background="#10171e" ShowGridLines="False" ColumnDefinitions="150 150* 150" RowDefinitions="25 220 25 *">
+    <Grid Margin="30 15 30 0" Background="#10171e" ShowGridLines="False" ColumnDefinitions="150 150* 150" RowDefinitions="25 235 25 *">
         <TextBlock Margin="0 0 0 15" FontSize="18" Foreground="White"  VerticalAlignment="Center">Общее</TextBlock>
         <Border Margin="0 0 0 15" BorderBrush="#252d36" BorderThickness="2" CornerRadius="15" ClipToBounds="True" Grid.Row="1" Grid.ColumnSpan="3">
             <StackPanel  Background="#1d252d">
@@ -26,7 +26,7 @@
                     <ToggleSwitch Grid.Column="3"></ToggleSwitch>
                 </Grid>
                 <Separator Background="#252d36"/>
-                <Grid Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
+                <Grid Margin="0 0 0 15" Height="65" ShowGridLines="False" ColumnDefinitions="50 * 100">
                     <PathIcon VerticalAlignment="Center" Data="{StaticResource circle_regular}" Width="20" Height="20" />
                     <StackPanel Margin="10 0 0 0 " VerticalAlignment="Center" Grid.Column="1">
                         <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" >Избегать повторений</TextBlock>
